@@ -3,7 +3,8 @@ package com.ufcg.edu.centraldeprojetos;
 import model.Pessoa;
 
 public class PessoasCRUD {
-
+	
+	
 	/**
 	 * 
 	 * Adiciona uma nova pessoa ao conjunto de pessoas ja existentes.
@@ -47,9 +48,10 @@ public class PessoasCRUD {
 	 * @return retorna a pessoa a qual o CPF pertence ou null caso nao ache uma
 	 *         pessoa.
 	 */
-	/*public Pessoa getPessoa(String cpf) {
+	public Pessoa getPessoa(String cpf) {
+		return null;
 		// TODO retorna a pessoa encontrada no sistema.
 		
-	}*/
+	}
 
 }
