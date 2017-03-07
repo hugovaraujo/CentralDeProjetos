@@ -1,5 +1,7 @@
 package com.ufcg.edu.centraldeprojetos;
 
+import model.Projeto;
+
 public class ProjetosCRUD {
 
 	/**
@@ -9,6 +11,7 @@ public class ProjetosCRUD {
 	 * @return true se for adicionado, false se nao for possivel adicionar.
 	 */
 	public boolean adicionarProjeto(Projeto novoProjeto) {
+		return false;
 		// TODO: adicionar um projeto ao BD
 	}
 
@@ -20,6 +23,7 @@ public class ProjetosCRUD {
 	 *         remover.
 	 */
 	public boolean removeProjeto(Projeto projeto) {
+		return false;
 		// TODO: remover um projeto do BD
 	}
 
@@ -31,7 +35,8 @@ public class ProjetosCRUD {
 	 *         editar.
 	 */
 	public boolean editarProjeto(Projeto projeto) {
-		// TODO: procurar saber o que é pra editar no projeto.
+		return false;
+		// TODO: procurar saber o que ï¿½ pra editar no projeto.
 	}
 
 	/**
@@ -43,6 +48,7 @@ public class ProjetosCRUD {
 	 *         projeto.
 	 */
 	public Projeto getProjeto(String codigoProjeto) {
+		return null;
 		// TODO: recupera um projeto do BD
 	}
 }

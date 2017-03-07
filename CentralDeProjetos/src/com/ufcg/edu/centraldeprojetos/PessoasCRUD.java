@@ -1,5 +1,7 @@
 package com.ufcg.edu.centraldeprojetos;
 
+import model.Pessoa;
+
 public class PessoasCRUD {
 
 	/**
@@ -11,6 +13,7 @@ public class PessoasCRUD {
 	 */
 	public boolean adicionarPessoa(Pessoa pessoa) {
 		// TODO: Criar metodo para adicionar pessoa ao BD
+		return false;
 	}
 
 	/**
@@ -22,6 +25,7 @@ public class PessoasCRUD {
 	 */
 	public boolean removerPessoa(Pessoa pessoa) {
 		// TODO: Criar metodo para remover pessoa do BD
+		return false;
 	}
 
 	/**
@@ -33,6 +37,7 @@ public class PessoasCRUD {
 	 */
 	public boolean editarPessoa(Pessoa pessoa) {
 		// TODO: Descobrir o que vai ser editado na pessoa
+		return false;
 	}
 
 	/**
@@ -42,8 +47,9 @@ public class PessoasCRUD {
 	 * @return retorna a pessoa a qual o CPF pertence ou null caso nao ache uma
 	 *         pessoa.
 	 */
-	public Pessoa getPessoa(String cpf) {
+	/*public Pessoa getPessoa(String cpf) {
 		// TODO retorna a pessoa encontrada no sistema.
-	}
+		
+	}*/
 
 }

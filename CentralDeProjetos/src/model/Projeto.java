@@ -1,4 +1,4 @@
-package com.ufcg.edu.centraldeprojetos;
+package model;
 
 public abstract class Projeto {
 	
