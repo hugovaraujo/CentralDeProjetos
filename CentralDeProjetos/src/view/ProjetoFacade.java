@@ -11,15 +11,15 @@ public class ProjetoFacade {
 	public PessoasCRUD controllerPessoas = new PessoasCRUD();
 	public ProjetosCRUD controllerProjetos = new ProjetosCRUD();
 
-	public boolean adicionarPessoa(Pessoa pessoa) {
+	public boolean adicionarPessoa(Pessoa pessoa) throws Exception {
 		return controllerPessoas.adicionarPessoa(pessoa);
 	}
 
-	public boolean removerPessoa(Pessoa pessoa) {
+	public boolean removerPessoa(Pessoa pessoa) throws Exception {
 		return controllerPessoas.removerPessoa(pessoa);
 	}
 
-	public boolean editarPessoa(Pessoa pessoa) {
+	public boolean editarPessoa(Pessoa pessoa) throws Exception {
 		return controllerPessoas.removerPessoa(pessoa);
 	}
 
