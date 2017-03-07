@@ -12,11 +12,9 @@ public class Pessoa {
 		this.email = email;
 	}
 
-	
 	public String getCpf() {
 		return cpf;
 	}
-
 
 	@Override
 	public String toString() {

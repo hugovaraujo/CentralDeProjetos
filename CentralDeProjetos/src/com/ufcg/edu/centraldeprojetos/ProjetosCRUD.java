@@ -1,18 +1,30 @@
 package com.ufcg.edu.centraldeprojetos;
 
+import java.util.HashMap;
+
 import model.Projeto;
 
 public class ProjetosCRUD {
+
+	public HashMap<String, Projeto> projetos;
+
+	public ProjetosCRUD() {
+		projetos = new HashMap<>();
+	}
 
 	/**
 	 * Adiciona um novo projeto ao conjunto de projetos ja existentes.
 	 * 
 	 * @param novoProjeto
 	 * @return true se for adicionado, false se nao for possivel adicionar.
+	 * @throws Exception
 	 */
-	public boolean adicionarProjeto(Projeto novoProjeto) {
-		return false;
-		// TODO: adicionar um projeto ao BD
+	public boolean adicionarProjeto(Projeto novoProjeto) throws Exception {
+		if (projetos.containsKey(novoProjeto)) {
+			throw new Exception("Codigo de projeto ja existente");
+		}
+		projetos.put(novoProjeto.getCodigo(), novoProjeto);
+		return true;
 	}
 
 	/**
@@ -23,8 +35,11 @@ public class ProjetosCRUD {
 	 *         remover.
 	 */
 	public boolean removeProjeto(Projeto projeto) {
-		return false;
-		// TODO: remover um projeto do BD
+		if (!projetos.containsKey(projeto.getCodigo())) {
+			throw new Exception("Projeto nao existente");
+		}
+		projetos.remove(projeto.getCodigo());
+		return true;
 	}
 
 	/**
@@ -36,7 +51,7 @@ public class ProjetosCRUD {
 	 */
 	public boolean editarProjeto(Projeto projeto) {
 		return false;
-		// TODO: procurar saber o que � pra editar no projeto.
+		// TODO: procurar saber o que e pra editar no projeto.
 	}
 
 	/**
@@ -48,7 +63,8 @@ public class ProjetosCRUD {
 	 *         projeto.
 	 */
 	public Projeto getProjeto(String codigoProjeto) {
-		return null;
-		// TODO: recupera um projeto do BD
+		return projetos.get(codigoProjeto);
+		// TODO: IMPORTANTE>>> Tratar a excecao caso a pessoa nao exista no
+		// banco de dados de pessoas.
 	}
 }
