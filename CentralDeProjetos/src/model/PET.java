@@ -12,15 +12,15 @@ public class PET extends Projeto {
 	
 	public PET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, Date dataInicio, int duracao) {
 		
-		setNome(nome);
-		setObjetivo(objetivo);
+		this.nome = nome;
+		this.objetivo = objetivo;
 		this.impacto = impacto;
 		this.rendimento = rendimento;
 		this.prodTecnica = prodTecnica;
 		this.prodAcademica = prodAcademica;
 		this.patentes = patentes;
-		setDataInicio(dataInicio);
-		setDuracao(duracao);
+		this.dataInicio = dataInicio;
+		this.duracao = duracao;
 		
 	}
 

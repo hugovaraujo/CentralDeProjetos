@@ -11,14 +11,14 @@ public class PED extends Projeto {
 	
 	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, Date dataInicio, int duracao) {
 		
-		setNome(nome);
+		this.nome = nome;
 		this.categoria = categoria;
 		this.prodTecnica = prodTecnica;
 		this.prodAcademica = prodAcademica;
 		this.patentes = patentes;
-		setObjetivo(objetivo);
-		setDataInicio(dataInicio);
-		setDuracao(duracao);
+		this.objetivo = objetivo;
+		this.dataInicio = dataInicio;
+		this.duracao = duracao;
 		
 	}
 

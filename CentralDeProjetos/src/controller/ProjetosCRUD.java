@@ -1,19 +1,81 @@
 package controller;
 
+import java.util.Date;
+import java.util.HashMap;
+
+import factory.FactoryDoProjeto;
 import model.Projeto;
 
 public class ProjetosCRUD {
-
-	/**
-	 * Adiciona um novo projeto ao conjunto de projetos ja existentes.
-	 * 
-	 * @param novoProjeto
-	 * @return true se for adicionado, false se nao for possivel adicionar.
-	 */
-	public boolean adicionarProjeto(Projeto novoProjeto) {
-		return false;
-		// TODO: adicionar um projeto ao BD
+	
+	private HashMap<Integer, Projeto> projetos;
+	private FactoryDoProjeto factoryProjeto;
+	
+	public ProjetosCRUD(){
+		
+		projetos = new HashMap<>();
+		factoryProjeto = new FactoryDoProjeto();
+		
 	}
+
+
+	public void adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, Date dataInicio, int duracao){
+		
+		Projeto projeto = factoryProjeto.criaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
+		
+		if(projetos.containsKey(projeto.getCodigo())){
+			
+			System.out.println("Projeto já existe.");
+			return;
+		}
+		
+		projetos.put(projeto.getCodigo(), projeto);
+		
+		
+	}
+	
+	public void adicionaExtensao(String nome, String objetivo, int impacto, Date dataInicio, int duracao){
+		
+		Projeto projeto = factoryProjeto.criaExtensao(nome, objetivo, impacto, dataInicio, duracao);
+				
+		if(projetos.containsKey(projeto.getCodigo())){
+			
+			System.out.println("Projeto já existe.");
+			return;
+		}
+		
+		projetos.put(projeto.getCodigo(), projeto);
+		
+	}
+	
+	public void adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, Date dataInicio, int duracao){
+		
+		Projeto projeto = factoryProjeto.criaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
+		
+		if(projetos.containsKey(projeto.getCodigo())){
+			
+			System.out.println("Projeto já existe.");
+			return;
+		}
+		
+		projetos.put(projeto.getCodigo(), projeto);
+		
+	}
+	
+	public void adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, Date dataInicio, int duracao){
+		
+		Projeto projeto = factoryProjeto.criaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
+		
+		if(projetos.containsKey(projeto.getCodigo())){
+			
+			System.out.println("Projeto já existe.");
+			return;
+		}
+		
+		projetos.put(projeto.getCodigo(), projeto);
+		
+	}
+
 
 	/**
 	 * Remove um projeto do conjunto de projetos ja existentes.

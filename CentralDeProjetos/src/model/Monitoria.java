@@ -10,13 +10,13 @@ public class Monitoria extends Projeto {
 	
 	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, Date dataInicio,int duracao) {
 		
-		setNome(nome);
+		this.nome = nome;
 		this.disciplina = disciplina;
 		this.periodo = periodo;
 		this.rendimento = rendimento;
-		setObjetivo(objetivo);
-		setDataInicio(dataInicio);
-		setDuracao(duracao);
+		this.objetivo = objetivo;
+		this.dataInicio = dataInicio;
+		this.duracao = duracao;
 		
 	}
 

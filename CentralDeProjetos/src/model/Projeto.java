@@ -4,22 +4,23 @@ import java.util.Date;
 
 public abstract class Projeto {
 	
-	private String codigoProjeto;
-	private String nome;
-	private String objetivo;
-	private Date dataInicio;
-	private int duracao;
-	private Despesa despesas;
-	private int custoTotal;
+	protected int codigo;
+	protected String nome;
+	protected String objetivo;
+	protected Date dataInicio;
+	protected int duracao;
+	protected Despesa despesas;
+	protected int custoTotal;
 	
-	public String getCodigoProjeto() {
-		return codigoProjeto;
+
+	public int getCodigo() {
+		return codigo;
 	}
-	
-	public void setCodigoProjeto(String codigoProjeto) {
-		this.codigoProjeto = codigoProjeto;
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}

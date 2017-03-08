@@ -8,8 +8,8 @@ public class Extensao extends Projeto {
 
 	public Extensao(String nome, String objetivo, int impacto, Date dataInicio, int duracao) {
 		
-		setNome(nome);
-		setObjetivo(objetivo);
+		this.nome = nome;
+		this.objetivo = objetivo;
 		this.impacto = impacto;
 		this.setDataInicio(dataInicio);
 		this.setDuracao(duracao);
