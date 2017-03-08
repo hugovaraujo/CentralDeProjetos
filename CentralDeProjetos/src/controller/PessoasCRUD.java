@@ -1,4 +1,4 @@
-package com.ufcg.edu.centraldeprojetos;
+package controller;
 
 import model.Pessoa;
 
