@@ -2,8 +2,9 @@ package view;
 
 import java.util.Date;
 
+import org.w3c.dom.CDATASection;
+
 import controller.ProjetosCRUD;
-import model.Projeto;
 
 public class ProjetoFacade {
 	
@@ -39,16 +40,21 @@ public class ProjetoFacade {
 		
 	}
 	
-	public void removeProjeto(Projeto projeto) {
+	public void removeProjeto(String codigoProjeto) {
 		
-		projetos.removeProjeto(projeto);
-		
-	}
-
-	public void editarProjeto(Projeto projeto) {
-		
-		projetos.editarProjeto(projeto);
+		projetos.removeProjeto(codigoProjeto);
 		
 	}
 
+	public void editarProjeto(String codigoProjeto, String atributo, String valor) throws Exception{
+		
+		projetos.editarProjeto(codigoProjeto, atributo, valor);
+		
+	}
+
+	public void editarProjeto(String codigoProjeto, String atributo, int valor) throws Exception{
+
+		projetos.editarProjeto(codigoProjeto, atributo, valor);
+		
+	}
 }

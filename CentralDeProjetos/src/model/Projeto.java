@@ -12,7 +12,13 @@ public abstract class Projeto {
 	protected Despesa despesas;
 	protected int custoTotal;
 	
+	
+	public abstract boolean editaProjeto(String atributo, String valor) throws Exception;
+	
+	public abstract boolean editaProjeto(String atributo, int valor) throws Exception;
 
+	public abstract String getInfoProjeto(String atributo) throws Exception;
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -68,10 +74,8 @@ public abstract class Projeto {
 	public void setCustoTotal(int custoTotal) {
 		this.custoTotal = custoTotal;
 	}
-	
-	
-	
-	
+
+
 	
 	
 }
