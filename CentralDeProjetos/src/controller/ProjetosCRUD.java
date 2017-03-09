@@ -25,7 +25,7 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
-			System.out.println("Projeto já existe.");
+			System.out.println("Projeto ja existe.");
 			return;
 		}
 		
@@ -39,7 +39,7 @@ public class ProjetosCRUD {
 				
 		if(projetos.containsKey(projeto.getCodigo())){
 			
-			System.out.println("Projeto já existe.");
+			System.out.println("Projeto ja existe.");
 			return;
 		}
 		
@@ -53,7 +53,7 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
-			System.out.println("Projeto já existe.");
+			System.out.println("Projeto ja existe.");
 			return;
 		}
 		
@@ -67,7 +67,7 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
-			System.out.println("Projeto já existe.");
+			System.out.println("Projeto ja existe.");
 			return;
 		}
 		
