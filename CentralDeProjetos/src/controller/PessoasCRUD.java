@@ -19,7 +19,8 @@ public class PessoasCRUD {
 	 * @return true se for adicionado, false se nao for possivel adicionar.
 	 * @throws Exception
 	 */
-	public boolean adicionarPessoa(Pessoa pessoa) throws Exception {
+	public boolean adicionarPessoa(String cpf, String nome, String email) throws Exception {
+		if ( cpf)
 		if (pessoas.containsKey(pessoa.getCpf())) {
 			throw new Exception("Pessoa ja consta no banco de dados de pessoas");
 		}
@@ -36,11 +37,11 @@ public class PessoasCRUD {
 	 *         remover.
 	 * @throws Exception
 	 */
-	public boolean removerPessoa(Pessoa pessoa) throws Exception {
-		if (!pessoas.containsKey(pessoa.getCpf())) {
+	public boolean removerPessoa(String cpf) throws Exception {
+		if (!pessoas.containsKey(cpf)) {
 			throw new Exception("Pessoa nao existe no banco de dados de pessoas");
 		}
-		pessoas.remove(pessoa.getCpf());
+		pessoas.remove(cpf);
 		return true;
 	}
 
@@ -66,7 +67,7 @@ public class PessoasCRUD {
 	 */
 	public Pessoa getPessoa(String cpf) {
 		return pessoas.get(cpf);
-		// TODO: IMPORTANTE>>> Tratar a exceção caso a pessoa nao exista no
+		// TODO: IMPORTANTE>>> Tratar a exceï¿½ï¿½o caso a pessoa nao exista no
 		// banco de dados de pessoas.
 	}
 
