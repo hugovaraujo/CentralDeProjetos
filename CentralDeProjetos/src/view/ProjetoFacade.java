@@ -2,9 +2,8 @@ package view;
 
 import java.util.Date;
 
-import org.w3c.dom.CDATASection;
-
 import controller.ProjetosCRUD;
+import easyaccept.EasyAccept;
 
 public class ProjetoFacade {
 	
@@ -56,5 +55,10 @@ public class ProjetoFacade {
 
 		projetos.editarProjeto(codigoProjeto, atributo, valor);
 		
+	}
+	
+	public static void main(String[] args) {
+	    args = new String[] {"view.ProjetoFacade", "easyaccept/us1_test.txt", "easyaccept/us2_test.txt"}; //separe cada script de teste por virgula.
+	    EasyAccept.main(args);
 	}
 }

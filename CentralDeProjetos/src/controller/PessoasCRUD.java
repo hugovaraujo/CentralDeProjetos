@@ -19,15 +19,16 @@ public class PessoasCRUD {
 	 * @return true se for adicionado, false se nao for possivel adicionar.
 	 * @throws Exception
 	 */
+	
+	/*
 	public boolean adicionarPessoa(String cpf, String nome, String email) throws Exception {
-		if ( cpf)
 		if (pessoas.containsKey(pessoa.getCpf())) {
 			throw new Exception("Pessoa ja consta no banco de dados de pessoas");
 		}
 		pessoas.put(pessoa.getCpf(), pessoa);
 		return true;
 
-	}
+	}*/
 
 	/**
 	 * Remove uma pessoa do conjunto de pessoas ja existentes.
