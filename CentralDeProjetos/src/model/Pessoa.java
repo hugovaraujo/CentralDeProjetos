@@ -6,7 +6,7 @@ public class Pessoa {
 	private String cpf;
 	private String email;
 
-	public Pessoa(String nome, String cpf, String email) {
+	public Pessoa(String cpf, String nome, String email) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
@@ -14,6 +14,26 @@ public class Pessoa {
 
 	public String getCpf() {
 		return cpf;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	@Override

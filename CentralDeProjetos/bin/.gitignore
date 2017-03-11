@@ -1,2 +1,7 @@
-/view/
+/com/
 /controller/
+/excecoes/
+/factory/
+/jUnitTestCases/
+/model/
+/view/

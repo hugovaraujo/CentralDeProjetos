@@ -2,6 +2,7 @@ package view;
 
 import controller.PessoasCRUD;
 import easyaccept.EasyAccept;
+import model.Pessoa;
 
 public class PessoaFacade {
 	
@@ -13,9 +14,9 @@ public class PessoaFacade {
 		
 	}
 	
-	public void cadastraPessoa(String cpf, String nome, String email) throws Exception {
+	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
 		
-		pessoas.cadastraPessoa(cpf, nome, email);
+		return pessoas.cadastraPessoa(cpf, nome, email);
 
 	}
 
@@ -25,9 +26,13 @@ public class PessoaFacade {
 		
 	}
 	
-	public void getInfoPessoa(String cpf) {
-
-		pessoas.getInfoPessoa(cpf);
+	public String getInfoPessoa(String cpf, String atributo) throws Exception{
+		return pessoas.getInfoPessoa(cpf, atributo);
+		
+	}
+	
+	public void editaPessoa(String cpf, String atributo, String valor) throws Exception{
+		pessoas.editarPessoa(cpf, atributo, valor);
 		
 	}
 
