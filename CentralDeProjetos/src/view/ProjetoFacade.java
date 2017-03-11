@@ -3,7 +3,7 @@ package view;
 import java.util.Date;
 
 import controller.ProjetosCRUD;
-import model.Projeto;
+import easyaccept.EasyAccept;
 
 public class ProjetoFacade {
 	
@@ -39,16 +39,26 @@ public class ProjetoFacade {
 		
 	}
 	
-	public void removeProjeto(Projeto projeto) {
+	public void removeProjeto(String codigoProjeto) {
 		
-		projetos.removeProjeto(projeto);
-		
-	}
-
-	public void editarProjeto(Projeto projeto) {
-		
-		projetos.editarProjeto(projeto);
+		projetos.removeProjeto(codigoProjeto);
 		
 	}
 
+	public void editarProjeto(String codigoProjeto, String atributo, String valor) throws Exception{
+		
+		projetos.editarProjeto(codigoProjeto, atributo, valor);
+		
+	}
+
+	public void editarProjeto(String codigoProjeto, String atributo, int valor) throws Exception{
+
+		projetos.editarProjeto(codigoProjeto, atributo, valor);
+		
+	}
+	
+	public static void main(String[] args) {
+	    args = new String[] {"view.ProjetoFacade", "easyaccept/us1_test.txt", "easyaccept/us2_test.txt"}; //separe cada script de teste por virgula.
+	    EasyAccept.main(args);
+	}
 }

@@ -25,12 +25,15 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
+<<<<<<< HEAD
 			System.out.println("Projeto j� existe.");
+=======
+			System.out.println("Projeto ja existe.");
+>>>>>>> refs/remotes/origin/master
 			return;
 		}
 		
 		projetos.put(projeto.getCodigo(), projeto);
-		
 		
 	}
 	
@@ -40,7 +43,11 @@ public class ProjetosCRUD {
 				
 		if(projetos.containsKey(projeto.getCodigo())){
 			
+<<<<<<< HEAD
 			System.out.println("Projeto j� existe.");
+=======
+			System.out.println("Projeto ja existe.");
+>>>>>>> refs/remotes/origin/master
 			return;
 		}
 		
@@ -54,7 +61,11 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
+<<<<<<< HEAD
 			System.out.println("Projeto j� existe.");
+=======
+			System.out.println("Projeto ja existe.");
+>>>>>>> refs/remotes/origin/master
 			return;
 		}
 		
@@ -68,7 +79,11 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
+<<<<<<< HEAD
 			System.out.println("Projeto j� existe.");
+=======
+			System.out.println("Projeto ja existe.");
+>>>>>>> refs/remotes/origin/master
 			return;
 		}
 		
@@ -84,9 +99,9 @@ public class ProjetosCRUD {
 	 * @return true se for removido com sucesso, falso se nao for possivel
 	 *         remover.
 	 */
-	public boolean removeProjeto(Projeto projeto) {
+	public boolean removeProjeto(String codigo) {
+		projetos.remove(codigo);
 		return false;
-		// TODO: remover um projeto do BD
 	}
 
 	/**
@@ -95,11 +110,25 @@ public class ProjetosCRUD {
 	 * @param projeto
 	 * @return retorna true se editar com sucesso, falso se nao for possivel
 	 *         editar.
+	 * @throws Exception 
 	 */
-	public boolean editarProjeto(Projeto projeto) {
-		return false;
-		// TODO: procurar saber o que � pra editar no projeto.
+	public boolean editarProjeto(String codigoProjeto, String atributo, String valor) throws Exception {
+		Projeto projeto = getProjeto(codigoProjeto);
+		return projeto.editaProjeto(atributo, valor);	
 	}
+	
+	public boolean editarProjeto(String codigoProjeto, String atributo, int valor) throws Exception {
+		Projeto projeto = getProjeto(codigoProjeto);
+		return projeto.editaProjeto(atributo, valor);	
+	}
+	
+	public String getInfoProjeto(String codigoProjeto, String atributo) throws Exception{
+		Projeto projeto = getProjeto(codigoProjeto);
+		return projeto.getInfoProjeto(atributo);
+	}
+
+	
+	
 
 	/**
 	 * Procura um projeto no conjunto, usando o codigo de identificao unica do
@@ -108,9 +137,13 @@ public class ProjetosCRUD {
 	 * @param codigoProjeto
 	 * @return returna o projeto pertencente ao codigo ou null caso nao ache um
 	 *         projeto.
+	 * @throws Exception 
 	 */
-	public Projeto getProjeto(String codigoProjeto) {
-		return null;
-		// TODO: recupera um projeto do BD
+	public Projeto getProjeto(String codigoProjeto) throws Exception {
+		Projeto projeto = projetos.get(codigoProjeto);
+		if (projeto == null){
+			throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
+		};
+		return projeto;
 	}
 }

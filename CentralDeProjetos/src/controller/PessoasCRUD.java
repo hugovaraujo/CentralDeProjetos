@@ -1,8 +1,15 @@
 package controller;
 
+import java.util.HashMap;
 import model.Pessoa;
 
 public class PessoasCRUD {
+
+	public HashMap<String, Pessoa> pessoas;
+
+	public PessoasCRUD() {
+		pessoas = new HashMap<>();
+	}
 
 	/**
 	 * 
@@ -10,10 +17,19 @@ public class PessoasCRUD {
 	 * 
 	 * @param Pessoa
 	 * @return true se for adicionado, false se nao for possivel adicionar.
+	 * @throws Exception
 	 */
-	public boolean adicionarPessoa(Pessoa pessoa) {
-		// TODO: Criar metodo para adicionar pessoa ao BD
-		return false;
+	
+	
+	public void cadastraPessoa(String cpf, String nome, String email) throws Exception {
+		
+		if (pessoas.containsKey(cpf)) {
+			throw new Exception("Pessoa ja consta no banco de dados de pessoas");
+		}
+		Pessoa pessoa = new Pessoa(nome, cpf, email);
+		
+		pessoas.put(pessoa.getCpf(), pessoa);
+
 	}
 
 	/**
@@ -22,10 +38,13 @@ public class PessoasCRUD {
 	 * @param pessoa
 	 * @return true se for removido com sucesso, falso se nao for possivel
 	 *         remover.
+	 * @throws Exception
 	 */
-	public boolean removerPessoa(Pessoa pessoa) {
-		// TODO: Criar metodo para remover pessoa do BD
-		return false;
+	public void removerPessoa(String cpf) throws Exception {
+		if (!pessoas.containsKey(cpf)) {
+			throw new Exception("Pessoa nao existe no banco de dados de pessoas");
+		}
+		pessoas.remove(cpf);
 	}
 
 	/**
@@ -46,10 +65,12 @@ public class PessoasCRUD {
 	 * @param cpf
 	 * @return retorna a pessoa a qual o CPF pertence ou null caso nao ache uma
 	 *         pessoa.
+	 * @throws Exception
 	 */
-	/*public Pessoa getPessoa(String cpf) {
-		// TODO retorna a pessoa encontrada no sistema.
-		
-	}*/
+	public Pessoa getInfoPessoa(String cpf) {
+		return pessoas.get(cpf);
+		// TODO: IMPORTANTE>>> Tratar a exce��o caso a pessoa nao exista no
+		// banco de dados de pessoas.
+	}
 
 }
