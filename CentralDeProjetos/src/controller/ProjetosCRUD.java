@@ -25,11 +25,7 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
-<<<<<<< HEAD
-			System.out.println("Projeto j� existe.");
-=======
 			System.out.println("Projeto ja existe.");
->>>>>>> refs/remotes/origin/master
 			return;
 		}
 		
@@ -43,11 +39,7 @@ public class ProjetosCRUD {
 				
 		if(projetos.containsKey(projeto.getCodigo())){
 			
-<<<<<<< HEAD
-			System.out.println("Projeto j� existe.");
-=======
 			System.out.println("Projeto ja existe.");
->>>>>>> refs/remotes/origin/master
 			return;
 		}
 		
@@ -61,11 +53,7 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
-<<<<<<< HEAD
-			System.out.println("Projeto j� existe.");
-=======
 			System.out.println("Projeto ja existe.");
->>>>>>> refs/remotes/origin/master
 			return;
 		}
 		
@@ -79,11 +67,7 @@ public class ProjetosCRUD {
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
-<<<<<<< HEAD
-			System.out.println("Projeto j� existe.");
-=======
 			System.out.println("Projeto ja existe.");
->>>>>>> refs/remotes/origin/master
 			return;
 		}
 		

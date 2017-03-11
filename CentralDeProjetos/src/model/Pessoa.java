@@ -1,19 +1,29 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pessoa {
 
 	private String nome;
 	private String cpf;
 	private String email;
+	private List<Projeto> projetos;
 
 	public Pessoa(String nome, String cpf, String email) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.projetos = new ArrayList<>();
 	}
 
 	public String getCpf() {
 		return cpf;
+	}
+	
+
+	public List<Projeto> getProjetos() {
+		return projetos;
 	}
 
 	@Override
