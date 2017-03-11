@@ -20,15 +20,17 @@ public class PessoasCRUD {
 	 * @throws Exception
 	 */
 	
-	/*
-	public boolean adicionarPessoa(String cpf, String nome, String email) throws Exception {
-		if (pessoas.containsKey(pessoa.getCpf())) {
+	
+	public void cadastraPessoa(String cpf, String nome, String email) throws Exception {
+		
+		if (pessoas.containsKey(cpf)) {
 			throw new Exception("Pessoa ja consta no banco de dados de pessoas");
 		}
+		Pessoa pessoa = new Pessoa(nome, cpf, email);
+		
 		pessoas.put(pessoa.getCpf(), pessoa);
-		return true;
 
-	}*/
+	}
 
 	/**
 	 * Remove uma pessoa do conjunto de pessoas ja existentes.
@@ -38,12 +40,11 @@ public class PessoasCRUD {
 	 *         remover.
 	 * @throws Exception
 	 */
-	public boolean removerPessoa(String cpf) throws Exception {
+	public void removerPessoa(String cpf) throws Exception {
 		if (!pessoas.containsKey(cpf)) {
 			throw new Exception("Pessoa nao existe no banco de dados de pessoas");
 		}
 		pessoas.remove(cpf);
-		return true;
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class PessoasCRUD {
 	 *         pessoa.
 	 * @throws Exception
 	 */
-	public Pessoa getPessoa(String cpf) {
+	public Pessoa getInfoPessoa(String cpf) {
 		return pessoas.get(cpf);
 		// TODO: IMPORTANTE>>> Tratar a exce��o caso a pessoa nao exista no
 		// banco de dados de pessoas.
