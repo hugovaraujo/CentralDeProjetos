@@ -28,7 +28,6 @@ public class PessoasCRUD {
 	 * @throws Exception
 	 */
 	
-	
 	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
 		if (pessoas.containsKey(cpf)) {
 			throw new CadastroException("de pessoa: Pessoa com mesmo CPF ja cadastrada");

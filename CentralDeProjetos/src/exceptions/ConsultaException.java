@@ -17,6 +17,6 @@ public class ConsultaException extends ErroException {
 	 */
 	public ConsultaException(String msg){
 		super("na consulta " + msg);
-
 	}
+	
 }

@@ -25,6 +25,7 @@ public class VerificadorTest {
 		}
 	}
 
+	
 	@Test
 	public void testVerificaString(){
 		try {

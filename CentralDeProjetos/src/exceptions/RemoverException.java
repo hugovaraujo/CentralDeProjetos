@@ -15,6 +15,6 @@ public class RemoverException extends ErroException{
 	 */
 	public RemoverException(String msg){
 		super("ao remover " + msg );
-
 	}
+	
 }

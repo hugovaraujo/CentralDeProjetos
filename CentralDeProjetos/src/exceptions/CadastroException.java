@@ -15,6 +15,6 @@ public class CadastroException extends ErroException  {
 	 */
 	public CadastroException(String msg){
 		super("no cadastro " + msg );
-
 	}
+	
 }

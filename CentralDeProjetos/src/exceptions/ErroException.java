@@ -9,7 +9,7 @@ public class ErroException extends Exception {
 
 	public ErroException(String msg){
 		super("Erro " + msg );
-
 	}
+	
 
 }

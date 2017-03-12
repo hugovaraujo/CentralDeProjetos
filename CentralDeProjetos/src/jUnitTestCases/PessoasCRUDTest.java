@@ -12,7 +12,6 @@ public class PessoasCRUDTest {
 
 	private PessoasCRUD crud;
 
-	
 	@Before
 	public void setUp() throws Exception {
 		try {

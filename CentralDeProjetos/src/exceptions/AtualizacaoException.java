@@ -15,6 +15,6 @@ public class AtualizacaoException extends ErroException{
 	 */
 	public AtualizacaoException(String msg){
 		super("na atualizacao " + msg);
-
 	}
+	
 }

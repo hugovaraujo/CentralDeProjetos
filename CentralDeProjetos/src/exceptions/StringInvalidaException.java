@@ -18,4 +18,5 @@ public class StringInvalidaException extends Exception{
 		super(msg +" nulo ou vazio");
 	}
 
+	
 }

@@ -14,7 +14,6 @@ public class PessoaTest {
 	private Pessoa pessoa2;
 	private Pessoa pessoa3;
 
-	
 	@Before
 	public void setUp() throws Exception {
 		try {
