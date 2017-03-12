@@ -4,7 +4,7 @@ public class ProfessorParticipacao extends Participacao{
 	
 	private boolean coordenador;
 	
-	public ProfessorParticipacao(Pessoa pessoa, Projeto projeto, double valorHora, int qtdHoras, int duracao, boolean coordenador) {
+	public ProfessorParticipacao(Pessoa pessoa, Projeto projeto, double valorHora, int qtdHoras, boolean coordenador) {
 		
 		this.pessoa = pessoa;
 		this.projeto = projeto;

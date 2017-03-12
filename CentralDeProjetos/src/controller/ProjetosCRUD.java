@@ -8,7 +8,7 @@ import model.Projeto;
 
 public class ProjetosCRUD {
 	
-	private HashMap<Integer, Projeto> projetos;
+	private HashMap<String, Projeto> projetos;
 	private FactoryDoProjeto factoryProjeto;
 	
 	public ProjetosCRUD(){

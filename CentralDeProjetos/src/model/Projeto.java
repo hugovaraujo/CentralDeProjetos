@@ -4,7 +4,7 @@ import java.util.Date;
 
 public abstract class Projeto {
 	
-	protected int codigo;
+	protected String codigo;
 	protected String nome;
 	protected String objetivo;
 	protected Date dataInicio;
@@ -19,11 +19,11 @@ public abstract class Projeto {
 
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 	
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 

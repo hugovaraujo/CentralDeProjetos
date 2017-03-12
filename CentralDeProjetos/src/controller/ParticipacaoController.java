@@ -23,7 +23,7 @@ public class ParticipacaoController {
 	
 	public void associaProfessor(Pessoa pessoa, Projeto projeto, boolean coordenador, double valorHora, int qntHoras){
 	
-		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, duracao, coordenador);
+		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, coordenador);
 		
 		participacoes.add(participacao);
 		
@@ -46,8 +46,15 @@ public class ParticipacaoController {
 		
 	}
 	public void removeParticipacao(String cpfPessoa, String codigoProjeto){
-		//TODO: Busca linear procurando pelo CPF da pessoa e depois conferindo se o projeto é igual. Se for, deleta.
+		for (Participacao participacao : participacoes) {
+			if(participacao.getPessoa().getCpf().equals(cpfPessoa) && participacao.getProjeto().getCodigo().equals(codigoProjeto)) {
+				participacoes.remove(participacao);
+			}
+		}
+		//TODO: Se ele fizer a busca linear e não achar, deve retorna false (Este metodo deve retornar boolean)
 	}
+	
+	
 
 
 }
