@@ -171,10 +171,6 @@ public class ProjetosCRUD {
 		return projeto.editaProjeto(atributo, valor);	
 	}
 	
-	public boolean editarProjeto(int codigoProjeto, String atributo, int valor) throws Exception {
-		Projeto projeto = getProjeto(codigoProjeto);
-		return projeto.editaProjeto(atributo, valor);	
-	}
 	
 	/**
 	 * Metodo que consulta uma informacao de um projeto, de acordo com o atributo

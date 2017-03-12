@@ -55,14 +55,6 @@ public class ProjetoFacade {
 		projetos.editarProjeto(codigo, atributo, valor);
 		
 	}
-
-	public void editaProjeto(int codigo, String atributo, int valor) throws Exception{
-
-		projetos.editarProjeto(codigo, atributo, valor);
-		
-	}
-	
-	// criei o getInfoProjetos de Facade
 	
 	public String getInfoProjeto(int codigo, String atributo) throws Exception{
 		return projetos.getInfoProjeto(codigo, atributo); 

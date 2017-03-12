@@ -15,12 +15,9 @@ public abstract class Projeto {
 	
 	
 	public abstract boolean editaProjeto(String atributo, String valor) throws Exception;
-	
-	public abstract boolean editaProjeto(String atributo, int valor) throws Exception;
 
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 	
-	// gerando o codigo do projeto
 	
 	public int getCodigo(){ 
 		return codigo;

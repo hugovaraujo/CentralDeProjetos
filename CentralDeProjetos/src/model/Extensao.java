@@ -18,6 +18,7 @@ public class Extensao extends Projeto {
 	
 	@Override
 	public boolean editaProjeto(String atributo, String valor) throws Exception {
+		int novoValor = 0;
 		switch (atributo){
 		case "Nome":
 			setNome(valor);
@@ -25,20 +26,14 @@ public class Extensao extends Projeto {
 		case "Objetivo":
 			setObjetivo(valor);
 			return true;
-		default:
-			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
-		}
-	}
-	
-	@Override
-	public boolean editaProjeto(String atributo, int valor) throws Exception {
-		switch (atributo){
 		case "Impacto":
-			setImpacto(valor);
+			novoValor = Integer.parseInt(valor);
+			setImpacto(novoValor);
 			return true;
 		case "Duracao":
-			setDuracao(valor);
-			return true;
+			novoValor = Integer.parseInt(valor);
+			setDuracao(novoValor);
+			return true;	
 		default:
 			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
 		}
@@ -54,7 +49,7 @@ public class Extensao extends Projeto {
 		case "Impacto":
 			return String.valueOf(getImpacto());
 		case "Data de inicio":
-			//TODO: Vê como faz essa parte.
+			return getDataInicio();
 		case "Duracao":
 			return String.valueOf(getDuracao());
 		default:
