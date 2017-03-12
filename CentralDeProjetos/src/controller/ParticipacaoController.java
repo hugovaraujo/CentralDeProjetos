@@ -21,7 +21,7 @@ public class ParticipacaoController {
 		
 	}
 	
-	public void associaProfessor(Pessoa pessoa, Projeto projeto, boolean coordenador, double valorHora, int qntHoras, int duracao){
+	public void associaProfessor(Pessoa pessoa, Projeto projeto, boolean coordenador, double valorHora, int qntHoras){
 	
 		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, duracao, coordenador);
 		
@@ -29,24 +29,24 @@ public class ParticipacaoController {
 		
 		
 	}
-	public void associaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras, int duracao){
+	public void associaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras){
 	
-		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, valorHora, qntHoras, duracao, cargo);
+		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, valorHora, qntHoras);
 		
 		participacoes.add(participacao);
 		
 		
 	}
-	public void associaGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras, int duracao){
+	public void associaGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras){
 	
-		GraduandoParticipacao participacao = new GraduandoParticipacao(pessoa, projeto, valorHora, qntHoras, duracao);
+		GraduandoParticipacao participacao = new GraduandoParticipacao(pessoa, projeto, valorHora, qntHoras);
 		
 		participacoes.add(participacao);
 		
 		
 	}
-	public void removeParticipacao(){
-		
+	public void removeParticipacao(String cpfPessoa, String codigoProjeto){
+		//TODO: Busca linear procurando pelo CPF da pessoa e depois conferindo se o projeto é igual. Se for, deleta.
 	}
 
 
