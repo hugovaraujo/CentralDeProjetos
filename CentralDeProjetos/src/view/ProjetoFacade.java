@@ -15,50 +15,58 @@ public class ProjetoFacade {
 		
 	}
 	
-	public void adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, Date dataInicio, int duracao){
+	// coloquei aqui tbm pra retornar o código nesses metodos de adicionar
+	
+	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, Date dataInicio, int duracao){
 		
-		projetos.adicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
+		return projetos.adicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
+	
+	}
+	
+	public int adicionaExtensao(String nome, String objetivo, int impacto, Date dataInicio, int duracao){
+		
+		return projetos.adicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
 		
 	}
 	
-	public void adicionaExtensao(String nome, String objetivo, int impacto, Date dataInicio, int duracao){
+	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, Date dataInicio, int duracao){
 		
-		projetos.adicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
-		
-	}
-	
-	public void adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, Date dataInicio, int duracao){
-		
-		projetos.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
+		return projetos.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
 		
 	}
 	
-	public void adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, Date dataInicio, int duracao){
+	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, Date dataInicio, int duracao){
 		
-		projetos.adicionaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
+		return projetos.adicionaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
 		
 	}
 	
-	public void removeProjeto(String codigoProjeto) {
+	public void removeProjeto(int codigo) {
 		
-		projetos.removeProjeto(codigoProjeto);
+		projetos.removeProjeto(codigo);
 		
 	}
 
-	public void editarProjeto(String codigoProjeto, String atributo, String valor) throws Exception{
+	public void editarProjeto(int codigo, String atributo, String valor) throws Exception{
 		
-		projetos.editarProjeto(codigoProjeto, atributo, valor);
+		projetos.editarProjeto(codigo, atributo, valor);
 		
 	}
 
-	public void editarProjeto(String codigoProjeto, String atributo, int valor) throws Exception{
+	public void editarProjeto(int codigo, String atributo, int valor) throws Exception{
 
-		projetos.editarProjeto(codigoProjeto, atributo, valor);
+		projetos.editarProjeto(codigo, atributo, valor);
 		
+	}
+	
+	// criei o getInfoProjetos de Facade
+	
+	public String getInfoProjeto(int codigo, String atributo) throws Exception{
+		return projetos.getInfoProjeto(codigo, atributo); 
 	}
 	
 	public static void main(String[] args) {
-	    args = new String[] {"view.ProjetoFacade", "easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt"}; //separe cada script de teste por virgula.
+	    args = new String[] {"view.ProjetoFacade", "easyaccept/us2_test.txt"}; //separe cada script de teste por virgula.
 	    EasyAccept.main(args);
 	}
 

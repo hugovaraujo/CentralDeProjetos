@@ -18,61 +18,65 @@ public class ProjetosCRUD {
 		
 	}
 
-
-	public void adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, Date dataInicio, int duracao){
+	// Modifiquei aqui os metodos de adicionar para retornar o codigo
+	
+	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, Date dataInicio, int duracao){
 		
 		Projeto projeto = factoryProjeto.criaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
 			System.out.println("Projeto ja existe.");
-			return;
 		}
 		
 		projetos.put(projeto.getCodigo(), projeto);
 		
+		return projeto.getCodigo();
 	}
 	
-	public void adicionaExtensao(String nome, String objetivo, int impacto, Date dataInicio, int duracao){
+	public int adicionaExtensao(String nome, String objetivo, int impacto, Date dataInicio, int duracao){
 		
 		Projeto projeto = factoryProjeto.criaExtensao(nome, objetivo, impacto, dataInicio, duracao);
 				
 		if(projetos.containsKey(projeto.getCodigo())){
 			
 			System.out.println("Projeto ja existe.");
-			return;
+
 		}
 		
 		projetos.put(projeto.getCodigo(), projeto);
 		
+		return projeto.getCodigo();
+		
 	}
 	
-	public void adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, Date dataInicio, int duracao){
+	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, Date dataInicio, int duracao){
 		
 		Projeto projeto = factoryProjeto.criaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
 			System.out.println("Projeto ja existe.");
-			return;
+			
 		}
 		
 		projetos.put(projeto.getCodigo(), projeto);
 		
+		return projeto.getCodigo();
 	}
 	
-	public void adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, Date dataInicio, int duracao){
+	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, Date dataInicio, int duracao){
 		
 		Projeto projeto = factoryProjeto.criaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
 			System.out.println("Projeto ja existe.");
-			return;
 		}
 		
 		projetos.put(projeto.getCodigo(), projeto);
 		
+		return projeto.getCodigo();
 	}
 
 
@@ -83,7 +87,7 @@ public class ProjetosCRUD {
 	 * @return true se for removido com sucesso, falso se nao for possivel
 	 *         remover.
 	 */
-	public boolean removeProjeto(String codigo) {
+	public boolean removeProjeto(int codigo) {
 		projetos.remove(codigo);
 		return false;
 	}
@@ -96,24 +100,22 @@ public class ProjetosCRUD {
 	 *         editar.
 	 * @throws Exception 
 	 */
-	public boolean editarProjeto(String codigoProjeto, String atributo, String valor) throws Exception {
+	public boolean editarProjeto(int codigoProjeto, String atributo, String valor) throws Exception {
 		Projeto projeto = getProjeto(codigoProjeto);
 		return projeto.editaProjeto(atributo, valor);	
 	}
 	
-	public boolean editarProjeto(String codigoProjeto, String atributo, int valor) throws Exception {
+	public boolean editarProjeto(int codigoProjeto, String atributo, int valor) throws Exception {
 		Projeto projeto = getProjeto(codigoProjeto);
 		return projeto.editaProjeto(atributo, valor);	
 	}
 	
-	public String getInfoProjeto(String codigoProjeto, String atributo) throws Exception{
+	public String getInfoProjeto(int codigoProjeto, String atributo) throws Exception{
 		Projeto projeto = getProjeto(codigoProjeto);
 		return projeto.getInfoProjeto(atributo);
 	}
-
 	
 	
-
 	/**
 	 * Procura um projeto no conjunto, usando o codigo de identificao unica do
 	 * projeto.
@@ -123,7 +125,7 @@ public class ProjetosCRUD {
 	 *         projeto.
 	 * @throws Exception 
 	 */
-	public Projeto getProjeto(String codigoProjeto) throws Exception {
+	public Projeto getProjeto(int codigoProjeto) throws Exception {
 		Projeto projeto = projetos.get(codigoProjeto);
 		if (projeto == null){
 			throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
