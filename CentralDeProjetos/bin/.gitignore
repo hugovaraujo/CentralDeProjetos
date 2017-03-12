@@ -1,3 +1,14 @@
+<<<<<<< HEAD
 /excecoes/
 /controller/
 /model/
+=======
+/com/
+/controller/
+/excecoes/
+/factory/
+/jUnitTestCases/
+/model/
+/view/
+/exceptions/
+>>>>>>> refs/remotes/origin/master
