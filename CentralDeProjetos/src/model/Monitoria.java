@@ -8,7 +8,7 @@ public class Monitoria extends Projeto {
 	private String disciplina;
 	private String periodo;
 	
-	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, Date dataInicio,int duracao) {
+	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio,int duracao) {
 		
 		this.nome = nome;
 		this.disciplina = disciplina;
@@ -22,6 +22,7 @@ public class Monitoria extends Projeto {
 
 	@Override
 	public boolean editaProjeto(String atributo, String valor) throws Exception {
+		int novoValor = 0;
 		switch (atributo){
 		case "Nome":
 			setNome(valor);
@@ -35,24 +36,19 @@ public class Monitoria extends Projeto {
 		case "Periodo":
 			setPeriodo(valor);
 			return true;
+		case "Rendimento":
+			novoValor = Integer.parseInt(valor);
+			setRendimento(novoValor);
+			return true;
+		case "Duracao":
+			novoValor = Integer.parseInt(valor);
+			setDuracao(novoValor);
+			return true;
 		default:
 			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
 		}
 	}
 	
-	@Override
-	public boolean editaProjeto(String atributo, int valor) throws Exception {
-		switch (atributo){
-		case "Rendimento":
-			setRendimento(valor);
-			return true;
-		case "Duracao":
-			setDuracao(valor);
-			return true;
-		default:
-			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
-		}
-	}
 	
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
@@ -68,7 +64,7 @@ public class Monitoria extends Projeto {
 		case "Periodo":
 			return getPeriodo();
 		case "Data de inicio":
-			//TODO: Vê como faz essa parte.
+			return getDataInicio();
 		case "Duracao":
 			return String.valueOf(getDuracao());
 		default:

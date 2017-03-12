@@ -9,7 +9,7 @@ public class PED extends Projeto {
 	private int prodAcademica;
 	private int patentes;
 	
-	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, Date dataInicio, int duracao) {
+	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao) {
 		
 		this.nome = nome;
 		this.categoria = categoria;
@@ -24,6 +24,7 @@ public class PED extends Projeto {
 
 	@Override
 	public boolean editaProjeto(String atributo, String valor) throws Exception {
+		int novoValor = 0;
 		switch (atributo){
 		case "Nome":
 			setNome(valor);
@@ -34,30 +35,27 @@ public class PED extends Projeto {
 		case "Categoria":
 			setCategoria(valor);
 			return true;
+		case "Producao tecnica":
+			novoValor = Integer.parseInt(valor);
+			setProdTecnica(novoValor);
+			return true;
+		case "Producao academica":
+			novoValor = Integer.parseInt(valor);
+			setProdAcademica(novoValor);
+			return true;
+		case "Patentes":
+			novoValor = Integer.parseInt(valor);
+			setPatentes(novoValor);
+			return true;
+		case "Duracao":
+			novoValor = Integer.parseInt(valor);
+			setDuracao(novoValor);
+			return true;
 		default:
 			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
 		}
 	}
 	
-	@Override
-	public boolean editaProjeto(String atributo, int valor) throws Exception {
-		switch (atributo){
-		case "Producao tecnica":
-			setProdTecnica(valor);
-			return true;
-		case "Producao academica":
-			setProdAcademica(valor);
-			return true;
-		case "Patentes":
-			setPatentes(valor);
-			return true;
-		case "Duracao":
-			setDuracao(valor);
-			return true;
-		default:
-			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
-		}
-	}
 	
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
@@ -75,7 +73,7 @@ public class PED extends Projeto {
 		case "Objetivo":
 			return getObjetivo();
 		case "Data de inicio":
-			//TODO: Vê como faz essa parte.
+			return getDataInicio();
 		case "Duracao":
 			return String.valueOf(getDuracao());
 		default:

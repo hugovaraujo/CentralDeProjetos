@@ -10,7 +10,7 @@ public class PET extends Projeto {
 	private int prodAcademica;
 	private int patentes;
 	
-	public PET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, Date dataInicio, int duracao) {
+	public PET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) {
 		
 		this.nome = nome;
 		this.objetivo = objetivo;
@@ -26,6 +26,7 @@ public class PET extends Projeto {
 	
 	@Override
 	public boolean editaProjeto(String atributo, String valor) throws Exception {
+		int novoValor = 0;
 		switch (atributo){
 		case "Nome":
 			setNome(valor);
@@ -33,34 +34,32 @@ public class PET extends Projeto {
 		case "Objetivo":
 			setObjetivo(valor);
 			return true;
-		default:
-			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
-		}
-	}
-	
-	@Override
-	public boolean editaProjeto(String atributo, int valor) throws Exception {
-		switch (atributo){
 		case "Producao tecnica":
-			setProdTecnica(valor);
+			novoValor = Integer.parseInt(valor);
+			setProdTecnica(novoValor);
 			return true;
 		case "Producao academica":
-			setProdAcademica(valor);
+			novoValor = Integer.parseInt(valor);
+			setProdAcademica(novoValor);
 			return true;
 		case "Patentes":
-			setPatentes(valor);
+			novoValor = Integer.parseInt(valor);
+			setPatentes(novoValor);
 			return true;
 		case "Duracao":
-			setDuracao(valor);
+			novoValor = Integer.parseInt(valor);
+			setDuracao(novoValor);
 			return true;
 		case "Impacto":
-			setImpacto(valor);
-			return true;
+			novoValor = Integer.parseInt(valor);
+			setImpacto(novoValor);
+			return true;	
 		default:
 			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
 		}
 	}
 	
+
 	@Override
 	public String getInfoProjeto(String atributo) throws Exception {
 		switch (atributo){
@@ -79,7 +78,7 @@ public class PET extends Projeto {
 		case "Patentes":
 			return String.valueOf(getPatentes());
 		case "Data de inicio":
-			//TODO: Vê como faz essa parte.
+			return getDataInicio();
 		case "Duracao":
 			return String.valueOf(getDuracao());
 		default:

@@ -1,25 +1,25 @@
 package model;
 
-import java.util.Date;
+
+import java.util.Random;
 
 public abstract class Projeto {
 	
 	protected int codigo;
 	protected String nome;
 	protected String objetivo;
-	protected Date dataInicio;
+	protected String dataInicio;
 	protected int duracao;
 	protected Despesa despesas;
 	protected int custoTotal;
 	
 	
 	public abstract boolean editaProjeto(String atributo, String valor) throws Exception;
-	
-	public abstract boolean editaProjeto(String atributo, int valor) throws Exception;
 
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 	
-	public int getCodigo() {
+	
+	public int getCodigo(){ 
 		return codigo;
 	}
 
@@ -43,11 +43,11 @@ public abstract class Projeto {
 		this.objetivo = objetivo;
 	}
 	
-	public Date getDataInicio() {
+	public String getDataInicio() {
 		return dataInicio;
 	}
 	
-	public void setDataInicio(Date dataInicio) {
+	public void setDataInicio(String dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 	
@@ -74,8 +74,14 @@ public abstract class Projeto {
 	public void setCustoTotal(int custoTotal) {
 		this.custoTotal = custoTotal;
 	}
-
-
 	
+	public int geraCodigo(){
+		int codigoGerado = 0;
+		Random gerador = new Random();
+	    for (int i = 0; i < 10; i++) {
+			codigoGerado = gerador.nextInt(150000000);
+	 	}
+	    return codigoGerado;
+	}
 	
 }
