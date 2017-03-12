@@ -46,8 +46,8 @@ public class ParticipacaoController {
 	 * @param duracao
 	 */
 	public void associaProfessor(Pessoa pessoa, Projeto projeto, boolean coordenador, double valorHora, int qntHoras, int duracao){
-	
-		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, duracao, coordenador);
+		
+		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, coordenador,duracao);
 		
 		participacoes.add(participacao);
 		
@@ -67,12 +67,13 @@ public class ParticipacaoController {
 	 */
 	public void associaProfissional(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qntHoras, int duracao){
 	
-		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, valorHora, qntHoras, duracao, cargo);
+		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, valorHora, qntHoras,duracao);
 		
 		participacoes.add(participacao);
 		
 		
 	}
+
 	/**
 	 * Metodo que associa um graduando a uma participacao.
 	 * 
@@ -83,16 +84,23 @@ public class ParticipacaoController {
 	 * @param duracao
 	 */
 	public void associaGraduando(Pessoa pessoa, Projeto projeto, double valorHora, int qntHoras, int duracao){
-	
+
 		GraduandoParticipacao participacao = new GraduandoParticipacao(pessoa, projeto, valorHora, qntHoras, duracao);
 		
 		participacoes.add(participacao);
 		
 		
 	}
-	public void removeParticipacao(){
-		
-	}
+	/*public void removeParticipacao(String cpfPessoa, String codigoProjeto){
+		for (Participacao participacao : participacoes) {
+			if(participacao.getPessoa().getCpf().equals(cpfPessoa) && participacao.getProjeto().getCodigo().equals(codigoProjeto)) {
+				participacoes.remove(participacao);
+			}
+		}
+		//TODO: Se ele fizer a busca linear e não achar, deve retorna false (Este metodo deve retornar boolean)
+	}*/
+	
+	
 
 
 }

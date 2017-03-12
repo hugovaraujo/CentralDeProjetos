@@ -8,7 +8,7 @@ public class GraduandoParticipacao extends Participacao {
 		this.projeto = projeto;
 		this.valorHora = valorHora;
 		this.qtdHoras = qtdHoras;
-		this.duracao = duracao;
+
 		
 	}
 
