@@ -2,6 +2,7 @@ package view;
 
 import controller.PessoasCRUD;
 import easyaccept.EasyAccept;
+import model.Pessoa;
 
 public class PessoaFacade {
 	
@@ -21,7 +22,7 @@ public class PessoaFacade {
 
 	public void removePessoa(String cpf) throws Exception {
 		
-		pessoas.removePessoa(cpf);	
+		pessoas.removerPessoa(cpf);	
 		
 	}
 	
@@ -31,12 +32,12 @@ public class PessoaFacade {
 	}
 	
 	public void editaPessoa(String cpf, String atributo, String valor) throws Exception{
-		pessoas.editaPessoa(cpf, atributo, valor);
+		pessoas.editarPessoa(cpf, atributo, valor);
 		
 	}
 
 	public static void main(String[] args) {
-	    args = new String[] {"view.PessoaFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt"}; //separe cada script de teste por virgula.
+	    args = new String[] {"view.PessoaFacade", "easyaccept/us1_test.txt"}; //separe cada script de teste por virgula.
 	    EasyAccept.main(args);
 	}
 

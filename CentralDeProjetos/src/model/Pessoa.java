@@ -1,33 +1,12 @@
 package model;
 
-import controller.PessoasCRUD;
-import exceptions.AtualizacaoException;
-import exceptions.CadastroException;
-import exceptions.FormatoInvalidoException;
-import exceptions.StringInvalidaException;
-import exceptions.Verificador;
-
 public class Pessoa {
 
 	private String nome;
 	private String cpf;
 	private String email;
-	private Verificador verificador = new Verificador();
 
-	public Pessoa(String cpf, String nome, String email) throws CadastroException {
-		try {
-			verificador.verificaString(nome, "Nome");
-			verificador.verificaString(cpf, "CPF");
-			verificador.verificaString(email, "Email");
-		} catch (StringInvalidaException e) {
-			throw new CadastroException("de pessoa: " + e.getMessage());
-		}
-		try {
-			verificador.verificaCpf(cpf);
-			verificador.verificaEmail(email);
-		} catch (FormatoInvalidoException e) {
-			throw new CadastroException("de pessoa: " + e.getMessage());
-		}
+	public Pessoa(String cpf, String nome, String email) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
@@ -45,30 +24,15 @@ public class Pessoa {
 		return nome;
 	}
 	
-	public void setCpf(String cpf) throws AtualizacaoException {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	
-	public void setEmail(String email) throws AtualizacaoException {
-		try {
-			verificador.verificaString(email, "Email");
-		} catch (Exception e) {
-			throw new AtualizacaoException("de pessoa: " + e.getMessage());
-		}
-		try {
-			verificador.verificaEmail(email);
-		} catch (Exception e) {
-			throw new AtualizacaoException("de pessoa: " + e.getMessage());
-		}
+	public void setEmail(String email) {
 		this.email = email;
 	}
 	
-	public void setNome(String nome) throws AtualizacaoException {
-		try {
-			verificador.verificaString(nome, "Nome");
-		} catch (Exception e) {
-			throw new AtualizacaoException("de pessoa: " + e.getMessage());
-		}
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
