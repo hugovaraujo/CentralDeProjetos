@@ -9,11 +9,20 @@ import exceptions.RemoverException;
 import exceptions.Verificador;
 import model.Pessoa;
 
+/**
+ * Classe que representa o controller de Pessoas
+ * 
+ * @author
+ *
+ */
 public class PessoasCRUD {
 
 	public HashMap<String, Pessoa> pessoas;
 	public Verificador verificador = new Verificador();
 	
+	/**
+	 * Construtor de PessoasCRUD
+	 */
 	public PessoasCRUD() {
 		pessoas = new HashMap<>();
 		verificador = new Verificador();
