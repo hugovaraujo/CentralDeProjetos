@@ -8,7 +8,7 @@ public class Monitoria extends Projeto {
 	private String disciplina;
 	private String periodo;
 	
-	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, Date dataInicio,int duracao) {
+	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio,int duracao) {
 		
 		this.nome = nome;
 		this.disciplina = disciplina;
@@ -34,7 +34,7 @@ public class Monitoria extends Projeto {
 			return true;
 		case "Periodo":
 			setPeriodo(valor);
-			return true;
+			return true;	
 		default:
 			throw new Exception("Erro na atualizacao de projeto: Objetivo nao pode ser vazio ou nulo");
 		}
@@ -68,7 +68,7 @@ public class Monitoria extends Projeto {
 		case "Periodo":
 			return getPeriodo();
 		case "Data de inicio":
-			//TODO: Vê como faz essa parte.
+			return getDataInicio();
 		case "Duracao":
 			return String.valueOf(getDuracao());
 		default:

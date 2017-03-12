@@ -10,7 +10,7 @@ public class PET extends Projeto {
 	private int prodAcademica;
 	private int patentes;
 	
-	public PET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, Date dataInicio, int duracao) {
+	public PET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) {
 		
 		this.nome = nome;
 		this.objetivo = objetivo;
@@ -79,7 +79,7 @@ public class PET extends Projeto {
 		case "Patentes":
 			return String.valueOf(getPatentes());
 		case "Data de inicio":
-			//TODO: Vê como faz essa parte.
+			return getDataInicio();
 		case "Duracao":
 			return String.valueOf(getDuracao());
 		default:

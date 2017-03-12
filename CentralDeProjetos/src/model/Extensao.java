@@ -6,7 +6,7 @@ public class Extensao extends Projeto {
 	
 	private int impacto;
 
-	public Extensao(String nome, String objetivo, int impacto, Date dataInicio, int duracao) {
+	public Extensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) {
 		
 		this.nome = nome;
 		this.objetivo = objetivo;

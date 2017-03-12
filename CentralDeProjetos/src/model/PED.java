@@ -9,7 +9,7 @@ public class PED extends Projeto {
 	private int prodAcademica;
 	private int patentes;
 	
-	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, Date dataInicio, int duracao) {
+	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao) {
 		
 		this.nome = nome;
 		this.categoria = categoria;
@@ -75,7 +75,7 @@ public class PED extends Projeto {
 		case "Objetivo":
 			return getObjetivo();
 		case "Data de inicio":
-			//TODO: Vê como faz essa parte.
+			return getDataInicio();
 		case "Duracao":
 			return String.valueOf(getDuracao());
 		default:
