@@ -56,6 +56,11 @@ public class ProjetoFacade {
 		projetos.editarProjeto(codigoProjeto, atributo, valor);
 		
 	}
+	
+	public static void main(String[] args) {
+	    args = new String[] {"view.ProjetoFacade", "easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt"}; //separe cada script de teste por virgula.
+	    EasyAccept.main(args);
+	}
 
 	
 }

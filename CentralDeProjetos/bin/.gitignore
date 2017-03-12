@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+/excecoes/
+/controller/
+/model/
+=======
 /com/
 /controller/
 /excecoes/
@@ -6,3 +11,4 @@
 /model/
 /view/
 /exceptions/
+>>>>>>> refs/remotes/origin/master
