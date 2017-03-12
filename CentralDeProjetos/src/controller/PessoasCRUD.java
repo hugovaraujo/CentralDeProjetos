@@ -1,14 +1,22 @@
 package controller;
 
 import java.util.HashMap;
+
+import exceptions.AtualizacaoException;
+import exceptions.CadastroException;
+import exceptions.ConsultaException;
+import exceptions.RemoverException;
+import exceptions.Verificador;
 import model.Pessoa;
 
 public class PessoasCRUD {
 
 	public HashMap<String, Pessoa> pessoas;
-
+	public Verificador verificador = new Verificador();
+	
 	public PessoasCRUD() {
 		pessoas = new HashMap<>();
+		verificador = new Verificador();
 	}
 
 	/**
@@ -22,9 +30,8 @@ public class PessoasCRUD {
 	
 	
 	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
-		
 		if (pessoas.containsKey(cpf)) {
-			throw new Exception("Pessoa ja consta no banco de dados de pessoas");
+			throw new CadastroException("de pessoa: Pessoa com mesmo CPF ja cadastrada");
 		}
 		Pessoa pessoa = new Pessoa(cpf, nome, email);
 		
@@ -41,9 +48,9 @@ public class PessoasCRUD {
 	 *         remover.
 	 * @throws Exception
 	 */
-	public void removerPessoa(String cpf) throws Exception {
+	public void removePessoa(String cpf) throws Exception {
 		if (!pessoas.containsKey(cpf)) {
-			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
+			throw new RemoverException("pessoa: Pessoa nao encontrada");
 		}
 		pessoas.remove(cpf);
 	}
@@ -55,12 +62,22 @@ public class PessoasCRUD {
 	 * @return retorna true se editar com sucesso, falso se nao for possivel
 	 *         editar.
 	 */
-	public void editarPessoa(String cpf, String atributo, String valor) throws Exception{
+	public void editaPessoa(String cpf, String atributo, String valor) throws Exception{
+		try {
+			verificador.verificaString(cpf, "CPF");
+		} catch (Exception e) {
+			throw new AtualizacaoException("de pessoa: " + e.getMessage());
+		}
+		try {
+			verificador.verificaCpf(cpf);
+		} catch (Exception e) {
+			throw new AtualizacaoException("de pessoa: " + e.getMessage());
+		}
 		if (!pessoas.containsKey(cpf)) {
-			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
+			throw new AtualizacaoException("de pessoa: Pessoa nao encontrada");
 		}
 		if(atributo.equalsIgnoreCase("Cpf")){
-			pessoas.get(cpf).setCpf(valor);
+			throw new AtualizacaoException("de pessoa: CPF nao pode ser alterado");
 		}
 		if(atributo.equalsIgnoreCase("Nome")){
 			pessoas.get(cpf).setNome(valor);
@@ -81,7 +98,7 @@ public class PessoasCRUD {
 	 */
 	public String getInfoPessoa(String cpf, String atributo) throws Exception{
 		if (!pessoas.containsKey(cpf)) {
-			throw new Exception("Erro na consulta de pessoa: Pessoa nao encontrada");
+			throw new ConsultaException("de pessoa: Pessoa nao encontrada");
 		}if(atributo.equalsIgnoreCase("Cpf")){
 			return pessoas.get(cpf).getCpf();
 		}
