@@ -3,12 +3,12 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.participacao.Participacao;
-import model.participacao.tipos.GraduandoParticipacao;
-import model.participacao.tipos.ProfessorParticipacao;
-import model.participacao.tipos.ProfissionalParticipacao;
-import model.pessoa.Pessoa;
-import model.projeto.Projeto;
+import model.GraduandoParticipacao;
+import model.Participacao;
+import model.Pessoa;
+import model.ProfessorParticipacao;
+import model.ProfissionalParticipacao;
+import model.Projeto;
 
 /**
  * Classe que representa o controller de Participacao
