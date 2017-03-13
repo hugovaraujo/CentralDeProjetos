@@ -7,7 +7,7 @@ import exceptions.CadastroException;
 import exceptions.ConsultaException;
 import exceptions.RemoverException;
 import exceptions.Verificador;
-import model.Pessoa;
+import model.pessoa.Pessoa;
 
 /**
  * Classe que representa o controller de Pessoas
@@ -94,6 +94,12 @@ public class PessoasCRUD {
 			pessoas.get(cpf).setEmail(valor);
 		}
 
+	}
+	
+	public Pessoa getPessoa(String cpf){
+		
+		return pessoas.get(cpf);
+		
 	}
 
 	/**

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
-import model.Pessoa;
+import model.pessoa.Pessoa;
 
 public class PessoaTest {
 
@@ -52,6 +52,7 @@ public class PessoaTest {
 	public void testPessoaInvalida() throws FormatoInvalidoException{
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa(" ", "Madoka", "madokamagica@outlook.com");
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -59,6 +60,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa(null, "Madoka", "madokamagica@outlook.com");
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -66,6 +68,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa("015.156.159-59", " ", "madokamagica@outlook.com");
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -73,6 +76,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa("015.156.159-59", null,"madokamagica@outlook.com");
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -80,6 +84,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa("Madoka", "015.156.159-59", "  ");
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -87,6 +92,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa("Madoka", "015.156.159-59", null);
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -94,6 +100,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa("Madoka", "015.156.159-599", "madokamagica@outlook.com");
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -101,6 +108,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa("Madoka", "01515615959", "madokamagica@outlook.com");
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -108,6 +116,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa("015.156.159-59", "Madoka",  "madokamagica@");
 			Assert.fail();
 		} catch (CadastroException e) {
@@ -115,6 +124,7 @@ public class PessoaTest {
 		}
 		try {
 
+			@SuppressWarnings("unused")
 			Pessoa pessoaInvalida = new Pessoa("015.156.159-59", "Madoka", "@outlook.com");
 			Assert.fail();
 		} catch (CadastroException e) {

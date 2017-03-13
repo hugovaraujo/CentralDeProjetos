@@ -6,7 +6,7 @@ import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
 import factory.FactoryDoProjeto;
-import model.Projeto;
+import model.projeto.Projeto;
 
 /**
  * Classe que representa o controller de Projeto.
@@ -16,7 +16,7 @@ import model.Projeto;
  */
 public class ProjetosCRUD {
 	
-	private HashMap<Integer, Projeto> projetos;
+	public HashMap<Integer, Projeto> projetos;
 	private FactoryDoProjeto factoryProjeto;
 	private HashMap<String, Projeto> projetosNome;
 	
@@ -201,6 +201,7 @@ public class ProjetosCRUD {
 			throw new AtualizacaoException("de projeto: " + e.getMessage());
 
 		}
+			
 	}
 	
 	
@@ -220,7 +221,6 @@ public class ProjetosCRUD {
 			throw new ConsultaException("de projeto: " + e.getMessage());
 		}
 		
-		
 	}
 	
 	/**
@@ -233,7 +233,7 @@ public class ProjetosCRUD {
 	public int getCodigoProjeto(String nome)throws Exception{
 		for (int i = 0; i < projetosNome.size(); i++) {
 			if (!projetosNome.containsKey(nome)) {
-				throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
+				throw new Exception("Erro na obtencao de codigo de projeto: Projeto nao encontrado");
 			}
 		}
 		return projetosNome.get(nome).getCodigo();
@@ -255,4 +255,5 @@ public class ProjetosCRUD {
 		};
 		return projeto;
 	}
+
 }
