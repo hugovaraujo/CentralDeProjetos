@@ -71,10 +71,10 @@ public class MainController {
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
-			throw new Exception("Pessoa nao encontrada");
+			throw new Exception("Erro na remocao de participacao: Pessoa nao encontrada");
 		}
 		if (projeto == null) {
-			throw new Exception("Projeto nao encontrado");
+			throw new Exception("Erro na remocao de participacao: Projeto nao encontrado");
 		}
 		
 		participacao.removeParticipacao(pessoa, projeto);

@@ -251,7 +251,7 @@ public class ProjetosCRUD {
 	public Projeto getProjeto(int codigoProjeto) throws Exception {
 		Projeto projeto = projetos.get(codigoProjeto);
 		if (projeto == null){
-			throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
+			throw new Exception("Erro na remocao de participacao: Projeto nao encontrado");
 		};
 		return projeto;
 	}
