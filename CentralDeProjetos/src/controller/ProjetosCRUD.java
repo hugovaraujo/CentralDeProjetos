@@ -1,8 +1,10 @@
 package controller;
 
-import java.util.Date;
 import java.util.HashMap;
 
+import exceptions.AtualizacaoException;
+import exceptions.CadastroException;
+import exceptions.ConsultaException;
 import factory.FactoryDoProjeto;
 import model.Projeto;
 
@@ -39,11 +41,16 @@ public class ProjetosCRUD {
 	 * @param dataInicio
 	 * @param duracao
 	 * @return retorna o codigo do projeto adicionado
+	 * @throws CadastroException 
 	 */
-	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio, int duracao){
+	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio, int duracao) throws CadastroException{
 		
-		Projeto projeto = factoryProjeto.criaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
-		
+		Projeto projeto;
+		try {
+			projeto = factoryProjeto.criaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
+		} catch (Exception e) {
+			throw new CadastroException("de projeto: " + e.getMessage());
+		}
 		if(projetos.containsKey(projeto.getCodigo())){
 			
 			System.out.println("Projeto ja existe.");
@@ -66,10 +73,16 @@ public class ProjetosCRUD {
 	 * @param dataInicio
 	 * @param duracao
 	 * @return retorna o codigo do projeto.
+	 * @throws CadastroException 
 	 */
-	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao){
+	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) throws CadastroException{
 		
-		Projeto projeto = factoryProjeto.criaExtensao(nome, objetivo, impacto, dataInicio, duracao);
+		Projeto projeto;
+		try {
+			projeto = factoryProjeto.criaExtensao(nome, objetivo, impacto, dataInicio, duracao);
+		} catch (Exception e) {
+			throw new CadastroException("de projeto: " + e.getMessage());
+		}
 				
 		if(projetos.containsKey(projeto.getCodigo())){
 			
@@ -97,10 +110,16 @@ public class ProjetosCRUD {
 	 * @param dataInicio
 	 * @param duracao
 	 * @return retorna o codigo do projeto
+	 * @throws CadastroException 
 	 */
-	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao){
+	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao) throws CadastroException{
 		
-		Projeto projeto = factoryProjeto.criaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
+		Projeto projeto;
+		try {
+			projeto = factoryProjeto.criaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
+		} catch (Exception e) {
+			throw new CadastroException("de projeto: " + e.getMessage());
+		}
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
@@ -128,10 +147,18 @@ public class ProjetosCRUD {
 	 * @param dataInicio
 	 * @param duracao
 	 * @return retorna o codigo do projeto
+	 * @throws CadastroException 
 	 */
-	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao){
+	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws CadastroException{
 		
-		Projeto projeto = factoryProjeto.criaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
+		Projeto projeto;
+		try {
+			projeto = factoryProjeto.criaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
+		} catch (Exception e) {
+			throw new CadastroException("de projeto: " + e.getMessage());
+		}
+
+		
 		
 		if(projetos.containsKey(projeto.getCodigo())){
 			
@@ -168,7 +195,12 @@ public class ProjetosCRUD {
 	 */
 	public boolean editarProjeto(int codigoProjeto, String atributo, String valor) throws Exception {
 		Projeto projeto = getProjeto(codigoProjeto);
-		return projeto.editaProjeto(atributo, valor);	
+		try {
+			return projeto.editaProjeto(atributo, valor);
+		} catch (Exception e) {
+			throw new AtualizacaoException("de projeto: " + e.getMessage());
+
+		}
 	}
 	
 	
@@ -182,7 +214,12 @@ public class ProjetosCRUD {
 	 */
 	public String getInfoProjeto(int codigoProjeto, String atributo) throws Exception{
 		Projeto projeto = getProjeto(codigoProjeto);
-		return projeto.getInfoProjeto(atributo);
+		try {
+			return projeto.getInfoProjeto(atributo);
+		} catch (Exception e) {
+			throw new ConsultaException("de projeto: " + e.getMessage());
+		}
+		
 		
 	}
 	

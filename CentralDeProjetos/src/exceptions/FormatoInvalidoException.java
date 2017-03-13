@@ -14,7 +14,7 @@ public class FormatoInvalidoException extends Exception {
 	 * 
 	 */
 	public FormatoInvalidoException(String msg){
-		super(msg +" invalido");
+		super(msg);
 	}
 
 }
