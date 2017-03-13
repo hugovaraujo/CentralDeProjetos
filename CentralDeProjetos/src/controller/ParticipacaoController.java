@@ -91,14 +91,57 @@ public class ParticipacaoController {
 		
 		
 	}
-	/*public void removeParticipacao(String cpfPessoa, String codigoProjeto){
+	public boolean removeParticipacao(Pessoa pessoa, Projeto projeto){
 		for (Participacao participacao : participacoes) {
-			if(participacao.getPessoa().getCpf().equals(cpfPessoa) && participacao.getProjeto().getCodigo().equals(codigoProjeto)) {
+			String cpfPessoa = participacao.getPessoa().getCpf();
+			int codProjeto = participacao.getProjeto().getCodigo();
+			
+			if(cpfPessoa.equals(pessoa.getCpf())&& (codProjeto == projeto.getCodigo())) {
 				participacoes.remove(participacao);
+				return true;
 			}
 		}
-		//TODO: Se ele fizer a busca linear e não achar, deve retorna false (Este metodo deve retornar boolean)
-	}*/
+		return false;
+	}
+
+	public String getPessoaParticipacao(Pessoa pessoa) {
+		
+		String projetos = "";
+		
+		for (Participacao participacao : participacoes) {
+		
+			if(pessoa.getCpf().equals(participacao.getPessoa().getCpf())){
+				if(projetos.equals(""))
+					projetos += participacao.getProjeto().getNome();
+				else{
+					projetos += ", "+ participacao.getProjeto().getNome();
+				}
+			}
+			
+		}
+		
+		return projetos;
+	}
+
+	public String getProjetoParticipantes(Projeto projeto) {
+		
+		String participantes = "";
+		
+		for (Participacao participacao : participacoes) {
+			
+		
+			if(projeto.getCodigo() == participacao.getProjeto().getCodigo()){
+				if(participantes.equals(""))
+					participantes += participacao.getPessoa().getNome();
+				else{
+					participantes += ", "+ participacao.getPessoa().getNome();
+				}
+			}
+			
+		}
+		
+		return participantes;
+	}
 	
 	
 

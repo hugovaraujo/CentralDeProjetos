@@ -1,13 +1,14 @@
 package controller;
 
+import exceptions.ConsultaException;
 import model.Pessoa;
 import model.Projeto;
 
 public class MainController {
 	
 	ParticipacaoController participacao;
-	PessoasCRUD pessoas;
-	ProjetosCRUD projetos;
+	PessoasCRUD pessoasController;
+	ProjetosCRUD projetosController;
 	
 	/**
 	 * Construtor de MainController 
@@ -15,14 +16,14 @@ public class MainController {
 	public MainController(){
 		
 		participacao = new ParticipacaoController();
-		pessoas = new PessoasCRUD();
-		projetos = new ProjetosCRUD();
+		pessoasController = new PessoasCRUD();
+		projetosController = new ProjetosCRUD();
 		
 	}
 
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras) throws Exception {
-		Pessoa pessoa = pessoas.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
-		Projeto projeto = projetos.getProjeto(codigoProjeto);
+		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
+		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
 			throw new Exception("Pessoa nao existe");
@@ -37,8 +38,8 @@ public class MainController {
 	}
 
 	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras) throws Exception {
-		Pessoa pessoa = pessoas.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
-		Projeto projeto = projetos.getProjeto(codigoProjeto);
+		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
+		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
 			throw new Exception("Pessoa nao existe");
@@ -52,8 +53,8 @@ public class MainController {
 
 
 	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras) throws Exception {
-		Pessoa pessoa = pessoas.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
-		Projeto projeto = projetos.getProjeto(codigoProjeto);
+		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
+		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
 			throw new Exception("Pessoa nao existe");
@@ -65,8 +66,66 @@ public class MainController {
 		participacao.associaGraduando(pessoa, projeto, valorHora, qntHoras, 0);
 	}
 
-	public void removeParticipacao(String cpfPessoa, String codigoProjeto) {
-	//	participacao.removeParticipacao(cpfPessoa, codigoProjeto);
+	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws Exception {
+		
+		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
+		Projeto projeto = projetosController.getProjeto(codigoProjeto);
+		
+		if (pessoa == null) {
+			throw new Exception("Pessoa nao existe");
+		}
+		if (projeto == null) {
+			throw new Exception("Projeto nao existe");
+		}
+		
+		participacao.removeParticipacao(pessoa, projeto);
+		
+	}
+	
+	public String getInfoPessoa(String cpf, String atributo) throws Exception{
+		
+		if(atributo.equals("Participacoes")){
+			
+			Pessoa pessoa = pessoasController.pessoas.get(cpf);
+			
+			if (pessoa == null) {
+				throw new Exception("Pessoa nao existe");
+			}
+			
+			return participacao.getPessoaParticipacao(pessoa);
+			
+		}else{
+			 return pessoasController.getInfoPessoa(cpf, atributo);
+		}
+	}
+	
+	public String getInfoProjeto(int codigo, String atributo) throws Exception {
+		
+		if(atributo.equals("Participacoes")){
+			
+			Projeto projeto = projetosController.projetos.get(codigo);
+			
+			if (projeto == null) {
+				throw new Exception("Projeto nao existe");
+			}
+			
+			return participacao.getProjetoParticipantes(projeto);
+			
+		}else{
+			 return projetosController.getInfoProjeto(codigo, atributo);
+		}
+	}
+
+	public ParticipacaoController getParticipacao() {
+		return participacao;
+	}
+
+	public PessoasCRUD getPessoasController() {
+		return pessoasController;
+	}
+
+	public ProjetosCRUD getProjetosController() {
+		return projetosController;
 	}
 	
 	

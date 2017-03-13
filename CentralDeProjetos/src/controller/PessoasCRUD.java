@@ -95,6 +95,12 @@ public class PessoasCRUD {
 		}
 
 	}
+	
+	public Pessoa getPessoa(String cpf){
+		
+		return pessoas.get(cpf);
+		
+	}
 
 	/**
 	 * Procura uma pessoa no conjunto, usando o CPF como chave.

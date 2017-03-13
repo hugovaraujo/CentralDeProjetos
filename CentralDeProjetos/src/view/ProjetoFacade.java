@@ -1,8 +1,5 @@
 package view;
 
-import java.util.Date;
-import java.util.HashMap;
-
 import controller.ProjetosCRUD;
 import easyaccept.EasyAccept;
 

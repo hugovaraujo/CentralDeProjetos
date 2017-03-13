@@ -1,8 +1,8 @@
 package controller;
 
-import java.util.Date;
 import java.util.HashMap;
 
+import exceptions.ConsultaException;
 import factory.FactoryDoProjeto;
 import model.Projeto;
 
@@ -14,7 +14,7 @@ import model.Projeto;
  */
 public class ProjetosCRUD {
 	
-	private HashMap<Integer, Projeto> projetos;
+	public HashMap<Integer, Projeto> projetos;
 	private FactoryDoProjeto factoryProjeto;
 	private HashMap<String, Projeto> projetosNome;
 	
@@ -218,4 +218,5 @@ public class ProjetosCRUD {
 		};
 		return projeto;
 	}
+
 }
