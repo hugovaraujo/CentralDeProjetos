@@ -7,7 +7,7 @@ import exceptions.CadastroException;
 import exceptions.ConsultaException;
 import exceptions.RemoverException;
 import exceptions.Verificador;
-import model.pessoa.Pessoa;
+import model.Pessoa;
 
 /**
  * Classe que representa o controller de Pessoas

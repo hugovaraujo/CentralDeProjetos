@@ -3,7 +3,7 @@ package exceptions;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import model.projeto.Categorias;
+import model.Categorias;
 
 public class Verificador {
 	

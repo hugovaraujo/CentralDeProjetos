@@ -7,10 +7,10 @@ import org.junit.Test;
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;
-import model.projeto.tipos.Extensao;
-import model.projeto.tipos.Monitoria;
-import model.projeto.tipos.PED;
-import model.projeto.tipos.PET;
+import model.Extensao;
+import model.Monitoria;
+import model.PED;
+import model.PET;
 
 public class ProjetosCRUDTest {
 

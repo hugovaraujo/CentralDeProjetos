@@ -6,7 +6,7 @@ import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
 import factory.FactoryDoProjeto;
-import model.projeto.Projeto;
+import model.Projeto;
 
 /**
  * Classe que representa o controller de Projeto.

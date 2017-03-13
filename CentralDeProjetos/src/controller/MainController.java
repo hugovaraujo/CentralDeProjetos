@@ -1,7 +1,7 @@
 package controller;
 
-import model.pessoa.Pessoa;
-import model.projeto.Projeto;
+import model.Pessoa;
+import model.Projeto;
 
 public class MainController {
 	
