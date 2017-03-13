@@ -15,7 +15,7 @@ public class StringInvalidaException extends Exception{
 	 * 
 	 */
 	public StringInvalidaException(String msg){
-		super(msg +" nulo ou vazio");
+		super(msg);
 	}
 
 	

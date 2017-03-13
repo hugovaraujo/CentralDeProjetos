@@ -1,7 +1,12 @@
 package view;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
 import controller.ProjetosCRUD;
 import easyaccept.EasyAccept;
+import exceptions.CadastroException;
 
 public class ProjetoFacade {
 	
@@ -15,25 +20,25 @@ public class ProjetoFacade {
 	
 	// coloquei aqui tbm pra retornar o código nesses metodos de adicionar
 	
-	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio, int duracao){
+	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio, int duracao) throws CadastroException{
 		
 		return projetos.adicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
 	
 	}
 	
-	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao){
+	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) throws CadastroException{
 		
 		return projetos.adicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
 		
 	}
 	
-	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao){
+	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao) throws CadastroException{
 		
 		return projetos.adicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
 		
 	}
 	
-	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao){
+	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws CadastroException{
 		
 		return projetos.adicionaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
 		
@@ -63,7 +68,7 @@ public class ProjetoFacade {
 	
 	
 	public static void main(String[] args) {
-	    args = new String[] {"view.ProjetoFacade", "easyaccept/us2_test.txt"}; //separe cada script de teste por virgula.
+	    args = new String[] {"view.ProjetoFacade", "easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt"}; //separe cada script de teste por virgula.
 	    EasyAccept.main(args);
 	}
 

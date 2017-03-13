@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import exceptions.CadastroException;
+import exceptions.FormatoInvalidoException;
+import exceptions.StringInvalidaException;
 import model.Monitoria;
 import model.Extensao;
 import model.PED;
@@ -12,7 +15,7 @@ import model.PET;
 public class ProjetosCRUDTest {
 
 	@Test
-	public void testAdicionarMonitoria() {
+	public void testAdicionarMonitoria() throws CadastroException, FormatoInvalidoException, StringInvalidaException {
 		
 		Monitoria m = new Monitoria("Nome", "disciplina", 1 , "objetivo", "periodo", null, 1);
 		
@@ -26,7 +29,7 @@ public class ProjetosCRUDTest {
 	}
 	
 	@Test
-	public void testAdicionarExtensao() {
+	public void testAdicionarExtensao() throws CadastroException, FormatoInvalidoException, StringInvalidaException {
 		
 		Extensao e = new Extensao("Nome", "objetivo", 1, null, 1);
 		
@@ -38,7 +41,7 @@ public class ProjetosCRUDTest {
 	}
 	
 	@Test
-	public void testAdicionarPED() {
+	public void testAdicionarPED() throws CadastroException, FormatoInvalidoException, StringInvalidaException {
 		
 		PED p = new PED("Nome", "categoria", 1, 1, 1, "objetivo", null, 1);
 		
@@ -52,7 +55,7 @@ public class ProjetosCRUDTest {
 	}
 	
 	@Test
-	public void testAdicionarPET() {
+	public void testAdicionarPET() throws CadastroException, FormatoInvalidoException, StringInvalidaException {
 		
 		PET p = new PET("Nome", "objetivo", 1, 1, 1, 1, 1, null, 1);
 		
