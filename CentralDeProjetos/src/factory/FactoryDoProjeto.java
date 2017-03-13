@@ -1,14 +1,12 @@
 package factory;
 
-import java.util.Date;
-
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;
-import model.Extensao;
-import model.Monitoria;
-import model.PED;
-import model.PET;
+import model.projeto.tipos.Extensao;
+import model.projeto.tipos.Monitoria;
+import model.projeto.tipos.PED;
+import model.projeto.tipos.PET;
 
 public class FactoryDoProjeto {
 	

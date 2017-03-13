@@ -1,8 +1,7 @@
 package controller;
 
-import exceptions.ConsultaException;
-import model.Pessoa;
-import model.Projeto;
+import model.pessoa.Pessoa;
+import model.projeto.Projeto;
 
 public class MainController {
 	
@@ -26,7 +25,7 @@ public class MainController {
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
-			throw new Exception("Pessoa nao existe");
+			throw new Exception("Erro na associacao de pessoa a projeto: Pessoa nao encontrada");
 		}
 		if (projeto == null) {
 			throw new Exception("Projeto nao existe");
@@ -72,10 +71,10 @@ public class MainController {
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
-			throw new Exception("Pessoa nao existe");
+			throw new Exception("Pessoa nao encontrada");
 		}
 		if (projeto == null) {
-			throw new Exception("Projeto nao existe");
+			throw new Exception("Projeto nao encontrado");
 		}
 		
 		participacao.removeParticipacao(pessoa, projeto);
