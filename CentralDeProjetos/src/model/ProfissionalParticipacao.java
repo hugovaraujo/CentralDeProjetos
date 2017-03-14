@@ -36,16 +36,16 @@ public class ProfissionalParticipacao extends Participacao {
 	@Override
 	public double calculaBolsa() {
 		double adicional = 0;
-		if (getCargo().equals("Pesquisador") && projeto.getQuantidadeParticipantes() < 5 ) {
+		if (getCargo().equalsIgnoreCase("Pesquisador") && projeto.getQuantidadeParticipantes() < 5 ) {
 			adicional += 100 * projeto.getQuantidadeParticipantes() ;
 		}
-		if (getCargo().equals("Pesquisador") && projeto.getQuantidadeParticipantes() > 5 ) {
+		if (getCargo().equalsIgnoreCase("Pesquisador") && projeto.getQuantidadeParticipantes() > 5 ) {
 			adicional = 500;
 		}
-		if (getCargo().equals("Gerente") && projeto.getQuantidadeParticipantes() < 5 ) {
+		if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() < 5 ) {
 			adicional = 20 * projeto.getQuantidadeParticipantes();
 		}
-		if (getCargo().equals("Gerente") && projeto.getQuantidadeParticipantes() > 5 ) {
+		if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() > 5 ) {
 			adicional = 100;
 		}
 		
