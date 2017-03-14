@@ -22,4 +22,19 @@ public class ProfessorParticipacao extends Participacao{
 		this.coordenador = coordenador;
 	}
 
+	
+	// Falta implementar:  us4
+	@Override
+	public double calculaPontos() {
+		return 0;
+	}
+
+	@Override
+	public double calculaBolsa() {
+		if (coordenador) {
+			return super.calculaBolsa() * 0.4;
+		}
+		return super.calculaBolsa();
+	}
+
 }

@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Participacao {
+public abstract class Participacao implements Pontuacao{
 	
 	protected Pessoa pessoa;
 	protected Projeto projeto;
@@ -11,6 +11,17 @@ public abstract class Participacao {
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
+	
+	public double calculaBolsa(){
+		return qtdHoras * valorHora;
+	}
+	
+	
+	// falta implementar :  us4
+	public double calculaPontos() {
+		return 0;
+	}
+	
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;

@@ -12,7 +12,7 @@ public abstract class Projeto {
 	protected int duracao;
 	protected Despesa despesas;
 	protected int custoTotal;
-	
+	protected int quantidadeParticipantes;
 	
 	public abstract boolean editaProjeto(String atributo, String valor) throws Exception;
 
@@ -73,6 +73,14 @@ public abstract class Projeto {
 	
 	public void setCustoTotal(int custoTotal) {
 		this.custoTotal = custoTotal;
+	}
+	
+	public int getQuantidadeParticipantes() {
+		return quantidadeParticipantes;
+	}
+	
+	public void setQuantidadeParticipantes(int quantidadeParticipantes) {
+		this.quantidadeParticipantes = quantidadeParticipantes;
 	}
 	
 	public int geraCodigo(){

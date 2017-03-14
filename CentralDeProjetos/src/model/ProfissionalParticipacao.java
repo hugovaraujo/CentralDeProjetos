@@ -1,8 +1,11 @@
 package model;
 
+import controller.ParticipacaoController;
+
 public class ProfissionalParticipacao extends Participacao {
 	
 	private String cargo;
+	private int qtdDeParticipantes;
 	
 	public ProfissionalParticipacao(Pessoa pessoa, Projeto projeto, double valorHora, int qtdHoras, int duracao) {
 		
@@ -11,6 +14,7 @@ public class ProfissionalParticipacao extends Participacao {
 		this.valorHora = valorHora;
 		this.qtdHoras = qtdHoras;
 		this.duracao = duracao;
+		this.qtdDeParticipantes = 0;
 	}
 
 	public String getCargo() {
@@ -19,6 +23,33 @@ public class ProfissionalParticipacao extends Participacao {
 
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+	
+	
+	// Falta implementar:  us4
+	@Override
+	public double calculaPontos() {
+		return 0;
+	}
+
+	
+	@Override
+	public double calculaBolsa() {
+		double adicional = 0;
+		if (getCargo().equals("Pesquisador") && projeto.getQuantidadeParticipantes() < 5 ) {
+			adicional += 100 * projeto.getQuantidadeParticipantes() ;
+		}
+		if (getCargo().equals("Pesquisador") && projeto.getQuantidadeParticipantes() > 5 ) {
+			adicional = 500;
+		}
+		if (getCargo().equals("Gerente") && projeto.getQuantidadeParticipantes() < 5 ) {
+			adicional = 20 * projeto.getQuantidadeParticipantes();
+		}
+		if (getCargo().equals("Gerente") && projeto.getQuantidadeParticipantes() > 5 ) {
+			adicional = 100;
+		}
+		
+		return super.calculaBolsa() + adicional;
 	}
 
 }

@@ -11,5 +11,12 @@ public class GraduandoParticipacao extends Participacao {
 
 		
 	}
+	
+	
+	// Falta implementar:  us4
+	@Override
+	public double calculaPontos() {
+		return 0;
+	}
 
 }

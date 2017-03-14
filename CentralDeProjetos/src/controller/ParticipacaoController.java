@@ -6,6 +6,7 @@ import java.util.List;
 import model.GraduandoParticipacao;
 import model.Participacao;
 import model.Pessoa;
+import model.PosGraduandoParticipacao;
 import model.ProfessorParticipacao;
 import model.ProfissionalParticipacao;
 import model.Projeto;
@@ -18,12 +19,13 @@ import model.Projeto;
  */
 
 /**
- * @author neto
+ * @author
  *
  */
 public class ParticipacaoController {
 	
 	public List<Participacao> participacoes;
+	private Participacao controleQuantidade;
 	
 
 	/**
@@ -32,7 +34,7 @@ public class ParticipacaoController {
 	public ParticipacaoController() {
 		
 		participacoes = new ArrayList<Participacao>();
-		
+				
 	}
 	
 	/**
@@ -50,7 +52,7 @@ public class ParticipacaoController {
 		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, coordenador,duracao);
 		
 		participacoes.add(participacao);
-		
+		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
 		
 	}
 	
@@ -70,7 +72,7 @@ public class ParticipacaoController {
 		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, valorHora, qntHoras,duracao);
 		
 		participacoes.add(participacao);
-		
+		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
 		
 	}
 
@@ -88,9 +90,32 @@ public class ParticipacaoController {
 		GraduandoParticipacao participacao = new GraduandoParticipacao(pessoa, projeto, valorHora, qntHoras, duracao);
 		
 		participacoes.add(participacao);
+		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
+		
+	}
+	
+	
+	/**
+	 * Metodo que associa um  pos-graduando a uma participacao.
+	 * 
+	 * @param pessoa
+	 * @param projeto
+	 * @param valorHora
+	 * @param qntHoras
+	 * @param duracao
+	 */
+	public void associaPosGraduando(Pessoa pessoa, Projeto projeto, String tipoVinculo, double valorHora, int qntHoras, int duracao){
+
+		PosGraduandoParticipacao participacao = new PosGraduandoParticipacao(pessoa, projeto, tipoVinculo, valorHora, qntHoras, duracao);
+		
+		participacoes.add(participacao);
+		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
 		
 		
 	}
+	
+	
+	
 	public boolean removeParticipacao(Pessoa pessoa, Projeto projeto){
 		for (Participacao participacao : participacoes) {
 			String cpfPessoa = participacao.getPessoa().getCpf();
@@ -144,6 +169,4 @@ public class ParticipacaoController {
 	}
 	
 	
-
-
 }
