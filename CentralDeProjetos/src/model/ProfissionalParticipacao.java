@@ -1,7 +1,5 @@
 package model;
 
-import controller.ParticipacaoController;
-
 public class ProfissionalParticipacao extends Participacao {
 	
 	private String cargo;
@@ -51,5 +49,17 @@ public class ProfissionalParticipacao extends Participacao {
 		
 		return super.calculaBolsa() + adicional;
 	}
+
+	public int getQtdDeParticipantes() {
+		return qtdDeParticipantes;
+	}
+
+	public void setQtdDeParticipantes(int qtdDeParticipantes) {
+		this.qtdDeParticipantes = qtdDeParticipantes;
+	}
+	
+	
+	
+	
 
 }

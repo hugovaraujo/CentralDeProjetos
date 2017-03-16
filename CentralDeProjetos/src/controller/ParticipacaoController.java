@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import model.GraduandoParticipacao;
@@ -150,23 +151,39 @@ public class ParticipacaoController {
 
 	public String getProjetoParticipantes(Projeto projeto) {
 		
+		ArrayList<String> listaParticipantes = new ArrayList<String>();
 		String participantes = "";
 		
 		for (Participacao participacao : participacoes) {
 			
 		
 			if(projeto.getCodigo() == participacao.getProjeto().getCodigo()){
-				if(participantes.equals(""))
-					participantes += participacao.getPessoa().getNome();
-				else{
-					participantes += ", "+ participacao.getPessoa().getNome();
-				}
+				listaParticipantes.add(participacao.getPessoa().getNome());
+			}
+		}
+		Collections.sort(listaParticipantes);
+		for (int i = 0; i < listaParticipantes.size(); i++) {
+			
+			if(i==0)
+				participantes += listaParticipantes.get(i);
+			else{
+				participantes += ", " + listaParticipantes.get(i); 
 			}
 			
 		}
 		
 		return participantes;
 	}
+
+	public Participacao getControleQuantidade() {
+		return controleQuantidade;
+	}
+
+	public void setControleQuantidade(Participacao controleQuantidade) {
+		this.controleQuantidade = controleQuantidade;
+	}
+	
+	
 	
 	
 }
