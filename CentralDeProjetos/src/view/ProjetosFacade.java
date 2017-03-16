@@ -1,6 +1,6 @@
 package view;
 
-import controller.MainController;
+import controller.ParticipacaoController;
 import controller.PessoasCRUD;
 import controller.ProjetosCRUD;
 import easyaccept.EasyAccept;
@@ -9,15 +9,15 @@ import exceptions.CadastroException;
 
 public class ProjetosFacade {
 	
-MainController main;
+ParticipacaoController participacao;
 ProjetosCRUD projetos;
 PessoasCRUD pessoas;
 
 	public ProjetosFacade(){
 		
-		main = new MainController();
-		projetos = main.getProjetosController();
-		pessoas = main.getPessoasController();
+		participacao = new ParticipacaoController();
+		projetos = participacao.getProjetosController();
+		pessoas = participacao.getPessoasController();
 		
 	}
 	
@@ -31,35 +31,35 @@ PessoasCRUD pessoas;
 	// PARTICIPACAO
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras) throws Exception {
 		
-		main.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras);
+		participacao.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras, 0);
 	}
 
 	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras) throws Exception {
 		
-		main.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras);
+		participacao.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras,0);
 	}
 
 
 	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras) throws Exception {
 
-		main.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras);
+		participacao.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras,0);
 		
 	}
 
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws Exception {
 		
-		main.removeParticipacao(cpfPessoa, codigoProjeto);
+		participacao.removeParticipacao(cpfPessoa, codigoProjeto);
 		
 	}
 	
 	public String getInfoPessoa(String cpf, String atributo) throws Exception{
 		
-		return main.getInfoPessoa(cpf, atributo);
+		return participacao.getInfoPessoa(cpf, atributo);
 	}
 	
 	public String getInfoProjeto(int codigo, String atributo) throws Exception{
 		
-		return main.getInfoProjeto(codigo, atributo);
+		return participacao.getInfoProjeto(codigo, atributo);
 		
 	}
 	
