@@ -21,7 +21,7 @@ public class MainController {
 	}
 
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras) throws Exception {
-		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
+		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este mï¿½todo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
@@ -30,6 +30,12 @@ public class MainController {
 		if (projeto == null) {
 			throw new Exception("Projeto nao existe");
 		}
+		if(qntHoras < 1){
+			throw new Exception("Erro na associacao de pessoa a projeto: Quantidade de horas invalida");
+		}
+		if(valorHora < 1){
+			throw new Exception("Erro na associacao de pessoa a projeto: Valor da hora invalido");
+		}
 		
 		//TODO: Checar exceptions
 		
@@ -37,7 +43,7 @@ public class MainController {
 	}
 
 	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras) throws Exception {
-		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
+		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este mï¿½todo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
@@ -52,7 +58,7 @@ public class MainController {
 
 
 	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras) throws Exception {
-		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
+		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este mï¿½todo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
@@ -67,7 +73,7 @@ public class MainController {
 
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws Exception {
 		
-		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este método.
+		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este mï¿½todo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		if (pessoa == null) {
