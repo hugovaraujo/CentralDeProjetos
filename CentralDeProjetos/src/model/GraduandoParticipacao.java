@@ -19,4 +19,11 @@ public class GraduandoParticipacao extends Participacao {
 		return 0;
 	}
 
+
+	@Override
+	public String getTipo() {
+		
+		return "GraduandoParticipacao";
+	}
+
 }

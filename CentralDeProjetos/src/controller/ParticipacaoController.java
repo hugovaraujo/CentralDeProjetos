@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import exceptions.ParticipacaoControllerValidator;
 import model.GraduandoParticipacao;
 import model.Participacao;
 import model.Pessoa;
@@ -29,6 +30,7 @@ public class ParticipacaoController {
 	private Participacao controleQuantidade;
 	PessoasCRUD pessoasController;
 	ProjetosCRUD projetosController;
+	private ParticipacaoControllerValidator validator;
 	
 	/**
 	 * Construtor de MainController 
@@ -38,6 +40,7 @@ public class ParticipacaoController {
 		participacoes = new ArrayList<>();
 		pessoasController = new PessoasCRUD();
 		projetosController = new ProjetosCRUD();
+		validator = new ParticipacaoControllerValidator();
 				
 	}
 	
@@ -57,19 +60,7 @@ public class ParticipacaoController {
 		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
-		if (pessoa == null) {
-			throw new Exception("Erro na associacao de pessoa a projeto: Pessoa nao encontrada");
-		}
-		if (projeto == null) {
-			throw new Exception("Projeto nao existe");
-		}
-		if(qntHoras < 1){
-			throw new Exception("Erro na associacao de pessoa a projeto: Quantidade de horas invalida");
-		}
-		if(valorHora < 0){
-			throw new Exception("Erro na associacao de pessoa a projeto: Valor da hora invalido");
-		}
-		
+		validator.validaAssociaProfessor(pessoa, projeto, qntHoras, valorHora, participacoes);
 		
 		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, coordenador,duracao);
 		
@@ -95,12 +86,7 @@ public class ParticipacaoController {
 		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
-		if (pessoa == null) {
-			throw new Exception("Pessoa nao existe");
-		}
-		if (projeto == null) {
-			throw new Exception("Projeto nao existe");
-		}
+		validator.validaAssociaProfissional(pessoa, projeto);
 	
 		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, valorHora, qntHoras,duracao);
 		
@@ -124,12 +110,7 @@ public class ParticipacaoController {
 		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
-		if (pessoa == null) {
-			throw new Exception("Pessoa nao existe");
-		}
-		if (projeto == null) {
-			throw new Exception("Projeto nao existe");
-		}
+		validator.validaAssociaGraduando(pessoa, projeto, participacoes);
 
 		GraduandoParticipacao participacao = new GraduandoParticipacao(pessoa, projeto, valorHora, qntHoras, duracao);
 		
@@ -147,10 +128,13 @@ public class ParticipacaoController {
 	 * @param valorHora
 	 * @param qntHoras
 	 * @param duracao
+	 * @throws Exception 
 	 */
-	public void associaPosGraduando(Pessoa pessoa, Projeto projeto, String tipoVinculo, double valorHora, int qntHoras, int duracao){
+	public void associaPosGraduando(Pessoa pessoa, Projeto projeto, String tipoVinculo, double valorHora, int qntHoras, int duracao) throws Exception{
 
 		PosGraduandoParticipacao participacao = new PosGraduandoParticipacao(pessoa, projeto, tipoVinculo, valorHora, qntHoras, duracao);
+		
+		validator.validaAssociaPosGraduando(pessoa, projeto);
 		
 		participacoes.add(participacao);
 		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
@@ -165,12 +149,7 @@ public class ParticipacaoController {
 		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
-		if (pessoa == null) {
-			throw new Exception("Erro na remocao de participacao: Pessoa nao encontrada");
-		}
-		if (projeto == null) {
-			throw new Exception("Erro na remocao de participacao: Projeto nao encontrado");
-		}
+		validator.validaRemoveParticipacao(pessoa, projeto, participacoes);
 		
 		for (Participacao participacao : participacoes) {
 			String cpfPessoa1 = participacao.getPessoa().getCpf();
@@ -208,7 +187,7 @@ public class ParticipacaoController {
 			Projeto projeto = projetosController.projetos.get(codigo);
 			
 			if (projeto == null) {
-				throw new Exception("Projeto nao existe");
+				throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
 			}
 			
 			return this.getProjetoParticipantes(projeto);

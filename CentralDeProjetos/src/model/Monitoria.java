@@ -137,6 +137,12 @@ public class Monitoria extends Projeto {
 		this.disciplina = disciplina;
 	}
 
+	@Override
+	public String getTipo() {
+		
+		return "Monitoria";
+	}
+
 
 
 	

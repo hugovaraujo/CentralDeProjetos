@@ -215,6 +215,9 @@ public class ProjetosCRUD {
 	 */
 	public String getInfoProjeto(int codigoProjeto, String atributo) throws Exception{
 		Projeto projeto = getProjeto(codigoProjeto);
+		if (projeto == null){
+			throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
+		}
 		try {
 			return projeto.getInfoProjeto(atributo);
 		} catch (Exception e) {
@@ -250,9 +253,6 @@ public class ProjetosCRUD {
 	 */
 	public Projeto getProjeto(int codigoProjeto) throws Exception {
 		Projeto projeto = projetos.get(codigoProjeto);
-		if (projeto == null){
-			throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
-		};
 		return projeto;
 	}
 

@@ -24,6 +24,12 @@ public class PosGraduandoParticipacao extends Participacao {
 		this.tipoVinculo = tipoVinculo;
 	}
 
+	@Override
+	public String getTipo() {
+		
+		return "PosGraduandoParticipacao";
+	}
+
 	
 	
 	

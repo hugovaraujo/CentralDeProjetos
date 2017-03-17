@@ -16,6 +16,8 @@ public abstract class Participacao implements Pontuacao{
 		return qtdHoras * valorHora;
 	}
 	
+	public abstract String getTipo();
+	
 	
 	// falta implementar :  us4
 	public double calculaPontos() {
