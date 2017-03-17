@@ -37,4 +37,10 @@ public class ProfessorParticipacao extends Participacao{
 		return super.calculaBolsa();
 	}
 
+	@Override
+	public String getTipo() {
+		
+		return "ProfessorParticipacao";
+	}
+
 }

@@ -18,6 +18,8 @@ public abstract class Projeto {
 
 	public abstract String getInfoProjeto(String atributo) throws Exception;
 	
+	public abstract String getTipo();
+	
 	
 	public int getCodigo(){ 
 		return codigo;

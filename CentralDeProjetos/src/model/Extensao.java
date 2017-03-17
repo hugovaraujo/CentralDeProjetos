@@ -94,6 +94,12 @@ public class Extensao extends Projeto {
 		this.impacto = impacto;
 	}
 
+	@Override
+	public String getTipo() {
+		
+		return "Extensao";
+	}
+
 
 
 

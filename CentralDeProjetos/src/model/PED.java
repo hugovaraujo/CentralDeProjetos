@@ -147,6 +147,12 @@ public class PED extends Projeto {
 		this.patentes = patentes;
 	}
 
+	@Override
+	public String getTipo() {
+		
+		return "PED";
+	}
+
 
 
 

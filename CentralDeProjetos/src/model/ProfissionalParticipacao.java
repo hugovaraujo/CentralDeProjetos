@@ -57,6 +57,12 @@ public class ProfissionalParticipacao extends Participacao {
 	public void setQtdDeParticipantes(int qtdDeParticipantes) {
 		this.qtdDeParticipantes = qtdDeParticipantes;
 	}
+
+	@Override
+	public String getTipo() {
+
+		return "ProfissionalParticipacao";
+	}
 	
 	
 	
