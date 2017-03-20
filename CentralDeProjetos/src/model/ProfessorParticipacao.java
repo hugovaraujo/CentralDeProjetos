@@ -3,6 +3,7 @@ package model;
 public class ProfessorParticipacao extends Participacao{
 	
 	private boolean coordenador;
+	private final double DEFAULT_POINT = 4;
 	
 	public ProfessorParticipacao(Pessoa pessoa, Projeto projeto, double valorHora, int qtdHoras, boolean coordenador, int duracao) {
 		
@@ -22,12 +23,6 @@ public class ProfessorParticipacao extends Participacao{
 		this.coordenador = coordenador;
 	}
 
-	
-	// Falta implementar:  us4
-	@Override
-	public double calculaPontos() {
-		return 0;
-	}
 
 	@Override
 	public double calculaBolsa() {
@@ -41,6 +36,16 @@ public class ProfessorParticipacao extends Participacao{
 	public String getTipo() {
 		
 		return "ProfessorParticipacao";
+	}
+
+	@Override
+	public double calculaPontuacaoPorParticipacao() {
+		double pontuacao;
+		pontuacao = DEFAULT_POINT * (duracao % 12);
+		if (!projeto.getTipo().equals("PET")){
+			pontuacao += projeto.quantidadeParticipantes;
+		}
+		return pontuacao;
 	}
 
 }

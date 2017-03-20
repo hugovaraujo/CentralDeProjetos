@@ -30,6 +30,13 @@ public class PosGraduandoParticipacao extends Participacao {
 		return "PosGraduandoParticipacao";
 	}
 
+	@Override
+	public double calculaPontuacaoPorParticipacao() {
+		double pontuacao;
+		pontuacao = 0;
+		return pontuacao;
+	}
+
 	
 	
 	

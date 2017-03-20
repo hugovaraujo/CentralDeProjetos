@@ -22,13 +22,6 @@ public class ProfissionalParticipacao extends Participacao {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	
-	
-	// Falta implementar:  us4
-	@Override
-	public double calculaPontos() {
-		return 0;
-	}
 
 	
 	@Override
@@ -62,6 +55,22 @@ public class ProfissionalParticipacao extends Participacao {
 	public String getTipo() {
 
 		return "ProfissionalParticipacao";
+	}
+
+	@Override
+	public double calculaPontuacaoPorParticipacao() {
+		double pontuacao;
+		
+		if (cargo.equalsIgnoreCase("Pesquisador")){
+			pontuacao = 6 * (duracao % 12);
+		}
+		else if (cargo.equalsIgnoreCase("Gerente")){
+			pontuacao = 9 * (duracao % 12);
+		}
+		else{
+			pontuacao = 5 * (duracao % 12);
+		}
+		return pontuacao;
 	}
 	
 	

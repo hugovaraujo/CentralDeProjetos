@@ -258,6 +258,16 @@ public class ParticipacaoController {
 		return projetosController;
 	}
 	
+	public double calculaPontuacaoPorParticipacao(String cpf) {
+		double pontuacaoPorParticipacao = 0;
+		
+		for (Participacao participacao : participacoes) {
+			if(participacao.getPessoa().getCpf().equals(cpf)){
+				pontuacaoPorParticipacao += participacao.calculaPontuacaoPorParticipacao();
+			}
+		}
+		return pontuacaoPorParticipacao;
+	}
 	
 	
 	
