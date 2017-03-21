@@ -5,7 +5,7 @@ public class ProfissionalParticipacao extends Participacao {
 	private String cargo;
 	private int qtdDeParticipantes;
 	
-	public ProfissionalParticipacao(Pessoa pessoa, Projeto projeto, double valorHora, int qtdHoras, int duracao) {
+	public ProfissionalParticipacao(Pessoa pessoa, Projeto projeto, String cargo, double valorHora, int qtdHoras, int duracao) {
 		
 		this.pessoa = pessoa;
 		this.projeto = projeto;
@@ -13,6 +13,7 @@ public class ProfissionalParticipacao extends Participacao {
 		this.qtdHoras = qtdHoras;
 		this.duracao = duracao;
 		this.qtdDeParticipantes = 0;
+		this.cargo = cargo;
 	}
 
 	public String getCargo() {
@@ -31,6 +32,7 @@ public class ProfissionalParticipacao extends Participacao {
 			adicional += 100 * projeto.getQuantidadeParticipantes() ;
 		}
 		else if (getCargo().equalsIgnoreCase("Pesquisador") && projeto.getQuantidadeParticipantes() > 5 ) {
+			
 			adicional = 500;
 		}
 		else if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() < 5 ) {
@@ -39,16 +41,9 @@ public class ProfissionalParticipacao extends Participacao {
 		else if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() > 5 ) {
 			adicional = 100;
 		}
-		else {
-			adicional = 0;
-		}
 		double valorTotal = super.calculaBolsa() + adicional;
+		return valorTotal;
 		
-		if (valorTotal > 350) {
-			return valorTotal;
-		}
-		
-		return 350;
 	}
 
 	public int getQtdDeParticipantes() {
@@ -80,9 +75,6 @@ public class ProfissionalParticipacao extends Participacao {
 		}
 		return pontuacao;
 	}
-	
-	
-	
 	
 
 }

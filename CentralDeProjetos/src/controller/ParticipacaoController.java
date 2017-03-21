@@ -90,7 +90,7 @@ public class ParticipacaoController {
 		
 		validator.validaAssociaProfissional(pessoa, projeto);
 	
-		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, valorHora, qntHoras,duracao);
+		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, cargo, valorHora, qntHoras,duracao);
 		
 		participacoes.add(participacao);
 		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);

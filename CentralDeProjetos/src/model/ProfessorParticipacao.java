@@ -26,17 +26,10 @@ public class ProfessorParticipacao extends Participacao{
 
 	@Override
 	public double calculaBolsa() {
-		double adicional = 0;
 		if (coordenador) {
-			adicional += super.calculaBolsa() * 0.4;
+			valorHora += valorHora*0.4;
 		}
-		double valorTotal = super.calculaBolsa() + adicional;
-		
-		if (valorTotal > 350) {
-			return valorTotal;
-		}
-		
-		return 350;
+		return super.calculaBolsa();
 	}
 
 	@Override

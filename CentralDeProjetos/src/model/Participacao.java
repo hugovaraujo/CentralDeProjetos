@@ -14,10 +14,8 @@ public abstract class Participacao implements Pontuacao{
 	
 	public double calculaBolsa(){
 		double valorBolsa = qtdHoras * valorHora;
-		if (valorBolsa > 350) {
-			return valorBolsa;
-		}
-		return 350;
+	
+		return valorBolsa;
 	
 	}
 	
