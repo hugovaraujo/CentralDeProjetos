@@ -1,4 +1,4 @@
-package view;
+	package view;
 
 import controller.ParticipacaoController;
 import controller.PessoasController;
@@ -130,6 +130,10 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 	
 	public double getValorBolsa(String cpf){
 		return participacao.getValorBolsa(cpf);
+	}
+	
+	public double calculaPontuacaoPorParticipacao(String cpf) {
+		return participacao.calculaPontuacaoPorParticipacao(cpf);
 	}
 	
 	public static void main(String[] args) {
