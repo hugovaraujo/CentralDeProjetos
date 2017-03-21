@@ -1,4 +1,4 @@
-package model;
+package model.projeto;
 
 public class Despesa {
 	

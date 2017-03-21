@@ -1,4 +1,4 @@
-package model;
+package model.participacao;
 
 public interface Pontuacao {
 

@@ -1,4 +1,8 @@
-package model;
+package model.participacao.tipos;
+
+import model.participacao.Participacao;
+import model.pessoa.Pessoa;
+import model.projeto.Projeto;
 
 public class ProfessorParticipacao extends Participacao{
 	
@@ -43,7 +47,7 @@ public class ProfessorParticipacao extends Participacao{
 		double pontuacao;
 		pontuacao = DEFAULT_POINT * (duracao % 12);
 		if (!projeto.getTipo().equals("PET")){
-			pontuacao += projeto.quantidadeParticipantes;
+			pontuacao += projeto.getQuantidadeParticipantes();
 		}
 		return pontuacao;
 	}

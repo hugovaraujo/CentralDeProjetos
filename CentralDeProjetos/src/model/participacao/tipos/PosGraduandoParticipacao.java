@@ -1,4 +1,8 @@
-package model;
+package model.participacao.tipos;
+
+import model.participacao.Participacao;
+import model.pessoa.Pessoa;
+import model.projeto.Projeto;
 
 public class PosGraduandoParticipacao extends Participacao {
 	

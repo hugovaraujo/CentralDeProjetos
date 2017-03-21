@@ -1,6 +1,7 @@
-package model;
+package model.projeto.tipos;
 
 
+import model.projeto.Projeto;
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;

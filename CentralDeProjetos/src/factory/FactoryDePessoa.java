@@ -1,7 +1,7 @@
 package factory;
 
 import exceptions.CadastroException;
-import model.Pessoa;
+import model.pessoa.Pessoa;
 
 
 public class FactoryDePessoa {

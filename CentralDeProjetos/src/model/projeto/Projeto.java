@@ -1,4 +1,4 @@
-package model;
+package model.projeto;
 
 
 import java.util.Random;
@@ -12,7 +12,7 @@ public abstract class Projeto {
 	protected int duracao;
 	protected Despesa despesas;
 	protected int custoTotal;
-	protected int quantidadeParticipantes;
+	private int quantidadeParticipantes; //TODO: AJEITAR VISIBILIDADE
 	
 	public abstract boolean editaProjeto(String atributo, String valor) throws Exception;
 

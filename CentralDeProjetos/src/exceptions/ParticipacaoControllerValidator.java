@@ -2,9 +2,9 @@ package exceptions;
 
 import java.util.List;
 
-import model.Participacao;
-import model.Pessoa;
-import model.Projeto;
+import model.participacao.Participacao;
+import model.pessoa.Pessoa;
+import model.projeto.Projeto;
 
 public class ParticipacaoControllerValidator {
 	

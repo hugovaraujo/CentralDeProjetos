@@ -1,4 +1,4 @@
-package model;
+package model.pessoa;
 
 import exceptions.AtualizacaoException;
 import exceptions.CadastroException;

@@ -1,4 +1,7 @@
-package model;
+package model.participacao;
+
+import model.pessoa.Pessoa;
+import model.projeto.Projeto;
 
 public abstract class Participacao implements Pontuacao, ValorBolsa{
 	

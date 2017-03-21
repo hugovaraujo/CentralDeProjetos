@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
-import model.Pessoa;
+import model.pessoa.Pessoa;
 
 public class PessoaTest {
 

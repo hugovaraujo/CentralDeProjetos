@@ -5,13 +5,13 @@ import java.util.Collections;
 import java.util.List;
 
 import exceptions.ParticipacaoControllerValidator;
-import model.GraduandoParticipacao;
-import model.Participacao;
-import model.Pessoa;
-import model.PosGraduandoParticipacao;
-import model.ProfessorParticipacao;
-import model.ProfissionalParticipacao;
-import model.Projeto;
+import model.participacao.Participacao;
+import model.participacao.tipos.GraduandoParticipacao;
+import model.participacao.tipos.PosGraduandoParticipacao;
+import model.participacao.tipos.ProfessorParticipacao;
+import model.participacao.tipos.ProfissionalParticipacao;
+import model.pessoa.Pessoa;
+import model.projeto.Projeto;
 
 /**
  * Classe que representa o controller de Participacao

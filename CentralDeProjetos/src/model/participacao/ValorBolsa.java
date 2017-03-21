@@ -1,4 +1,4 @@
-package model;
+package model.participacao;
 
 // interface us5
 
