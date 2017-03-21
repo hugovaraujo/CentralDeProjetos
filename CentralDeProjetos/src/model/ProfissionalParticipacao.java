@@ -30,17 +30,25 @@ public class ProfissionalParticipacao extends Participacao {
 		if (getCargo().equalsIgnoreCase("Pesquisador") && projeto.getQuantidadeParticipantes() < 5 ) {
 			adicional += 100 * projeto.getQuantidadeParticipantes() ;
 		}
-		if (getCargo().equalsIgnoreCase("Pesquisador") && projeto.getQuantidadeParticipantes() > 5 ) {
+		else if (getCargo().equalsIgnoreCase("Pesquisador") && projeto.getQuantidadeParticipantes() > 5 ) {
 			adicional = 500;
 		}
-		if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() < 5 ) {
+		else if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() < 5 ) {
 			adicional = 20 * projeto.getQuantidadeParticipantes();
 		}
-		if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() > 5 ) {
+		else if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() > 5 ) {
 			adicional = 100;
 		}
+		else {
+			adicional = 0;
+		}
+		double valorTotal = super.calculaBolsa() + adicional;
 		
-		return super.calculaBolsa() + adicional;
+		if (valorTotal > 350) {
+			return valorTotal;
+		}
+		
+		return 350;
 	}
 
 	public int getQtdDeParticipantes() {

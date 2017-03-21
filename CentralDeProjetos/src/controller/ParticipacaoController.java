@@ -63,6 +63,8 @@ public class ParticipacaoController {
 		validator.validaAssociaProfessor(pessoa, projeto, qntHoras, valorHora, participacoes);
 		
 		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, coordenador,duracao);
+		//System.out.println(" Associa Professor ------> Nome Projeto: " + participacao.getProjeto().getNome() + " Nome Pessoa: " + participacao.getPessoa().getNome() +" CPF: " + participacao.getPessoa().getCpf() + " Quantidade de horas: " + participacao.getQtdHoras() + " Valor da Hora: " + participacao.getValorHora());
+		
 		
 		participacoes.add(participacao);
 		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
@@ -130,15 +132,17 @@ public class ParticipacaoController {
 	 * @param duracao
 	 * @throws Exception 
 	 */
-	public void associaPosGraduando(Pessoa pessoa, Projeto projeto, String tipoVinculo, double valorHora, int qntHoras, int duracao) throws Exception{
-
-		PosGraduandoParticipacao participacao = new PosGraduandoParticipacao(pessoa, projeto, tipoVinculo, valorHora, qntHoras, duracao);
+	public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nivel, double valorHora, int qntHoras, int duracao) throws Exception{
+		
+		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
+		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		validator.validaAssociaPosGraduando(pessoa, projeto);
+	
+		PosGraduandoParticipacao participacao = new PosGraduandoParticipacao(pessoa, projeto, nivel, valorHora, qntHoras,duracao);
 		
 		participacoes.add(participacao);
-		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
-		
+		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);	
 		
 	}
 	
@@ -267,6 +271,16 @@ public class ParticipacaoController {
 			}
 		}
 		return pontuacaoPorParticipacao;
+	}
+	
+	public double getValorBolsa(String cpf){
+		for (Participacao participacao : participacoes) {
+			Pessoa pessoa = pessoasController.getPessoa(cpf);
+			if (participacao.getPessoa().getCpf().equals(pessoa.getCpf())){
+				return participacao.calculaBolsa();
+			}
+		}
+		return 0;
 	}
 	
 	

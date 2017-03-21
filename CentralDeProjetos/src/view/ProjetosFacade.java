@@ -45,6 +45,11 @@ PessoasCRUD pessoas;
 		participacao.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras,0);
 		
 	}
+	
+public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nivel, double valorHora, int qntHoras) throws Exception {
+		
+		participacao.associaPosGraduando(cpfPessoa, codigoProjeto, nivel, valorHora, qntHoras,0);
+	}
 
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws Exception {
 		
@@ -123,8 +128,12 @@ PessoasCRUD pessoas;
 		return projetos.getCodigoProjeto(nome);
 	}
 	
+	public double getValorBolsa(String cpf){
+		return participacao.getValorBolsa(cpf);
+	}
+	
 	public static void main(String[] args) {
-	    args = new String[] {"view.ProjetosFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt","easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt","easyaccept/us3_test.txt", "easyaccept/us3_test_exception.txt"}; //separe cada script de teste por virgula.
+	    args = new String[] {"view.ProjetosFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt","easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt","easyaccept/us3_test.txt", "easyaccept/us3_test_exception.txt","easyaccept/us5_test.txt"}; //separe cada script de teste por virgula.
 	    EasyAccept.main(args);
 	}
 }
