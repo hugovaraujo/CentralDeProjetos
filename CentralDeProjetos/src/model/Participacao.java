@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Participacao implements Pontuacao{
+public abstract class Participacao implements Pontuacao, ValorBolsa{
 	
 	protected Pessoa pessoa;
 	protected Projeto projeto;
@@ -12,6 +12,7 @@ public abstract class Participacao implements Pontuacao{
 		return pessoa;
 	}
 	
+	@Override
 	public double calculaBolsa(){
 		double valorBolsa = qtdHoras * valorHora;
 	
