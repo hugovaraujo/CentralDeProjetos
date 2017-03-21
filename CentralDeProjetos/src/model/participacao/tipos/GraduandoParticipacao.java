@@ -42,12 +42,5 @@ public class GraduandoParticipacao extends Participacao {
 		}
 	}
 	
-	@Override
-	public double calculaBolsa() {
-		if (super.calculaBolsa() < 350.0) {
-			return 350;
-		}
-		return super.calculaBolsa();
-	}
 
 }

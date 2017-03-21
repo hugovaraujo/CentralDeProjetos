@@ -17,10 +17,9 @@ public abstract class Participacao implements Pontuacao, ValorBolsa{
 	
 	@Override
 	public double calculaBolsa(){
-		double valorBolsa = qtdHoras * valorHora;
-	
+		double valorBolsa = 0;
+		valorBolsa +=qtdHoras * valorHora;
 		return valorBolsa;
-	
 	}
 	
 	public abstract String getTipo();
@@ -67,5 +66,6 @@ public abstract class Participacao implements Pontuacao, ValorBolsa{
 	public void setDuracao(int duracao) {
 		this.duracao = duracao;
 	}
+	
 
 }

@@ -57,13 +57,13 @@ public class ParticipacaoController {
 	 */
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras, int duracao) throws Exception{
 		
-		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
+		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este metodo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		validator.validaAssociaProfessor(pessoa, projeto, qntHoras, valorHora, participacoes);
 		
 		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, coordenador,duracao);
-		//System.out.println(" Associa Professor ------> Nome Projeto: " + participacao.getProjeto().getNome() + " Nome Pessoa: " + participacao.getPessoa().getNome() +" CPF: " + participacao.getPessoa().getCpf() + " Quantidade de horas: " + participacao.getQtdHoras() + " Valor da Hora: " + participacao.getValorHora());
+		
 		
 		
 		participacoes.add(participacao);
@@ -274,13 +274,17 @@ public class ParticipacaoController {
 	}
 	
 	public double getValorBolsa(String cpf){
+		Pessoa pessoa = pessoasController.getPessoa(cpf);
+		double valorBolsa = 0;
 		for (Participacao participacao : participacoes) {
-			Pessoa pessoa = pessoasController.getPessoa(cpf);
 			if (participacao.getPessoa().getCpf().equals(pessoa.getCpf())){
-				return participacao.calculaBolsa();
+				valorBolsa += participacao.calculaBolsa();
 			}
 		}
-		return 0;
+		if (valorBolsa > 350) {
+			return valorBolsa;
+		}
+		return 350;
 	}
 	
 	
