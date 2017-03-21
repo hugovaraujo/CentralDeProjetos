@@ -5,16 +5,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.PessoasCRUD;
+import controller.PessoasController;
 
 public class PessoasCRUDTest {
 
-	private PessoasCRUD crud;
+	private PessoasController crud;
 
 	@Before
 	public void setUp() throws Exception {
 		try {
-			crud = new PessoasCRUD();	
+			crud = new PessoasController();	
 			crud.cadastraPessoa("200.150.150-01", "Wilson", "wilson@dont.starve.com.br");
 			crud.cadastraPessoa("120.150.150-02", "Willow", "willow@dont.starve.com.br");
 			crud.cadastraPessoa("200.150.300-03", "Wolfgang", "wolfgang@dont.starve.com.br");

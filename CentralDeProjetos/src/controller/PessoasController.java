@@ -15,7 +15,7 @@ import model.Pessoa;
  * @author
  *
  */
-public class PessoasCRUD {
+public class PessoasController {
 
 	public HashMap<String, Pessoa> pessoas;
 	public Verificador verificador = new Verificador();
@@ -23,7 +23,7 @@ public class PessoasCRUD {
 	/**
 	 * Construtor de PessoasCRUD
 	 */
-	public PessoasCRUD() {
+	public PessoasController() {
 		pessoas = new HashMap<>();
 		verificador = new Verificador();
 	}

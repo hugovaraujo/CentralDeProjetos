@@ -28,8 +28,8 @@ public class ParticipacaoController {
 	
 	public List<Participacao> participacoes;
 	private Participacao controleQuantidade;
-	PessoasCRUD pessoasController;
-	ProjetosCRUD projetosController;
+	PessoasController pessoasController;
+	ProjetosController projetosController;
 	private ParticipacaoControllerValidator validator;
 	
 	/**
@@ -38,8 +38,8 @@ public class ParticipacaoController {
 	public ParticipacaoController(){
 		
 		participacoes = new ArrayList<>();
-		pessoasController = new PessoasCRUD();
-		projetosController = new ProjetosCRUD();
+		pessoasController = new PessoasController();
+		projetosController = new ProjetosController();
 		validator = new ParticipacaoControllerValidator();
 				
 	}
@@ -254,11 +254,11 @@ public class ParticipacaoController {
 		this.controleQuantidade = controleQuantidade;
 	}
 
-	public PessoasCRUD getPessoasController() {
+	public PessoasController getPessoasController() {
 		return pessoasController;
 	}
 
-	public ProjetosCRUD getProjetosController() {
+	public ProjetosController getProjetosController() {
 		return projetosController;
 	}
 	

@@ -14,7 +14,7 @@ import model.Projeto;
  * @author 
  *
  */
-public class ProjetosCRUD {
+public class ProjetosController {
 	
 	public HashMap<Integer, Projeto> projetos;
 	private FactoryDoProjeto factoryProjeto;
@@ -23,7 +23,7 @@ public class ProjetosCRUD {
 	/**
 	 * Construtor de ProjetosCRUD
 	 */
-	public ProjetosCRUD(){
+	public ProjetosController(){
 		
 		projetos = new HashMap<>();
 		factoryProjeto = new FactoryDoProjeto();
@@ -31,7 +31,7 @@ public class ProjetosCRUD {
 		
 	}
 	
-	/** Metodo que adiciona uma monitoria. Adiciona o projeto ao Map de projetos(que tem como chave o codigo do projeto) e adiciona tambem o projeto ao mapa de projetosNome( onde a chave é o nome do projeto).
+	/** Metodo que adiciona uma monitoria. Adiciona o projeto ao Map de projetos(que tem como chave o codigo do projeto) e adiciona tambem o projeto ao mapa de projetosNome( onde a chave ï¿½ o nome do projeto).
 	 * 
 	 * @param nome
 	 * @param disciplina
@@ -65,7 +65,7 @@ public class ProjetosCRUD {
 	}
 	
 	/**
-	 * Método que adiciona um projeto de extensao. Com caracteristicas parecidas do metodo anterior.
+	 * Mï¿½todo que adiciona um projeto de extensao. Com caracteristicas parecidas do metodo anterior.
 	 * 
 	 * @param nome
 	 * @param objetivo
@@ -135,7 +135,7 @@ public class ProjetosCRUD {
 	}
 	
 	/**
-	 * Método que adiciona um Projeto PET. Com caracteristicas semelhantes com os métodos anteriores.
+	 * Mï¿½todo que adiciona um Projeto PET. Com caracteristicas semelhantes com os mï¿½todos anteriores.
 	 * 
 	 * @param nome
 	 * @param objetivo
@@ -227,10 +227,10 @@ public class ProjetosCRUD {
 	}
 	
 	/**
-	 * Método que procura um projeto pelo nome
+	 * Mï¿½todo que procura um projeto pelo nome
 	 * 
 	 * @param nome
-	 * @return retorna o código do projeto encontrado
+	 * @return retorna o cï¿½digo do projeto encontrado
 	 * @throws Exception
 	 */
 	public int getCodigoProjeto(String nome)throws Exception{

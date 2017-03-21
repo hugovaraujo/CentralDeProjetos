@@ -1,8 +1,8 @@
 package view;
 
 import controller.ParticipacaoController;
-import controller.PessoasCRUD;
-import controller.ProjetosCRUD;
+import controller.PessoasController;
+import controller.ProjetosController;
 import easyaccept.EasyAccept;
 import exceptions.CadastroException;
 
@@ -10,8 +10,8 @@ import exceptions.CadastroException;
 public class ProjetosFacade {
 	
 ParticipacaoController participacao;
-ProjetosCRUD projetos;
-PessoasCRUD pessoas;
+ProjetosController projetos;
+PessoasController pessoas;
 
 	public ProjetosFacade(){
 		
@@ -133,7 +133,7 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 	}
 	
 	public static void main(String[] args) {
-	    args = new String[] {"view.ProjetosFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt","easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt","easyaccept/us3_test.txt", "easyaccept/us3_test_exception.txt","easyaccept/us5_test.txt"}; //separe cada script de teste por virgula.
+	    args = new String[] {"view.ProjetosFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt","easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt","easyaccept/us3_test.txt", "easyaccept/us3_test_exception.txt","easyaccept/us4_test.txt", "easyaccept/us5_test.txt"}; //separe cada script de teste por virgula.
 	    EasyAccept.main(args);
 	}
 }
