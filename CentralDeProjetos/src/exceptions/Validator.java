@@ -92,7 +92,7 @@ public class Validator {
 	   
    }
    
-   public boolean verificaContem(String atributo) throws FormatoInvalidoException{
+   public boolean verificaAtributoContem(String atributo) throws FormatoInvalidoException{
 		if (atributo.equals("Disciplina") | atributo.equals("Periodo") | atributo.equals("Rendimento") | atributo.equals("Producao tecnica") | atributo.equals("Producao academica") || atributo.equals("Patentes") || atributo.equals("Categoria")){
 			return true;
 		}

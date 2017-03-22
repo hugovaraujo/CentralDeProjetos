@@ -100,7 +100,7 @@ public class Monitoria extends Projeto {
 			return String.valueOf(getDuracao());
 		default:
 			try {
-				if (verificador.verificaContem(atributo)){
+				if (verificador.verificaAtributoContem(atributo)){
 					throw new FormatoInvalidoException("Monitoria nao possui " + atributo);
 				} else {
 					throw new FormatoInvalidoException("Atributo nulo ou invalido");

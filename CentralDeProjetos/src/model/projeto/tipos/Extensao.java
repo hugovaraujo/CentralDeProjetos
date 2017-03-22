@@ -81,7 +81,7 @@ public class Extensao extends Projeto {
 			return String.valueOf(getDuracao());
 		default:
 			try {
-				if (verificador.verificaContem(atributo)){
+				if (verificador.verificaAtributoContem(atributo)){
 					throw new FormatoInvalidoException("Extensao nao possui " + atributo);
 				} else {
 					throw new FormatoInvalidoException("Atributo nulo ou invalido");

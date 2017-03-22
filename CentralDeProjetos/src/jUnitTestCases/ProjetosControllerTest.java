@@ -12,7 +12,7 @@ import model.projeto.tipos.Monitoria;
 import model.projeto.tipos.PED;
 import model.projeto.tipos.PET;
 
-public class ProjetosCRUDTest {
+public class ProjetosControllerTest {
 
 	@Test
 	public void testAdicionarMonitoria() throws CadastroException, FormatoInvalidoException, StringInvalidaException {

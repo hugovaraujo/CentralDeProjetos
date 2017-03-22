@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import controller.PessoasController;
 
-public class PessoasCRUDTest {
+public class PessoasControllerTest {
 
 	private PessoasController crud;
 

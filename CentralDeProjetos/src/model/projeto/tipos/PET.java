@@ -126,7 +126,7 @@ public class PET extends Projeto {
 			return String.valueOf(getDuracao());
 		default:
 			try {
-				if (verificador.verificaContem(atributo)){
+				if (verificador.verificaAtributoContem(atributo)){
 					throw new FormatoInvalidoException("PET nao possui " + atributo);
 				} else {
 					throw new FormatoInvalidoException("Atributo nulo ou invalido");
