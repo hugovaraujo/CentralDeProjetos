@@ -62,37 +62,43 @@ public class ParticipacaoControllerValidator {
 		
 	}
 	
-	public void validaAssociaGraduando(Pessoa pessoa, Projeto projeto, List<Participacao> participacoes) throws Exception{
+	public void validaAssociaGraduando(Pessoa pessoa, Projeto projeto, List<Participacao> participacoes) throws AssociacaoException{
 		
-		if (pessoa == null) {
+		try {
+			if (pessoa == null) {
 			throw new Exception("Pessoa nao existe");
-		}
-		if (projeto == null) {
-			throw new Exception("Projeto nao existe");
+			}
+			
+			if (projeto == null) {
+				throw new Exception("Projeto nao existe");
+			}
+			
+			for (Participacao participacao : participacoes) {
+				
+				if(participacao.getProjeto().equals(projeto)){
+					
+					if(participacao.getTipo().equals("GraduandoParticipacao")){
+						
+						if((participacao.getTipo().equals("GraduandoParticipacao"))&&(projeto.getTipo().equals("PED")))
+							if (((PED)projeto).getCategoria().equals("COOP") && (participacao.getPessoa().equals(pessoa))){
+								throw new Exception("Aluno ja esta cadastrado nesse projeto");
+							} else {
+								throw new Exception("Projetos P&D nao podem ter mais de um graduando");
+							}
+						
+						if(participacao.getPessoa().equals(pessoa))
+							throw new Exception("Aluno ja esta cadastrado nesse projeto");
+						
+					
+					}	
+				}
+					
+				
+			}
+		} catch (Exception e) {
+			throw new AssociacaoException(e.getMessage());
 		}
 		
-		for (Participacao participacao : participacoes) {
-			
-			if(participacao.getProjeto().equals(projeto)){
-				
-				if(participacao.getTipo().equals("GraduandoParticipacao")){
-					
-					if((participacao.getTipo().equals("GraduandoParticipacao"))&&(projeto.getTipo().equals("PED")))
-						if (((PED)projeto).getCategoria().equals("COOP") && (participacao.getPessoa().equals(pessoa))){
-							throw new Exception("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
-						} else {
-							throw new Exception("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um graduando");
-						}
-					
-					if(participacao.getPessoa().equals(pessoa))
-						throw new Exception("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
-					
-				
-				}	
-			}
-				
-			
-		}
 	}
 	
 	public void validaAssociaProfissional(Pessoa pessoa, Projeto projeto) throws Exception{
@@ -116,24 +122,30 @@ public class ParticipacaoControllerValidator {
 		
 	}
 	
-	public void validaRemoveParticipacao(Pessoa pessoa, Projeto projeto, List<Participacao> participacoes) throws Exception{
-
-		if (pessoa == null) {
-			throw new Exception("Erro na remocao de participacao: Pessoa nao encontrada");
-		}
-		if (projeto == null) {
-			throw new Exception("Erro na remocao de participacao: Projeto nao encontrado");
-		}
+	public void validaRemoveParticipacao(Pessoa pessoa, Projeto projeto, List<Participacao> participacoes) throws RemocaoException{
 		
-		boolean jaParticipa = false;
-		
-		for (Participacao participacao : participacoes) {
+		try {
+			if (pessoa == null) {
+			throw new Exception("Pessoa nao encontrada");
+			}
+			if (projeto == null) {
+				throw new Exception("Projeto nao encontrado");
+			}
 			
-			if((participacao.getPessoa().equals(pessoa)&&(participacao.getProjeto().equals(projeto))))
-				jaParticipa = true;
+			boolean jaParticipa = false;
+			
+			for (Participacao participacao : participacoes) {
+				
+				if((participacao.getPessoa().equals(pessoa)&&(participacao.getProjeto().equals(projeto))))
+					jaParticipa = true;
+			}
+			if(!jaParticipa)
+				throw new Exception("Pessoa nao possui participacao no projeto indicado");
+		} catch (Exception e) {
+			throw new RemocaoException("de participacao: " + e.getMessage());
 		}
-		if(!jaParticipa)
-			throw new Exception("Erro na remocao de participacao: Pessoa nao possui participacao no projeto indicado");
+
+		
 	}
 
 //Testing

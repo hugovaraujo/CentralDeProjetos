@@ -6,7 +6,7 @@ import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
 import exceptions.PessoasControllerValidator;
-import exceptions.RemoverException;
+import exceptions.RemocaoException;
 import model.pessoa.Pessoa;
 
 /**
@@ -57,7 +57,7 @@ public class PessoasController {
 	 */
 	public void removePessoa(String cpf) throws Exception {
 		if (!pessoas.containsKey(cpf)) {
-			throw new RemoverException("pessoa: Pessoa nao encontrada");
+			throw new RemocaoException("de pessoa: Pessoa nao encontrada");
 		}
 		pessoas.remove(cpf);
 	}

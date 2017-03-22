@@ -77,7 +77,7 @@ public class ProjetosController {
 	 */
 	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) throws CadastroException{
 		
-validator.validaAdicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
+		validator.validaAdicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
 		
 		Projeto projeto = factoryProjeto.criaExtensao(nome, objetivo, impacto, dataInicio, duracao);
 				

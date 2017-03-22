@@ -1,6 +1,6 @@
 package exceptions;
 
-public class RemoverException extends ErroException{
+public class RemocaoException extends ErroException{
 
 	/**
 	 * 
@@ -13,8 +13,8 @@ public class RemoverException extends ErroException{
 	 * @param msg Mensagem relacionada ao objeto.
 	 * 
 	 */
-	public RemoverException(String msg){
-		super("ao remover " + msg );
+	public RemocaoException(String msg){
+		super("na remocao " + msg );
 	}
 	
 }
