@@ -5,6 +5,7 @@ import java.util.HashMap;
 import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
+import exceptions.ProjetosControllerValidator;
 import factory.FactoryDoProjeto;
 import model.projeto.Projeto;
 
@@ -19,15 +20,17 @@ public class ProjetosController {
 	public HashMap<Integer, Projeto> projetos;
 	private FactoryDoProjeto factoryProjeto;
 	private HashMap<String, Projeto> projetosNome;
+	private ProjetosControllerValidator validator;
 	
 	/**
 	 * Construtor de ProjetosCRUD
 	 */
 	public ProjetosController(){
 		
-		projetos = new HashMap<>();
-		factoryProjeto = new FactoryDoProjeto();
-		projetosNome = new HashMap<>();
+		this.projetos = new HashMap<>();
+		this.factoryProjeto = new FactoryDoProjeto();
+		this.projetosNome = new HashMap<>();
+		this.validator = new ProjetosControllerValidator();
 		
 	}
 	
@@ -45,17 +48,14 @@ public class ProjetosController {
 	 */
 	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio, int duracao) throws CadastroException{
 		
-		Projeto projeto;
-		try {
-			projeto = factoryProjeto.criaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
-		} catch (Exception e) {
-			throw new CadastroException("de projeto: " + e.getMessage());
-		}
-		if(projetos.containsKey(projeto.getCodigo())){
-			
-			System.out.println("Projeto ja existe.");
-		}
+
+
+		validator.validaAdicionaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
 		
+		Projeto projeto = factoryProjeto.criaMonitoria(nome, disciplina, rendimento, objetivo, periodo, dataInicio, duracao);
+		
+		validator.validaContemProjeto(projetos.containsKey(projeto.getCodigo()));
+
 		projeto.setCodigo(projeto.geraCodigo());
 		projetos.put(projeto.getCodigo(), projeto);
 		projetosNome.put(projeto.getNome(), projeto);
@@ -77,18 +77,11 @@ public class ProjetosController {
 	 */
 	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) throws CadastroException{
 		
-		Projeto projeto;
-		try {
-			projeto = factoryProjeto.criaExtensao(nome, objetivo, impacto, dataInicio, duracao);
-		} catch (Exception e) {
-			throw new CadastroException("de projeto: " + e.getMessage());
-		}
+validator.validaAdicionaExtensao(nome, objetivo, impacto, dataInicio, duracao);
+		
+		Projeto projeto = factoryProjeto.criaExtensao(nome, objetivo, impacto, dataInicio, duracao);
 				
-		if(projetos.containsKey(projeto.getCodigo())){
-			
-			System.out.println("Projeto ja existe.");
-
-		}
+		validator.validaContemProjeto(projetos.containsKey(projeto.getCodigo()));
 		
 		projeto.setCodigo(projeto.geraCodigo());
 		projetos.put(projeto.getCodigo(), projeto);
@@ -114,19 +107,12 @@ public class ProjetosController {
 	 */
 	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao) throws CadastroException{
 		
-		Projeto projeto;
-		try {
-			projeto = factoryProjeto.criaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
-		} catch (Exception e) {
-			throw new CadastroException("de projeto: " + e.getMessage());
-		}
+validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
 		
-		if(projetos.containsKey(projeto.getCodigo())){
-			
-			System.out.println("Projeto ja existe.");
-			
-		}
+		Projeto projeto = factoryProjeto.criaPED(nome, categoria, prodTecnica, prodAcademica, patentes, objetivo, dataInicio, duracao);
 		
+		validator.validaContemProjeto(projetos.containsKey(projeto.getCodigo()));
+
 		projeto.setCodigo(projeto.geraCodigo());
 		projetos.put(projeto.getCodigo(), projeto);
 		projetosNome.put(projeto.getNome(), projeto);
@@ -151,19 +137,11 @@ public class ProjetosController {
 	 */
 	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws CadastroException{
 		
-		Projeto projeto;
-		try {
-			projeto = factoryProjeto.criaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
-		} catch (Exception e) {
-			throw new CadastroException("de projeto: " + e.getMessage());
-		}
+		validator.validaAdicionaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
+		
+		Projeto projeto = factoryProjeto.criaPET(nome, objetivo, impacto, rendimento, prodTecnica, prodAcademica, patentes, dataInicio, duracao);
 
-		
-		
-		if(projetos.containsKey(projeto.getCodigo())){
-			
-			System.out.println("Projeto ja existe.");
-		}
+		validator.validaContemProjeto(projetos.containsKey(projeto.getCodigo()));
 		
 		projeto.setCodigo(projeto.geraCodigo());
 		projetos.put(projeto.getCodigo(), projeto);
@@ -193,14 +171,9 @@ public class ProjetosController {
 	 *         editar.
 	 * @throws Exception 
 	 */
-	public void editarProjeto(int codigoProjeto, String atributo, String valor) throws Exception {
+	public void editarProjeto(int codigoProjeto, String atributo, String valor) throws AtualizacaoException {
 		Projeto projeto = getProjeto(codigoProjeto);
-		try {
-			projeto.editaProjeto(atributo, valor);
-		} catch (Exception e) {
-			throw new AtualizacaoException("de projeto: " + e.getMessage());
-
-		}
+		projeto.editaProjeto(atributo, valor);
 			
 	}
 	
@@ -213,16 +186,12 @@ public class ProjetosController {
 	 * @return  retorna a informacao pedida no atributo
 	 * @throws Exception
 	 */
-	public String getInfoProjeto(int codigoProjeto, String atributo) throws Exception{
+	public String getInfoProjeto(int codigoProjeto, String atributo) throws ConsultaException{
 		Projeto projeto = getProjeto(codigoProjeto);
-		if (projeto == null){
-			throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
-		}
-		try {
-			return projeto.getInfoProjeto(atributo);
-		} catch (Exception e) {
-			throw new ConsultaException("de projeto: " + e.getMessage());
-		}
+		
+		validator.validaGetInfoProjeto(projeto);
+		
+		return projeto.getInfoProjeto(atributo);
 		
 	}
 	
@@ -251,7 +220,7 @@ public class ProjetosController {
 	 *         projeto.
 	 * @throws Exception 
 	 */
-	public Projeto getProjeto(int codigoProjeto) throws Exception {
+	public Projeto getProjeto(int codigoProjeto){
 		Projeto projeto = projetos.get(codigoProjeto);
 		return projeto;
 	}
