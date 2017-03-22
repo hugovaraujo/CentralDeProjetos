@@ -5,12 +5,12 @@ import model.projeto.Projeto;
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;
-import exceptions.Verificador;
+import exceptions.Validator;
 
 public class Extensao extends Projeto {
 	
 	private int impacto;
-	private Verificador verificador = new Verificador();
+	private Validator verificador = new Validator();
 
 	public Extensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) throws CadastroException, FormatoInvalidoException, StringInvalidaException {
 		

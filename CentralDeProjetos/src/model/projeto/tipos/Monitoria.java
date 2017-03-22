@@ -5,14 +5,14 @@ import model.projeto.Projeto;
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;
-import exceptions.Verificador;
+import exceptions.Validator;
 
 public class Monitoria extends Projeto {
 	
 	private int rendimento;
 	private String disciplina;
 	private String periodo;
-	private Verificador verificador = new Verificador();
+	private Validator verificador = new Validator();
 	
 	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio,int duracao) throws CadastroException, FormatoInvalidoException, StringInvalidaException {
 		verificador.verificaString(nome, "Nome");

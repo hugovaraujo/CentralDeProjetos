@@ -4,14 +4,14 @@ import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;
-import exceptions.Verificador;
+import exceptions.Validator;
 
 public class Pessoa {
 
 	private String nome;
 	private String cpf;
 	private String email;
-	private Verificador verificador = new Verificador();
+	private Validator verificador = new Validator();
 
 	public Pessoa(String cpf, String nome, String email) throws CadastroException {
 		try {

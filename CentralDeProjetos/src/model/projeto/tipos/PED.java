@@ -5,7 +5,7 @@ import model.projeto.Projeto;
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;
-import exceptions.Verificador;
+import exceptions.Validator;
 
 public class PED extends Projeto {
 	
@@ -13,7 +13,7 @@ public class PED extends Projeto {
 	private int prodTecnica;
 	private int prodAcademica;
 	private int patentes;
-	private Verificador verificador = new Verificador();
+	private Validator verificador = new Validator();
 	
 	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao) throws CadastroException, FormatoInvalidoException, StringInvalidaException {
 		verificador.verificaString(nome, "Nome");

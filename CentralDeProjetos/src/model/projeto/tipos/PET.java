@@ -5,7 +5,7 @@ import model.projeto.Projeto;
 import exceptions.CadastroException;
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;
-import exceptions.Verificador;
+import exceptions.Validator;
 
 public class PET extends Projeto {
 	
@@ -14,7 +14,7 @@ public class PET extends Projeto {
 	private int prodTecnica;
 	private int prodAcademica;
 	private int patentes;
-	private Verificador verificador = new Verificador();
+	private Validator verificador = new Validator();
 	
 	public PET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws CadastroException, FormatoInvalidoException, StringInvalidaException {
 		verificador.verificaString(nome, "Nome");

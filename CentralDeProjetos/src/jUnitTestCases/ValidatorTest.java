@@ -6,12 +6,12 @@ import org.junit.Test;
 
 import exceptions.FormatoInvalidoException;
 import exceptions.StringInvalidaException;
-import exceptions.Verificador;
+import exceptions.Validator;
 
-public class VerificadorTest {
+public class ValidatorTest {
 	
 	String nome, cpf, email, data;
-	Verificador verificador = new Verificador();
+	Validator verificador = new Validator();
 	
 	@Before
 	public void setUp() throws Exception {

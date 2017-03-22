@@ -6,7 +6,7 @@ import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
 import exceptions.RemoverException;
-import exceptions.Verificador;
+import exceptions.Validator;
 import model.pessoa.Pessoa;
 
 /**
@@ -18,14 +18,14 @@ import model.pessoa.Pessoa;
 public class PessoasController {
 
 	public HashMap<String, Pessoa> pessoas;
-	public Verificador verificador = new Verificador();
+	public Validator verificador = new Validator();
 	
 	/**
 	 * Construtor de PessoasCRUD
 	 */
 	public PessoasController() {
 		pessoas = new HashMap<>();
-		verificador = new Verificador();
+		verificador = new Validator();
 	}
 
 	/**
