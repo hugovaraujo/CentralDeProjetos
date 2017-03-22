@@ -2,9 +2,9 @@ package model.projeto.tipos;
 
 
 import model.projeto.Projeto;
-import exceptions.CadastroException;
+import exceptions.AtualizacaoException;
+import exceptions.ConsultaException;
 import exceptions.FormatoInvalidoException;
-import exceptions.StringInvalidaException;
 import exceptions.Validator;
 
 public class PED extends Projeto {
@@ -15,16 +15,7 @@ public class PED extends Projeto {
 	private int patentes;
 	private Validator verificador = new Validator();
 	
-	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao) throws CadastroException, FormatoInvalidoException, StringInvalidaException {
-		verificador.verificaString(nome, "Nome");
-		verificador.verificaString(objetivo, "Objetivo");
-		verificador.verificaString(dataInicio, "Data de inicio");
-		verificador.verificaCategoria(categoria.toUpperCase());
-		verificador.verificaNegativo(prodTecnica, "Numero de producoes tecnicas");
-		verificador.verificaNegativo(prodAcademica, "Numero de producoes academicas");
-		verificador.verificaNegativo(patentes, "Numero de patentes");
-		verificador.verificaData(dataInicio);
-		verificador.verificaDuracao(duracao);
+	public PED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao){
 		
 		this.nome = nome;
 		this.categoria = categoria;
@@ -38,58 +29,70 @@ public class PED extends Projeto {
 	}
 
 	@Override
-	public boolean editaProjeto(String atributo, String valor) throws Exception {
-		int novoValor = 0;
-		switch (atributo.toLowerCase()){
-		case "nome":
-			verificador.verificaString(valor, "Nome");
-			setNome(valor);
-			return true;
-		case "objetivo":
-			verificador.verificaString(valor, "Objetivo");
-			setObjetivo(valor);
-			return true;
-		case "categoria":
-			verificador.verificaCategoria(valor.toUpperCase());
-			setCategoria(valor);
-			return true;
-		case "producao tecnica":
-			verificador.verificaString(valor, "Producao tecnica");
-			novoValor = Integer.parseInt(valor);
-			verificador.verificaNegativo(novoValor, "Numero de producoes tecnicas");
-			setProdTecnica(novoValor);
-			return true;
-		case "producao academica":
-			verificador.verificaString(valor, "Producoes academica");
-			novoValor = Integer.parseInt(valor);
-			verificador.verificaNegativo(novoValor, "Numero de producoes academicas");
-			setProdAcademica(novoValor);
-			return true;
-		case "patentes":
-			verificador.verificaString(valor, "Patentes");
-			novoValor = Integer.parseInt(valor);
-			verificador.verificaNegativo(novoValor, "Numero de patentes");
-			setPatentes(novoValor);
-			return true;
-		case "data de inicio":
-			verificador.verificaString(valor, "Data de inicio");
-			verificador.verificaData(valor);
-			setDataInicio(valor);
-			return true;
-		case "duracao":
-			verificador.verificaStringF(valor, "Duracao");
-			novoValor = Integer.parseInt(valor);
-			verificador.verificaDuracao(novoValor);
-			setDuracao(novoValor);
-			return true;
-		default:
-			throw new FormatoInvalidoException("Atributo nulo ou invalido");
+	public void editaProjeto(String atributo, String valor) throws AtualizacaoException {
+		try {
+			int novoValor = 0;
+			switch (atributo.toLowerCase()){
+			case "nome":
+				verificador.verificaString(valor, "Nome");
+				setNome(valor);
+				break;
+				
+			case "objetivo":
+				verificador.verificaString(valor, "Objetivo");
+				setObjetivo(valor);
+				break;
+				
+			case "categoria":
+				verificador.verificaCategoria(valor.toUpperCase());
+				setCategoria(valor);
+				break;
+				
+			case "producao tecnica":
+				verificador.verificaString(valor, "Producao tecnica");
+				novoValor = Integer.parseInt(valor);
+				verificador.verificaNegativo(novoValor, "Numero de producoes tecnicas");
+				setProdTecnica(novoValor);
+				break;
+				
+			case "producao academica":
+				verificador.verificaString(valor, "Producoes academica");
+				novoValor = Integer.parseInt(valor);
+				verificador.verificaNegativo(novoValor, "Numero de producoes academicas");
+				setProdAcademica(novoValor);
+				break;
+				
+			case "patentes":
+				verificador.verificaString(valor, "Patentes");
+				novoValor = Integer.parseInt(valor);
+				verificador.verificaNegativo(novoValor, "Numero de patentes");
+				setPatentes(novoValor);
+				break;
+				
+			case "data de inicio":
+				verificador.verificaString(valor, "Data de inicio");
+				verificador.verificaData(valor);
+				setDataInicio(valor);
+				break;
+				
+			case "duracao":
+				verificador.verificaStringF(valor, "Duracao");
+				novoValor = Integer.parseInt(valor);
+				verificador.verificaDuracao(novoValor);
+				setDuracao(novoValor);
+				break;
+				
+			default:
+				throw new FormatoInvalidoException("Atributo nulo ou invalido");
+			}
+		} catch (Exception e) {
+			throw new AtualizacaoException("de projeto: " + e.getMessage());
 		}
 	}
 	
 	
 	@Override
-	public String getInfoProjeto(String atributo) throws Exception {
+	public String getInfoProjeto(String atributo) throws ConsultaException{
 		switch (atributo.toLowerCase()){
 		case "nome":
 			return getNome();
@@ -108,11 +111,16 @@ public class PED extends Projeto {
 		case "duracao":
 			return String.valueOf(getDuracao());
 		default:
-			if (verificador.verificaContem(atributo)){
-				throw new FormatoInvalidoException("PED nao possui " + atributo);
-			} else {
-				throw new FormatoInvalidoException("Atributo nulo ou invalido");
+			try {
+				if (verificador.verificaContem(atributo)){
+					throw new FormatoInvalidoException("PED nao possui " + atributo);
+				} else {
+					throw new FormatoInvalidoException("Atributo nulo ou invalido");
+				}
+			} catch (Exception e) {
+				throw new ConsultaException("de projeto: " + e.getMessage());
 			}
+
 		}
 	}
 	

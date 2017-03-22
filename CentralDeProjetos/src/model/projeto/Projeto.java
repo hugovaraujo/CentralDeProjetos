@@ -3,6 +3,9 @@ package model.projeto;
 
 import java.util.Random;
 
+import exceptions.AtualizacaoException;
+import exceptions.ConsultaException;
+
 public abstract class Projeto {
 	
 	protected int codigo;
@@ -14,9 +17,9 @@ public abstract class Projeto {
 	protected int custoTotal;
 	private int quantidadeParticipantes; //TODO: AJEITAR VISIBILIDADE
 	
-	public abstract boolean editaProjeto(String atributo, String valor) throws Exception;
+	public abstract void editaProjeto(String atributo, String valor) throws AtualizacaoException;
 
-	public abstract String getInfoProjeto(String atributo) throws Exception;
+	public abstract String getInfoProjeto(String atributo) throws ConsultaException;
 	
 	public abstract String getTipo();
 	

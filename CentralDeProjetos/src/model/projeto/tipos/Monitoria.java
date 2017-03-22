@@ -2,9 +2,9 @@ package model.projeto.tipos;
 
 
 import model.projeto.Projeto;
-import exceptions.CadastroException;
+import exceptions.AtualizacaoException;
+import exceptions.ConsultaException;
 import exceptions.FormatoInvalidoException;
-import exceptions.StringInvalidaException;
 import exceptions.Validator;
 
 public class Monitoria extends Projeto {
@@ -14,18 +14,7 @@ public class Monitoria extends Projeto {
 	private String periodo;
 	private Validator verificador = new Validator();
 	
-	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio,int duracao) throws CadastroException, FormatoInvalidoException, StringInvalidaException {
-		verificador.verificaString(nome, "Nome");
-		verificador.verificaString(disciplina, "Disciplina");
-		verificador.verificaString(objetivo, "Objetivo");
-		verificador.verificaString(periodo, "Periodo");
-		verificador.verificaString(dataInicio, "Data de inicio");
-		verificador.verificaRendimento(rendimento);
-		verificador.verificaPeriodo(periodo);
-		verificador.verificaData(dataInicio);
-		verificador.verificaDuracao(duracao);
-		
-		
+	public Monitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio,int duracao){
 		this.nome = nome;
 		this.disciplina = disciplina;
 		this.periodo = periodo;
@@ -37,59 +26,63 @@ public class Monitoria extends Projeto {
 	}
 
 	@Override
-	public boolean editaProjeto(String atributo, String valor) throws Exception {
-		int novoValor = 0;
-		switch (atributo.toLowerCase()){
-		
-		case "nome":
-			verificador.verificaString(valor, "Nome");
-			setNome(valor);
-			return true;
+	public void editaProjeto(String atributo, String valor) throws AtualizacaoException {
+		try {
+			int novoValor = 0;
+			switch (atributo.toLowerCase()){
 			
-		case "objetivo":
-			verificador.verificaString(valor, "Objetivo");
-			setObjetivo(valor);
-			return true;
-			
-		case "disciplina":
-			verificador.verificaStringF(valor, "Disciplina");
-			setDisciplina(valor);
-			return true;
-			
-		case "periodo":
-			verificador.verificaString(valor, "Periodo");
-			setPeriodo(valor);
-			verificador.verificaPeriodo(valor);
-			return true;
-			
-		case "rendimento":
-			verificador.verificaString(valor, "Rendimento");
-			novoValor = Integer.parseInt(valor);
-			verificador.verificaRendimento(novoValor);
-			setRendimento(novoValor);
-			return true;
-			
-		case "data de inicio":
-			verificador.verificaString(valor, "Data de inicio");
-			verificador.verificaData(valor);
-			setDataInicio(valor);
-			return true;
-			
-		case "duracao":
-			verificador.verificaStringF(valor, "Duracao");
-			novoValor = Integer.parseInt(valor);
-			verificador.verificaDuracao(novoValor);
-			setDuracao(novoValor);
-			return true;
-			
-		default:
-			throw new FormatoInvalidoException("Atributo nulo ou invalido");
+			case "nome":
+				verificador.verificaString(valor, "Nome");
+				setNome(valor);
+				break;
+				
+			case "objetivo":
+				verificador.verificaString(valor, "Objetivo");
+				setObjetivo(valor);
+				break;
+				
+			case "disciplina":
+				verificador.verificaStringF(valor, "Disciplina");
+				setDisciplina(valor);
+				break;
+				
+			case "periodo":
+				verificador.verificaString(valor, "Periodo");
+				verificador.verificaPeriodo(valor);
+				setPeriodo(valor);
+				break;
+				
+			case "rendimento":
+				verificador.verificaString(valor, "Rendimento");
+				novoValor = Integer.parseInt(valor);
+				verificador.verificaRendimento(novoValor);
+				setRendimento(novoValor);
+				break;
+				
+			case "data de inicio":
+				verificador.verificaString(valor, "Data de inicio");
+				verificador.verificaData(valor);
+				setDataInicio(valor);
+				break;
+				
+			case "duracao":
+				verificador.verificaStringF(valor, "Duracao");
+				novoValor = Integer.parseInt(valor);
+				verificador.verificaDuracao(novoValor);
+				setDuracao(novoValor);
+				break;
+				
+			default:
+				throw new FormatoInvalidoException("Atributo nulo ou invalido");
+			}
+		} catch (Exception e) {
+			throw new AtualizacaoException("de projeto: " + e.getMessage());
 		}
 	}
 	
 	
 	@Override
-	public String getInfoProjeto(String atributo) throws Exception {
+	public String getInfoProjeto(String atributo) throws ConsultaException {
 		switch (atributo.toLowerCase()){
 		case "nome":
 			return getNome();
@@ -106,11 +99,16 @@ public class Monitoria extends Projeto {
 		case "duracao":
 			return String.valueOf(getDuracao());
 		default:
-			if (verificador.verificaContem(atributo)){
-				throw new FormatoInvalidoException("Monitoria nao possui " + atributo);
-			} else {
-				throw new FormatoInvalidoException("Atributo nulo ou invalido");
+			try {
+				if (verificador.verificaContem(atributo)){
+					throw new FormatoInvalidoException("Monitoria nao possui " + atributo);
+				} else {
+					throw new FormatoInvalidoException("Atributo nulo ou invalido");
+				}
+			} catch (Exception e) {
+				throw new ConsultaException("de projeto: " + e.getMessage());
 			}
+
 		}
 	}
 	

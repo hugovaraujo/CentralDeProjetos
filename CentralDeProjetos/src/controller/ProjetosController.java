@@ -193,10 +193,10 @@ public class ProjetosController {
 	 *         editar.
 	 * @throws Exception 
 	 */
-	public boolean editarProjeto(int codigoProjeto, String atributo, String valor) throws Exception {
+	public void editarProjeto(int codigoProjeto, String atributo, String valor) throws Exception {
 		Projeto projeto = getProjeto(codigoProjeto);
 		try {
-			return projeto.editaProjeto(atributo, valor);
+			projeto.editaProjeto(atributo, valor);
 		} catch (Exception e) {
 			throw new AtualizacaoException("de projeto: " + e.getMessage());
 
