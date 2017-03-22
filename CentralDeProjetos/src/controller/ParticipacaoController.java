@@ -60,7 +60,7 @@ public class ParticipacaoController {
 		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este metodo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
-		validator.validaAssociaProfessor(pessoa, projeto, qntHoras, valorHora, participacoes);
+		validator.validaAssociaProfessor(pessoa, projeto, qntHoras, valorHora, participacoes, coordenador);
 		
 		ProfessorParticipacao participacao = new ProfessorParticipacao(pessoa, projeto, valorHora, qntHoras, coordenador,duracao);
 		

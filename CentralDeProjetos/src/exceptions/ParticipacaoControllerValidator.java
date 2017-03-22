@@ -3,38 +3,54 @@ package exceptions;
 import java.util.List;
 
 import model.participacao.Participacao;
+import model.participacao.tipos.ProfessorParticipacao;
 import model.pessoa.Pessoa;
 import model.projeto.Projeto;
 
 public class ParticipacaoControllerValidator {
 	
-	public void validaAssociaProfessor(Pessoa pessoa, Projeto projeto, int qntHoras, double valorHora, List<Participacao> participacoes) throws Exception{
+	public void validaAssociaProfessor(Pessoa pessoa, Projeto projeto, int qntHoras, double valorHora, List<Participacao> participacoes, boolean coordenador) throws Exception{
 		
-		if (pessoa == null) {
-			throw new Exception("Erro na associacao de pessoa a projeto: Pessoa nao encontrada");
-		}
-		if (projeto == null) {
-			throw new Exception("Erro na associacao de pessoa a projeto: Projeto nao encontrado");
-		}
-		if(qntHoras < 1){
-			throw new Exception("Erro na associacao de pessoa a projeto: Quantidade de horas invalida");
-		}
-		if(valorHora < 0){
-			throw new Exception("Erro na associacao de pessoa a projeto: Valor da hora invalido");
-		}
-		if(projeto.getTipo().equals("Monitoria"))
-			if(valorHora!=0)
-				throw new Exception("Erro na associacao de pessoa a projeto: Valor da hora de um professor da monitoria deve ser zero");
-		
-		for (Participacao participacao : participacoes) {
+		try {
+			if (pessoa == null) {
+				throw new Exception("Pessoa nao encontrada");
+			}
+			if (projeto == null) {
+				throw new Exception("Projeto nao encontrado");
+			}
+			if(qntHoras < 1){
+				throw new Exception("Quantidade de horas invalida");
+			}
+			if(valorHora < 0 && coordenador){
+				throw new Exception("Valor da hora invalido");
+			} else if (valorHora <= 0 && !coordenador){
+				throw new Exception("Valor da hora invalido");
+				
+			}
+			if(projeto.getTipo().equals("Monitoria"))
+				if(valorHora!=0)
+					throw new Exception("Valor da hora de um professor da monitoria deve ser zero");
 			
-			if(participacao.getProjeto().equals(projeto)){
-				if((participacao.getTipo().equals("ProfessorParticipacao"))&&(projeto.getTipo().equals("Monitoria")))
-					throw new Exception("Erro na associacao de pessoa a projeto: Monitoria nao pode ter mais de um professor");
-				else if((participacao.getTipo().equals("ProfessorParticipacao"))&&(projeto.getTipo().equals("PED")))
-					throw new Exception("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um professor");
-			}		
+			for (Participacao participacao : participacoes) {
+				
+				if(participacao.getProjeto().equals(projeto)){
+						
+					if((participacao.getTipo().equals("ProfessorParticipacao"))&&(projeto.getTipo().equals("Monitoria")))
+						throw new Exception("Monitoria nao pode ter mais de um professor");
+					else if((participacao.getTipo().equals("ProfessorParticipacao"))&&(projeto.getTipo().equals("PED"))){
+
+						if (((ProfessorParticipacao)participacao).isCoordenador()&&(coordenador))
+							throw new Exception("Projetos P&D nao podem ter mais de um coordenador");
+						else 
+							throw new Exception("Projetos P&D nao podem ter mais de um professor");
+					}
+						
+				}		
+			}
+		} catch (Exception e) {
+			throw new AssociacaoException(e.getMessage());
 		}
+		
 	}
 	
 	public void validaAssociaGraduando(Pessoa pessoa, Projeto projeto, List<Participacao> participacoes) throws Exception{
