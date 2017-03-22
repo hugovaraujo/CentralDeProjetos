@@ -15,7 +15,7 @@ public class ExtensaoTest {
 	@Before
 	public void setUp() throws Exception {
 		try {
-			projeto1 = new Extensao("Zero Down", "Destruir", 6, "21/08/2100", 24);
+			projeto1 = new Extensao("Zero Dawn", "Destruir", 6, "21/08/2100", 24);
 			projeto2 = new Extensao("X", "Xzinho", 1, "01/01/2019", 12);
 			
 
@@ -28,7 +28,7 @@ public class ExtensaoTest {
 	@Test
 	public void testProjeto(){
 		try {
-			Assert.assertEquals("Zero Down", projeto1.getNome());
+			Assert.assertEquals("Zero Dawn", projeto1.getNome());
 			Assert.assertEquals("Destruir", projeto1.getObjetivo());
 			Assert.assertEquals(6, projeto1.getImpacto());
 			Assert.assertEquals("21/08/2100", projeto1.getDataInicio());
@@ -163,7 +163,7 @@ public class ExtensaoTest {
 	@Test
 	public void testGetInfoProjeto(){
 		try {
-			Assert.assertEquals("Zero Down", projeto1.getInfoProjeto("Nome"));
+			Assert.assertEquals("Zero Dawn", projeto1.getInfoProjeto("Nome"));
 			Assert.assertEquals("Destruir", projeto1.getInfoProjeto("Objetivo"));
 			Assert.assertEquals("6", projeto1.getInfoProjeto("Impacto"));
 			Assert.assertEquals("21/08/2100", projeto1.getInfoProjeto("Data de inicio"));
@@ -172,13 +172,13 @@ public class ExtensaoTest {
 			Assert.fail();
 		}
 		try {
-			Assert.assertEquals("Zero Down", projeto1.getInfoProjeto("Rendimento"));
+			Assert.assertEquals("Zero Dawn", projeto1.getInfoProjeto("Rendimento"));
 			Assert.fail();
 		} catch (Exception e) {
 			Assert.assertEquals("Erro na consulta de projeto: Extensao nao possui Rendimento", e.getMessage());
 		}
 		try {
-			Assert.assertEquals("Zero Down", projeto1.getInfoProjeto("Hello"));
+			Assert.assertEquals("Zero Dawn", projeto1.getInfoProjeto("Hello"));
 			Assert.fail();
 		} catch (Exception e) {
 			Assert.assertEquals("Erro na consulta de projeto: Atributo nulo ou invalido", e.getMessage());

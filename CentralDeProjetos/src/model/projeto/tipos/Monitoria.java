@@ -60,7 +60,7 @@ public class Monitoria extends Projeto {
 				break;
 				
 			case "data de inicio":
-				verificador.verificaString(valor, "Data de inicio");
+				verificador.verificaStringF(valor, "Data de inicio");
 				verificador.verificaData(valor);
 				setDataInicio(valor);
 				break;
@@ -88,7 +88,7 @@ public class Monitoria extends Projeto {
 			return getNome();
 		case "disciplina":
 			return getDisciplina();
-		case "redimento":
+		case "rendimento":
 			return String.valueOf(getRendimento());
 		case "objetivo":
 			return getObjetivo();

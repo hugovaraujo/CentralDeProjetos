@@ -93,7 +93,7 @@ public class Validator {
    }
    
    public boolean verificaAtributoContem(String atributo) throws FormatoInvalidoException{
-		if (atributo.equals("Disciplina") | atributo.equals("Periodo") | atributo.equals("Rendimento") | atributo.equals("Producao tecnica") | atributo.equals("Producao academica") || atributo.equals("Patentes") || atributo.equals("Categoria")){
+		if (atributo.equals("Disciplina") | atributo.equals("Periodo") | atributo.equals("Rendimento") | atributo.equals("Producao tecnica") | atributo.equals("Producao academica") || atributo.equals("Patentes") || atributo.equals("Categoria") || atributo.equals("Impacto")){
 			return true;
 		}
 		return false;
