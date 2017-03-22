@@ -1,3 +1,4 @@
+
 package exceptions;
 
 import java.util.List;
@@ -18,25 +19,31 @@ public class ParticipacaoControllerValidator {
 			if (projeto == null) {
 				throw new Exception("Projeto nao encontrado");
 			}
+			
 			if(qntHoras < 1){
 				throw new Exception("Quantidade de horas invalida");
 			}
-			if(valorHora < 0 && coordenador){
-				throw new Exception("Valor da hora invalido");
-			} else if (valorHora <= 0 && !coordenador){
-				throw new Exception("Valor da hora invalido");
-				
-			}
-			if(projeto.getTipo().equals("Monitoria"))
-				if(valorHora!=0)
+
+			if(projeto.getTipo().equals("Monitoria")){
+				if(valorHora>0){
 					throw new Exception("Valor da hora de um professor da monitoria deve ser zero");
-			
+				}else if (valorHora < 0){
+					throw new Exception("Valor da hora invalido");
+				}
+			} else{
+				if(valorHora <= 0 ){
+				throw new Exception("Valor da hora invalido");
+			}
+			}
+					
 			for (Participacao participacao : participacoes) {
 				
 				if(participacao.getProjeto().equals(projeto)){
 						
-					if((participacao.getTipo().equals("ProfessorParticipacao"))&&(projeto.getTipo().equals("Monitoria")))
+					if((participacao.getTipo().equals("ProfessorParticipacao"))&&(projeto.getTipo().equals("Monitoria"))){
 						throw new Exception("Monitoria nao pode ter mais de um professor");
+					}
+						
 					else if((participacao.getTipo().equals("ProfessorParticipacao"))&&(projeto.getTipo().equals("PED"))){
 
 						if (((ProfessorParticipacao)participacao).isCoordenador()&&(coordenador))
@@ -47,6 +54,7 @@ public class ParticipacaoControllerValidator {
 						
 				}		
 			}
+			
 		} catch (Exception e) {
 			throw new AssociacaoException(e.getMessage());
 		}

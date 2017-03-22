@@ -67,6 +67,7 @@ public class ParticipacaoController {
 		
 		
 		participacoes.add(participacao);
+		
 		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
 		
 	}
@@ -159,7 +160,7 @@ public class ParticipacaoController {
 			String cpfPessoa1 = participacao.getPessoa().getCpf();
 			int codProjeto = participacao.getProjeto().getCodigo();
 			
-			if(cpfPessoa1.equals(pessoa.getCpf())&& (codProjeto == projeto.getCodigo())) {
+			if(cpfPessoa1.equals(pessoa.getCpf())&&(codProjeto == projeto.getCodigo())) {
 				participacoes.remove(participacao);
 				return true;
 			}
