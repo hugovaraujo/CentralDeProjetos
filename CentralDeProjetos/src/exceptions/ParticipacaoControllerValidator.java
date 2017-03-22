@@ -7,6 +7,7 @@ import model.participacao.Participacao;
 import model.participacao.tipos.ProfessorParticipacao;
 import model.pessoa.Pessoa;
 import model.projeto.Projeto;
+import model.projeto.tipos.PED;;
 
 public class ParticipacaoControllerValidator {
 	
@@ -73,11 +74,23 @@ public class ParticipacaoControllerValidator {
 		for (Participacao participacao : participacoes) {
 			
 			if(participacao.getProjeto().equals(projeto)){
-				if(participacao.getPessoa().equals(pessoa))
-					throw new Exception("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
-				if((participacao.getTipo().equals("GraduandoParticipacao"))&&(projeto.getTipo().equals("PED")))
-					throw new Exception("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um graduando");
-			}	
+				
+				if(participacao.getTipo().equals("GraduandoParticipacao")){
+					
+					if((participacao.getTipo().equals("GraduandoParticipacao"))&&(projeto.getTipo().equals("PED")))
+						if (((PED)projeto).getCategoria().equals("COOP") && (participacao.getPessoa().equals(pessoa))){
+							throw new Exception("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
+						} else {
+							throw new Exception("Erro na associacao de pessoa a projeto: Projetos P&D nao podem ter mais de um graduando");
+						}
+					
+					if(participacao.getPessoa().equals(pessoa))
+						throw new Exception("Erro na associacao de pessoa a projeto: Aluno ja esta cadastrado nesse projeto");
+					
+				
+				}	
+			}
+				
 			
 		}
 	}
