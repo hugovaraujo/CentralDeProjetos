@@ -67,6 +67,8 @@ public class ParticipacaoController {
 		
 		
 		participacoes.add(participacao);
+		pessoa.addParticipacao(participacao);
+		projeto.addParticipacao(participacao);
 		
 		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
 		
@@ -94,6 +96,8 @@ public class ParticipacaoController {
 		ProfissionalParticipacao participacao = new ProfissionalParticipacao(pessoa, projeto, cargo, valorHora, qntHoras,duracao);
 		
 		participacoes.add(participacao);
+		pessoa.addParticipacao(participacao);
+		projeto.addParticipacao(participacao);
 		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
 		
 	}
@@ -118,6 +122,8 @@ public class ParticipacaoController {
 		GraduandoParticipacao participacao = new GraduandoParticipacao(pessoa, projeto, valorHora, qntHoras, duracao);
 		
 		participacoes.add(participacao);
+		pessoa.addParticipacao(participacao);
+		projeto.addParticipacao(participacao);
 		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);
 		
 	}
@@ -143,6 +149,8 @@ public class ParticipacaoController {
 		PosGraduandoParticipacao participacao = new PosGraduandoParticipacao(pessoa, projeto, nivel, valorHora, qntHoras,duracao);
 		
 		participacoes.add(participacao);
+		pessoa.addParticipacao(participacao);
+		projeto.addParticipacao(participacao);
 		projeto.setQuantidadeParticipantes(projeto.getQuantidadeParticipantes() + 1);	
 		
 	}

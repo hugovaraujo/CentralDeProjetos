@@ -1,6 +1,9 @@
 package model.projeto.tipos;
 
 
+import java.util.ArrayList;
+
+import model.participacao.Participacao;
 import model.projeto.Projeto;
 import exceptions.AtualizacaoException;
 import exceptions.ConsultaException;
@@ -22,7 +25,7 @@ public class Monitoria extends Projeto {
 		this.objetivo = objetivo;
 		this.dataInicio = dataInicio;
 		this.duracao = duracao;
-		
+		this.participacoes = new ArrayList<Participacao>();
 	}
 
 	@Override

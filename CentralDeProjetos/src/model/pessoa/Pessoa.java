@@ -1,16 +1,23 @@
 package model.pessoa;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import model.participacao.Participacao;
+import model.projeto.Projeto;
 
 public class Pessoa {
 
 	private String nome;
 	private String cpf;
 	private String email;
+	private List<Participacao> participacoes;
 
 	public Pessoa(String cpf, String nome, String email){
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.participacoes = new ArrayList<Participacao>();
 	}
 
 	public String getCpf() {
@@ -68,6 +75,31 @@ public class Pessoa {
 		return true;
 	}
 	
+	
+
+	public List<Projeto> getParticipacoesemProjeto() {
+		
+		List<Projeto> projetos = new ArrayList<Projeto>();
+		
+		for (Participacao participacao : participacoes) {
+			
+			projetos.add(participacao.getProjeto());
+			
+		}
+		
+		return projetos;
+	}
+
+	public void setParticipacoes(List<Participacao> participacoes) {
+		this.participacoes = participacoes;
+	}
+
+	public void addParticipacao(Participacao participacao) {
+		
+		this.participacoes.add(participacao);
+		
+	}
+
 	
 
 }

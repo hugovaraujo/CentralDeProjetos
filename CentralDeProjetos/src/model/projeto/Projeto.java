@@ -1,8 +1,12 @@
 package model.projeto;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
+import model.participacao.Participacao;
+import model.pessoa.Pessoa;
 import exceptions.AtualizacaoException;
 import exceptions.ConsultaException;
 
@@ -15,6 +19,7 @@ public abstract class Projeto {
 	protected int duracao;
 	protected Despesa despesas;
 	protected int custoTotal;
+	protected List<Participacao> participacoes;
 	private int quantidadeParticipantes; //TODO: AJEITAR VISIBILIDADE
 	
 	public abstract void editaProjeto(String atributo, String valor) throws AtualizacaoException;
@@ -95,6 +100,26 @@ public abstract class Projeto {
 			codigoGerado = gerador.nextInt(150000000);
 	 	}
 	    return codigoGerado;
+	}
+
+	public void addParticipacao(Participacao participacao) {
+		
+		this.participacoes.add(participacao);
+
+		
+	}
+	
+	public List<Pessoa> getParticipantes() {
+		
+		List<Pessoa> participantes = new ArrayList<Pessoa>();
+		
+		for (Participacao participacao : participacoes) {
+			
+			participantes.add(participacao.getPessoa());
+			
+		}
+		
+		return participantes;
 	}
 	
 }

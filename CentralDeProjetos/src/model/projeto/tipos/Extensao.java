@@ -1,6 +1,9 @@
 package model.projeto.tipos;
 
 
+import java.util.ArrayList;
+
+import model.participacao.Participacao;
 import model.projeto.Projeto;
 import exceptions.AtualizacaoException;
 import exceptions.ConsultaException;
@@ -19,6 +22,7 @@ public class Extensao extends Projeto {
 		this.impacto = impacto;
 		this.dataInicio = dataInicio;
 		this.duracao = duracao;
+		this.participacoes = new ArrayList<Participacao>();
 		
 	}
 	
