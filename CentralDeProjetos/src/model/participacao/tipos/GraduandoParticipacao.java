@@ -30,13 +30,13 @@ public class GraduandoParticipacao extends Participacao {
 		double pontuacao;
 		
 		if(projeto.getTipo().equals("Monitoria")){
-			pontuacao = 1.5 * (projeto.getDuracao() % 6);
+			pontuacao = 1.5 * (projeto.getDuracao() / 6);
 			
 			if(pontuacao >= 6) return 6;
 			else return pontuacao;
 		}
 		else{
-			pontuacao = 2 * (projeto.getDuracao() % 6);
+			pontuacao = 2 * (projeto.getDuracao() / 6);
 			if(pontuacao >= 8) return 8;
 			else return pontuacao;
 		}

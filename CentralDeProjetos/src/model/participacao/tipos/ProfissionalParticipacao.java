@@ -35,7 +35,6 @@ public class ProfissionalParticipacao extends Participacao {
 		if (getCargo().equalsIgnoreCase("Pesquisador")) {
 			adicional += 100;
 		}
-
 		else if (getCargo().equalsIgnoreCase("Gerente") && projeto.getQuantidadeParticipantes() < 5 ) {
 			adicional = 20 * projeto.getQuantidadeParticipantes();
 		}
@@ -66,13 +65,13 @@ public class ProfissionalParticipacao extends Participacao {
 		double pontuacao;
 		
 		if (cargo.equalsIgnoreCase("Pesquisador")){
-			pontuacao = 6 * (duracao % 12);
+			pontuacao = 6 * (projeto.getDuracao() / 12);
 		}
 		else if (cargo.equalsIgnoreCase("Gerente")){
-			pontuacao = 9 * (duracao % 12);
+			pontuacao = 9 * (projeto.getDuracao() / 12);
 		}
 		else{
-			pontuacao = 5 * (duracao % 12);
+			pontuacao = 5 * (projeto.getDuracao() / 12);
 		}
 		return pontuacao;
 	}

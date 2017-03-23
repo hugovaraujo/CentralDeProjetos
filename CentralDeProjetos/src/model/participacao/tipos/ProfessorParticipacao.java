@@ -45,7 +45,7 @@ public class ProfessorParticipacao extends Participacao{
 	@Override
 	public double calculaPontuacaoPorParticipacao() {
 		double pontuacao;
-		pontuacao = DEFAULT_POINT * (duracao % 12);
+		pontuacao = DEFAULT_POINT * (projeto.getDuracao() / 12);
 		if (!projeto.getTipo().equals("PET")){
 			pontuacao += projeto.getQuantidadeParticipantes();
 		}
