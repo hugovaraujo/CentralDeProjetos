@@ -79,13 +79,19 @@ public class ParticipacaoControllerValidator {
 					
 					if(participacao.getTipo().equals("GraduandoParticipacao")){
 						
-						if((participacao.getTipo().equals("GraduandoParticipacao"))&&(projeto.getTipo().equals("PED")))
-							if (((PED)projeto).getCategoria().equals("COOP") && (participacao.getPessoa().equals(pessoa))){
-								throw new Exception("Aluno ja esta cadastrado nesse projeto");
+						if((participacao.getTipo().equals("GraduandoParticipacao"))&&(projeto.getTipo().equals("PED"))){
+							if (((PED)projeto).getCategoria().equals("COOP")){
+							
+								if (participacao.getPessoa().equals(pessoa)){
+									throw new Exception("Aluno ja esta cadastrado nesse projeto");	
+							}
 							} else {
 								throw new Exception("Projetos P&D nao podem ter mais de um graduando");
 							}
-						
+							
+							
+						}
+							
 						if(participacao.getPessoa().equals(pessoa))
 							throw new Exception("Aluno ja esta cadastrado nesse projeto");
 						
@@ -111,14 +117,22 @@ public class ParticipacaoControllerValidator {
 		}
 	}
 
-	public void validaAssociaPosGraduando(Pessoa pessoa, Projeto projeto) throws Exception {
-		
-		if (pessoa == null) {
+	public void validaAssociaPosGraduando(Pessoa pessoa, Projeto projeto) throws AssociacaoException {
+		try {
+			if (pessoa == null) {
 			throw new Exception("Pessoa nao existe");
 		}
 		if (projeto == null) {
 			throw new Exception("Projeto nao existe");
 		}
+		
+		if (projeto.getTipo().equals("PET")|| (projeto.getTipo().equals("Monitoria"))){
+			throw new Exception("Tipo de projeto invalido para pos graduando");
+		}
+		} catch (Exception e) {
+			throw new AssociacaoException(e.getMessage());
+		}
+		
 		
 	}
 	
