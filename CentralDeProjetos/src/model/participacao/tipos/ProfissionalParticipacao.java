@@ -64,12 +64,23 @@ public class ProfissionalParticipacao extends Participacao {
 
 	@Override
 	public double calculaPontuacaoPorParticipacao() {
-		double pontuacao;
+		
+		double pontuacaoGerente = 0;
+		double pontuacaoDesenvolvedor = 0;
+		double pontuacaoPesquisador = 0;
 		
 		for (Participacao participacao : pessoa.getParticipacoes()) {
-			//TODO: Calcular a pontuacao de profissional
-			
+			if (getCargo().equalsIgnoreCase("Pesquisador")){
+				pontuacaoPesquisador += 6 * (int)(projeto.getDuracao() / 12);		
+			}
+			else if (getCargo().equalsIgnoreCase("Gerente")){
+				pontuacaoGerente = 9 * (int)(projeto.getDuracao() / 12);
+			}
+			else {
+				pontuacaoDesenvolvedor = 5 * (int)(projeto.getDuracao() / 12);
+			}
 		}
+		return pontuacaoDesenvolvedor + pontuacaoGerente + pontuacaoPesquisador;
 	}
 	
 
