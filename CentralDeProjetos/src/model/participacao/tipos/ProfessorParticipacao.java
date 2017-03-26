@@ -56,7 +56,8 @@ public class ProfessorParticipacao extends Participacao{
 				}
 			}
 			
-		return pontuacao;
+		return 0;
+		// return pontuacao;
 	}
 
 }

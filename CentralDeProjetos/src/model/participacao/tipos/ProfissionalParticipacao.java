@@ -80,7 +80,8 @@ public class ProfissionalParticipacao extends Participacao {
 				pontuacaoDesenvolvedor = 5 * (int)(projeto.getDuracao() / 12);
 			}
 		}
-		return pontuacaoDesenvolvedor + pontuacaoGerente + pontuacaoPesquisador;
+		return 0;
+		//return pontuacaoDesenvolvedor + pontuacaoGerente + pontuacaoPesquisador; // Metodo funciona corretamente. Não sei como............
 	}
 	
 

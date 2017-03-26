@@ -44,7 +44,8 @@ public class GraduandoParticipacao extends Participacao {
 		if (pontosMonitoria >= 6) {pontosMonitoria = 6;}
 		if (pontosPeDPETExt >= 8) {pontosPeDPETExt = 8;}
 		
-		return pontosMonitoria + pontosPeDPETExt;
+		return 0;
+		//return pontosMonitoria + pontosPeDPETExt; //Tá dando 24 nos dois casos (27 e 55)
 			
 		}
 	
