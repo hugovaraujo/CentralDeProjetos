@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import model.participacao.Participacao;
+import model.participacao.tipos.ProfessorParticipacao;
 import model.pessoa.Pessoa;
 import exceptions.AtualizacaoException;
 import exceptions.ConsultaException;
@@ -20,6 +21,7 @@ public abstract class Projeto {
 	protected Despesa despesas;
 	protected int custoTotal;
 	protected List<Participacao> participacoes;
+
 	private int quantidadeParticipantes; //TODO: AJEITAR VISIBILIDADE
 	
 	public abstract void editaProjeto(String atributo, String valor) throws AtualizacaoException;
@@ -93,6 +95,7 @@ public abstract class Projeto {
 		this.quantidadeParticipantes = quantidadeParticipantes;
 	}
 	
+	
 	public int geraCodigo(){
 		int codigoGerado = 0;
 		Random gerador = new Random();
@@ -104,9 +107,7 @@ public abstract class Projeto {
 
 	public void addParticipacao(Participacao participacao) {
 		
-		this.participacoes.add(participacao);
-
-		
+		this.participacoes.add(participacao);		
 	}
 	
 	public List<Pessoa> getParticipantes() {
@@ -120,6 +121,16 @@ public abstract class Projeto {
 		}
 		
 		return participantes;
+	}
+	
+	public int getQuantidadeAlunos() {
+		int quantidade = 0;
+		for (Participacao participacao : participacoes) {
+			if (!(participacao.getTipo().equalsIgnoreCase("ProfessorParticipacao"))) {
+				quantidade ++;
+			}
+		}
+		return quantidade;
 	}
 	
 }

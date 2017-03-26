@@ -1,5 +1,7 @@
 package model.participacao.tipos;
 
+import java.util.Iterator;
+
 import model.participacao.Participacao;
 import model.pessoa.Pessoa;
 import model.projeto.Projeto;
@@ -64,16 +66,10 @@ public class ProfissionalParticipacao extends Participacao {
 	public double calculaPontuacaoPorParticipacao() {
 		double pontuacao;
 		
-		if (cargo.equalsIgnoreCase("Pesquisador")){
-			pontuacao = 6 * (projeto.getDuracao() / 12);
+		for (Participacao participacao : pessoa.getParticipacoes()) {
+			//TODO: Calcular a pontuacao de profissional
+			
 		}
-		else if (cargo.equalsIgnoreCase("Gerente")){
-			pontuacao = 9 * (projeto.getDuracao() / 12);
-		}
-		else{
-			pontuacao = 5 * (projeto.getDuracao() / 12);
-		}
-		return pontuacao;
 	}
 	
 

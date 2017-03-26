@@ -13,6 +13,8 @@ public class Pessoa {
 	private String email;
 	private List<Participacao> participacoes;
 
+	
+
 	public Pessoa(String cpf, String nome, String email){
 		this.nome = nome;
 		this.cpf = cpf;
@@ -44,6 +46,9 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
+	public List<Participacao> getParticipacoes() {
+		return participacoes;
+	}
 	
 	@Override
 	public String toString() {

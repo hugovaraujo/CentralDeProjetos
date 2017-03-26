@@ -7,7 +7,9 @@ import model.projeto.Projeto;
 public class ProfessorParticipacao extends Participacao{
 	
 	private boolean coordenador;
-	private final double DEFAULT_POINT = 4;
+
+
+	
 	
 	public ProfessorParticipacao(Pessoa pessoa, Projeto projeto, double valorHora, int qtdHoras, boolean coordenador, int duracao) {
 		
@@ -44,11 +46,16 @@ public class ProfessorParticipacao extends Participacao{
 
 	@Override
 	public double calculaPontuacaoPorParticipacao() {
-		double pontuacao;
-		pontuacao = DEFAULT_POINT * (projeto.getDuracao() / 12);
-		if (!projeto.getTipo().equals("PET")){
-			pontuacao += projeto.getQuantidadeParticipantes();
-		}
+		double pontuacao = 0;
+		
+		for (Participacao participacao : pessoa.getParticipacoes()) {
+			pontuacao += 4 * (int) (participacao.getProjeto().getDuracao() / 12);
+			
+			if (!participacao.getProjeto().getTipo().equalsIgnoreCase("Monitoria")) {
+				pontuacao += participacao.getProjeto().getQuantidadeAlunos();
+				}
+			}
+			
 		return pontuacao;
 	}
 
