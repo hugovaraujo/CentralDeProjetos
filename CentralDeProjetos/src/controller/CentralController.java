@@ -24,23 +24,27 @@ import model.projeto.Projeto;
  * @author
  *
  */
-public class ParticipacaoController {
+public class CentralController {
 	
 	public List<Participacao> participacoes;
 	private Participacao controleQuantidade;
 	PessoasController pessoasController;
 	ProjetosController projetosController;
 	private ParticipacaoControllerValidator validator;
+	private double valorTotalUASC;
+	private double valorEmCaixa;
 	
 	/**
 	 * Construtor de MainController 
 	 */
-	public ParticipacaoController(){
+	public CentralController(){
 		
 		participacoes = new ArrayList<>();
 		pessoasController = new PessoasController();
 		projetosController = new ProjetosController();
 		validator = new ParticipacaoControllerValidator();
+		this.valorTotalUASC = 0;
+		this.valorEmCaixa = 0;
 				
 	}
 	
@@ -294,6 +298,24 @@ public class ParticipacaoController {
 			return valorBolsa;
 		}
 		return 350;
+	}
+	
+	public double calculaColaboracaoUASC(int cod){
+		Projeto proj = projetosController.getProjeto(cod);
+		valorTotalUASC += proj.montanteUASC();
+		return proj.montanteUASC();
+	}
+	
+	public double calculaColaboracaoTotalUASC(){
+		return valorTotalUASC;
+	}
+	
+	public void diminuiReceita(double valor){
+		valorEmCaixa = calculaColaboracaoTotalUASC() - valor;
+	}
+	
+	public double calculaTotalEmCaixa(){
+		return valorEmCaixa;
 	}
 	
 	

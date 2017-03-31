@@ -21,8 +21,7 @@ public class ProjetosController {
 	private FactoryDoProjeto factoryProjeto;
 	private HashMap<String, Projeto> projetosNome;
 	private ProjetosControllerValidator validator;
-	private double valorTotalUASC;
-	private double valorEmCaixa;
+
 	
 	/**
 	 * Construtor de ProjetosCRUD
@@ -33,8 +32,7 @@ public class ProjetosController {
 		this.factoryProjeto = new FactoryDoProjeto();
 		this.projetosNome = new HashMap<>();
 		this.validator = new ProjetosControllerValidator();
-		this.valorTotalUASC = 0;
-		this.valorEmCaixa = 0;
+		
 	}
 	
 	/** Metodo que adiciona uma monitoria. Adiciona o projeto ao Map de projetos(que tem como chave o codigo do projeto) e adiciona tambem o projeto ao mapa de projetosNome( onde a chave � o nome do projeto).
@@ -245,22 +243,6 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 		proj.getDespesas().setMontanteCusteio(montanteCusteio);
 	}
 	
-	public double calculaColaboracaoUASC(int cod){
-		Projeto proj = getProjeto(cod);
-		valorTotalUASC += proj.montanteUASC();
-		return proj.montanteUASC();
-	}
 	
-	public double calculaColaboracaoTotalUASC(){
-		return valorTotalUASC;
-	}
-	
-	public void diminuiReceita(double valor){
-		valorEmCaixa = calculaColaboracaoTotalUASC() - valor;
-	}
-	
-	public double calculaTotalEmCaixa(){
-		return valorEmCaixa;
-	}
 		
 }

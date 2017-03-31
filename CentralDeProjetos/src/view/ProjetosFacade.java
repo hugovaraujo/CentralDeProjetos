@@ -1,6 +1,6 @@
 	package view;
 
-import controller.ParticipacaoController;
+import controller.CentralController;
 import controller.PessoasController;
 import controller.ProjetosController;
 import easyaccept.EasyAccept;
@@ -10,15 +10,15 @@ import model.projeto.Projeto;
 
 public class ProjetosFacade {
 	
-ParticipacaoController participacao;
+CentralController centralController;
 ProjetosController projetos;
 PessoasController pessoas;
 
 	public ProjetosFacade(){
 		
-		participacao = new ParticipacaoController();
-		projetos = participacao.getProjetosController();
-		pessoas = participacao.getPessoasController();
+		centralController = new CentralController();
+		projetos = centralController.getProjetosController();
+		pessoas = centralController.getPessoasController();
 		
 	}
 	
@@ -32,40 +32,40 @@ PessoasController pessoas;
 	// PARTICIPACAO
 	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras) throws Exception {
 		
-		participacao.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras, 0);
+		centralController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras, 0);
 	}
 
 	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras) throws Exception {
 		
-		participacao.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras,0);
+		centralController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras,0);
 	}
 
 
 	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras) throws Exception {
 
-		participacao.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras,0);
+		centralController.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras,0);
 		
 	}
 	
 public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nivel, double valorHora, int qntHoras) throws Exception {
 		
-		participacao.associaPosGraduando(cpfPessoa, codigoProjeto, nivel, valorHora, qntHoras,0);
+		centralController.associaPosGraduando(cpfPessoa, codigoProjeto, nivel, valorHora, qntHoras,0);
 	}
 
 	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws Exception {
 		
-		participacao.removeParticipacao(cpfPessoa, codigoProjeto);
+		centralController.removeParticipacao(cpfPessoa, codigoProjeto);
 		
 	}
 	
 	public String getInfoPessoa(String cpf, String atributo) throws Exception{
 		
-		return participacao.getInfoPessoa(cpf, atributo);
+		return centralController.getInfoPessoa(cpf, atributo);
 	}
 	
 	public String getInfoProjeto(int codigo, String atributo) throws Exception{
 		
-		return participacao.getInfoProjeto(codigo, atributo);
+		return centralController.getInfoProjeto(codigo, atributo);
 		
 	}
 	
@@ -130,11 +130,11 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 	}
 	
 	public double getValorBolsa(String cpf){
-		return participacao.getValorBolsa(cpf);
+		return centralController.getValorBolsa(cpf);
 	}
 	
 	public double calculaPontuacaoPorParticipacao(String cpf) {
-		return participacao.calculaPontuacaoPorParticipacao(cpf);
+		return centralController.calculaPontuacaoPorParticipacao(cpf);
 	}
 	
 	public void atualizaDespesasProjeto(int cod, double montanteBolsas, double montanteCusteio, double montanteCapital){
@@ -142,19 +142,19 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 	}
 	
 	public double calculaColaboracaoUASC(int cod){
-		return projetos.calculaColaboracaoUASC(cod);
+		return centralController.calculaColaboracaoUASC(cod);
 	}
 	
 	public double calculaColaboracaoTotalUASC(){
-		return projetos.calculaColaboracaoTotalUASC();
+		return centralController.calculaColaboracaoTotalUASC();
 	}
 	
 	public void diminuiReceita(double valor){
-		projetos.diminuiReceita(valor);
+		centralController.diminuiReceita(valor);
 	}
 	
 	public double calculaTotalEmCaixaUASC(){
-		return projetos.calculaTotalEmCaixa();
+		return centralController.calculaTotalEmCaixa();
 	}
 	
 	public static void main(String[] args) {
