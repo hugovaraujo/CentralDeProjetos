@@ -5,6 +5,7 @@ import controller.PessoasController;
 import controller.ProjetosController;
 import easyaccept.EasyAccept;
 import exceptions.CadastroException;
+import model.projeto.Projeto;
 
 
 public class ProjetosFacade {
@@ -136,8 +137,28 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 		return participacao.calculaPontuacaoPorParticipacao(cpf);
 	}
 	
+	public void atualizaDespesasProjeto(int cod, double montanteBolsas, double montanteCusteio, double montanteCapital){
+		projetos.atualizaDespesas(cod, montanteBolsas, montanteCusteio, montanteCapital);
+	}
+	
+	public double calculaColaboracaoUASC(int cod){
+		return projetos.calculaColaboracaoUASC(cod);
+	}
+	
+	public double calculaColaboracaoTotalUASC(){
+		return projetos.calculaColaboracaoTotalUASC();
+	}
+	
+	public void diminuiReceita(double valor){
+		projetos.diminuiReceita(valor);
+	}
+	
+	public double calculaTotalEmCaixaUASC(){
+		return projetos.calculaTotalEmCaixa();
+	}
+	
 	public static void main(String[] args) {
-	    args = new String[] {"view.ProjetosFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt","easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt","easyaccept/us3_test.txt", "easyaccept/us3_test_exception.txt","easyaccept/us4_test.txt", "easyaccept/us5_test.txt"}; //separe cada script de teste por virgula.
+	    args = new String[] {"view.ProjetosFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt","easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt","easyaccept/us3_test.txt", "easyaccept/us3_test_exception.txt","easyaccept/us4_test.txt", "easyaccept/us5_test.txt","easyaccept/us6_test.txt"}; //separe cada script de teste por virgula.
 	    EasyAccept.main(args);
 	}
 }

@@ -21,6 +21,8 @@ public class ProjetosController {
 	private FactoryDoProjeto factoryProjeto;
 	private HashMap<String, Projeto> projetosNome;
 	private ProjetosControllerValidator validator;
+	private double valorTotalUASC;
+	private double valorEmCaixa;
 	
 	/**
 	 * Construtor de ProjetosCRUD
@@ -31,7 +33,8 @@ public class ProjetosController {
 		this.factoryProjeto = new FactoryDoProjeto();
 		this.projetosNome = new HashMap<>();
 		this.validator = new ProjetosControllerValidator();
-		
+		this.valorTotalUASC = 0;
+		this.valorEmCaixa = 0;
 	}
 	
 	/** Metodo que adiciona uma monitoria. Adiciona o projeto ao Map de projetos(que tem como chave o codigo do projeto) e adiciona tambem o projeto ao mapa de projetosNome( onde a chave � o nome do projeto).
@@ -58,6 +61,7 @@ public class ProjetosController {
 
 		projeto.setCodigo(projeto.geraCodigo());
 		projetos.put(projeto.getCodigo(), projeto);
+		System.out.println("adicionou projetooooo");
 		projetosNome.put(projeto.getNome(), projeto);
 		
 		return projeto.getCodigo();
@@ -85,6 +89,7 @@ public class ProjetosController {
 		
 		projeto.setCodigo(projeto.geraCodigo());
 		projetos.put(projeto.getCodigo(), projeto);
+		System.out.println("adicionou projetooooo");
 		projetosNome.put(projeto.getNome(), projeto);
 		
 		return projeto.getCodigo();
@@ -224,5 +229,38 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 		Projeto projeto = projetos.get(codigoProjeto);
 		return projeto;
 	}
-
+	
+	/**
+	 * Metodo que atualiza os valores das despesas de um projeto
+	 * 
+	 * @param cod
+	 * @param montanteBolsas
+	 * @param montanteCusteio
+	 * @param montanteCapital
+	 */
+	public void atualizaDespesas(int cod, double montanteBolsas, double montanteCusteio, double montanteCapital){
+		Projeto proj = getProjeto(cod);
+		proj.getDespesas().setMontanteBolsas(montanteBolsas);
+		proj.getDespesas().setMontanteCapital(montanteCapital);
+		proj.getDespesas().setMontanteCusteio(montanteCusteio);
+	}
+	
+	public double calculaColaboracaoUASC(int cod){
+		Projeto proj = getProjeto(cod);
+		valorTotalUASC += proj.montanteUASC();
+		return proj.montanteUASC();
+	}
+	
+	public double calculaColaboracaoTotalUASC(){
+		return valorTotalUASC;
+	}
+	
+	public void diminuiReceita(double valor){
+		valorEmCaixa = calculaColaboracaoTotalUASC() - valor;
+	}
+	
+	public double calculaTotalEmCaixa(){
+		return valorEmCaixa;
+	}
+		
 }

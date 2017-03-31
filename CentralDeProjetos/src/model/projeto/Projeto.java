@@ -17,7 +17,7 @@ public abstract class Projeto {
 	protected String objetivo;
 	protected String dataInicio;
 	protected int duracao;
-	protected Despesa despesas;
+	protected Despesa despesas = new Despesa();
 	protected int custoTotal;
 	protected List<Participacao> participacoes;
 	private int quantidadeParticipantes; //TODO: AJEITAR VISIBILIDADE
@@ -28,6 +28,7 @@ public abstract class Projeto {
 	
 	public abstract String getTipo();
 	
+	public abstract double montanteUASC();
 	
 	public int getCodigo(){ 
 		return codigo;
@@ -121,5 +122,11 @@ public abstract class Projeto {
 		
 		return participantes;
 	}
+	
+	public double custoTotal(){
+		return despesas.getMontanteBolsas() + despesas.getMontanteCapital() + despesas.getMontanteCusteio();
+	}
+	
+	
 	
 }

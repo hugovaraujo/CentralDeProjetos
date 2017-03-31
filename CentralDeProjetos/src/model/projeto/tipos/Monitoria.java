@@ -145,6 +145,11 @@ public class Monitoria extends Projeto {
 		return "Monitoria";
 	}
 
+	@Override
+	public double montanteUASC() {
+		return 0;
+	}
+
 
 
 	

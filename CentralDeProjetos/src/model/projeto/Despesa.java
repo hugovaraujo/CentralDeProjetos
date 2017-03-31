@@ -2,22 +2,33 @@ package model.projeto;
 
 public class Despesa {
 	
-	private int valor;
-	private String categoria;
+	private double montanteBolsas = 0;
+	private double montanteCusteio = 0;
+	private double montanteCapital = 0;
 	
-	public int getValor() {
-		return valor;
-	}
-	public void setValor(int valor) {
-		this.valor = valor;
-	}
-	public String getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public double getMontanteBolsas() {
+		return montanteBolsas;
 	}
 	
+	public double getMontanteCapital() {
+		return montanteCapital;
+	}
+	
+	public double getMontanteCusteio() {
+		return montanteCusteio;
+	}
+	
+	public void setMontanteBolsas(double montanteBolsas) {
+		this.montanteBolsas = montanteBolsas;
+	}
+	
+	public void setMontanteCapital(double montanteCapital) {
+		this.montanteCapital = montanteCapital;
+	}
+	
+	public void setMontanteCusteio(double montanteCusteio) {
+		this.montanteCusteio = montanteCusteio;
+	}
 	
 
 }

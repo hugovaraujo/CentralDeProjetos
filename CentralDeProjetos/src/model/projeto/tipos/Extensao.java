@@ -111,6 +111,19 @@ public class Extensao extends Projeto {
 		return "Extensao";
 	}
 
+	@Override
+	public double montanteUASC() {
+		double percentual = 0.1;
+		if (despesas.getMontanteCapital() <= 10000.0 && despesas.getMontanteCusteio() <= 10000.0) {
+			return 0;
+		}
+		if (impacto > 0) {
+			percentual -= impacto*(0.005);
+		}
+		
+		return custoTotal() * percentual;
+	}
+
 
 
 

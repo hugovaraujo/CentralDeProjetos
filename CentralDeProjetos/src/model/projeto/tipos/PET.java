@@ -187,6 +187,11 @@ public class PET extends Projeto {
 		return "PET";
 	}
 
+	@Override
+	public double montanteUASC() {
+		return 0;
+	}
+
 
 	
 }

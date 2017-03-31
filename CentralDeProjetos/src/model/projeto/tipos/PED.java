@@ -165,6 +165,28 @@ public class PED extends Projeto {
 		return "PED";
 	}
 
+	@Override
+	public double montanteUASC() {
+		double percentual = 0.10;
+		if (despesas.getMontanteCapital() <= 10000.0  && despesas.getMontanteCusteio() <= 10000.0) {
+			return 0;
+		}
+		if (patentes > 0) {
+			percentual += 0.03;
+		}
+		if (prodTecnica > 0) {
+			percentual += prodTecnica * (0.003);
+		}
+		if (prodAcademica > 0) {
+			percentual -= prodAcademica * (0.002);
+		}
+		if (despesas.getMontanteCapital() > 100000.0) {
+			percentual += 0.01*(despesas.getMontanteCapital()/100000.0);
+		}
+		
+		return custoTotal() * percentual;
+	}
+
 
 
 
