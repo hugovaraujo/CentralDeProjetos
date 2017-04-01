@@ -126,6 +126,13 @@ public abstract class Projeto {
 	public double custoTotal(){
 		return despesas.getMontanteBolsas() + despesas.getMontanteCapital() + despesas.getMontanteCusteio();
 	}
+
+	@Override
+	public String toString() {
+		return "Nome: "+ nome+"\n"+"Data de inicio: "+ dataInicio+"\n"+"Coordenador"+"\n"+"Situacao:";
+	}
+	
+	
 	
 	
 	

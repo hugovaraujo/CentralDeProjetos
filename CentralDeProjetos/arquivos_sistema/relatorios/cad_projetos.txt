@@ -1,0 +1,215 @@
+Cadastro de Projetos: 0 projetos registradosCadastro de Projetos: 0 projetos registradosCadastro de Projetos: 5 projetos registrados==> Projeto 1:
+Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 2:
+Nome: Kubernetes
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 3:
+Nome: Monitoria de P2
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 4:
+Nome: PET Computacao
+Data de inicio: 03/02/2017
+Coordenador
+Situacao:
+==> Projeto 5:
+Nome: Projeto olimpico
+Data de inicio: 02/03/2017
+Coordenador
+Situacao:
+Cadastro de Projetos: 5 projetos registrados==> Projeto 1:
+Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 2:
+Nome: Kubernetes
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 3:
+Nome: Monitoria de P2
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 4:
+Nome: PET Computacao
+Data de inicio: 03/02/2017
+Coordenador
+Situacao:
+==> Projeto 5:
+Nome: Projeto olimpico
+Data de inicio: 02/03/2017
+Coordenador
+Situacao:
+Cadastro de Projetos: 5 projetos registrados==> Projeto 1:
+Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 2:
+Nome: Kubernetes
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 3:
+Nome: Monitoria de P2
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 4:
+Nome: PET Computacao
+Data de inicio: 03/02/2017
+Coordenador
+Situacao:
+==> Projeto 5:
+Nome: Projeto olimpico
+Data de inicio: 02/03/2017
+Coordenador
+Situacao:
+Cadastro de Projetos: 5 projetos registrados==> Projeto 1:
+Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 2:
+Nome: Kubernetes
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 3:
+Nome: Monitoria de P2
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 4:
+Nome: PET Computacao
+Data de inicio: 03/02/2017
+Coordenador
+Situacao:
+==> Projeto 5:
+Nome: Projeto olimpico
+Data de inicio: 02/03/2017
+Coordenador
+Situacao:
+Cadastro de Projetos: 5 projetos registrados==> Projeto 1:
+Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 2:
+Nome: Kubernetes
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 3:
+Nome: Monitoria de P2
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 4:
+Nome: PET Computacao
+Data de inicio: 03/02/2017
+Coordenador
+Situacao:
+==> Projeto 5:
+Nome: Projeto olimpico
+Data de inicio: 02/03/2017
+Coordenador
+Situacao:
+Cadastro de Projetos: 6 projetos registrados==> Projeto 1:
+Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 2:
+Nome: Kubernetes
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 3:
+Nome: SAD Computacao
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 4:
+Nome: Monitoria de P2
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 5:
+Nome: PET Computacao
+Data de inicio: 03/02/2017
+Coordenador
+Situacao:
+==> Projeto 6:
+Nome: Projeto olimpico
+Data de inicio: 02/03/2017
+Coordenador
+Situacao:
+Cadastro de Projetos: 6 projetos registrados==> Projeto 1:
+Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 2:
+Nome: Kubernetes
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 3:
+Nome: SAD Computacao
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 4:
+Nome: Monitoria de P2
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 5:
+Nome: PET Computacao
+Data de inicio: 03/02/2017
+Coordenador
+Situacao:
+==> Projeto 6:
+Nome: Projeto olimpico
+Data de inicio: 02/03/2017
+Coordenador
+Situacao:
+Cadastro de Projetos: 6 projetos registrados==> Projeto 1:
+Nome: APLICACAO DA MINERACAO DE DADOS EM REPOSITORIOS DINAMICOS
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 2:
+Nome: Kubernetes
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 3:
+Nome: SAD Computacao
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 4:
+Nome: Monitoria de P2
+Data de inicio: 01/01/2017
+Coordenador
+Situacao:
+==> Projeto 5:
+Nome: PET Computacao
+Data de inicio: 03/02/2017
+Coordenador
+Situacao:
+==> Projeto 6:
+Nome: Projeto olimpico
+Data de inicio: 02/03/2017
+Coordenador
+Situacao:

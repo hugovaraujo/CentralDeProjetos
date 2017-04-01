@@ -8,6 +8,7 @@ import exceptions.ConsultaException;
 import exceptions.ProjetosControllerValidator;
 import factory.FactoryDoProjeto;
 import model.projeto.Projeto;
+import persistencia.ProjetoPersistencia;
 
 /**
  * Classe que representa o controller de Projeto.
@@ -21,6 +22,7 @@ public class ProjetosController {
 	private FactoryDoProjeto factoryProjeto;
 	private HashMap<String, Projeto> projetosNome;
 	private ProjetosControllerValidator validator;
+	private ProjetoPersistencia persistencia;
 
 	
 	/**
@@ -32,6 +34,7 @@ public class ProjetosController {
 		this.factoryProjeto = new FactoryDoProjeto();
 		this.projetosNome = new HashMap<>();
 		this.validator = new ProjetosControllerValidator();
+		this.persistencia = new ProjetoPersistencia();
 		
 	}
 	
@@ -45,7 +48,7 @@ public class ProjetosController {
 	 * @param dataInicio
 	 * @param duracao
 	 * @return retorna o codigo do projeto adicionado
-	 * @throws CadastroException 
+	 * @throws Exception 
 	 */
 	public int adicionaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio, int duracao) throws CadastroException{
 		
@@ -74,7 +77,7 @@ public class ProjetosController {
 	 * @param dataInicio
 	 * @param duracao
 	 * @return retorna o codigo do projeto.
-	 * @throws CadastroException 
+	 * @throws Exception 
 	 */
 	public int adicionaExtensao(String nome, String objetivo, int impacto, String dataInicio, int duracao) throws CadastroException{
 		
@@ -104,7 +107,7 @@ public class ProjetosController {
 	 * @param dataInicio
 	 * @param duracao
 	 * @return retorna o codigo do projeto
-	 * @throws CadastroException 
+	 * @throws Exception 
 	 */
 	public int adicionaPED(String nome, String categoria, int prodTecnica, int prodAcademica, int patentes, String objetivo, String dataInicio, int duracao) throws CadastroException{
 		
@@ -134,7 +137,7 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 	 * @param dataInicio
 	 * @param duracao
 	 * @return retorna o codigo do projeto
-	 * @throws CadastroException 
+	 * @throws Exception 
 	 */
 	public int adicionaPET(String nome, String objetivo, int impacto, int rendimento, int prodTecnica, int prodAcademica, int patentes, String dataInicio, int duracao) throws CadastroException{
 		
@@ -242,6 +245,11 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 		proj.getDespesas().setMontanteBolsas(montanteBolsas);
 		proj.getDespesas().setMontanteCapital(montanteCapital);
 		proj.getDespesas().setMontanteCusteio(montanteCusteio);
+	}
+	
+	public void gerarRelatorio() throws Exception{
+		
+		persistencia.gerarRelatorio(projetos);
 	}
 	
 	
