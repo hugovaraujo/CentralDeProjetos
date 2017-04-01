@@ -4,8 +4,9 @@ import controller.CentralController;
 import controller.PessoasController;
 import controller.ProjetosController;
 import easyaccept.EasyAccept;
+import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
-import model.projeto.Projeto;
+import exceptions.ConsultaException;
 
 
 public class ProjetosFacade {
@@ -137,11 +138,11 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 		return centralController.calculaPontuacaoPorParticipacao(cpf);
 	}
 	
-	public void atualizaDespesasProjeto(int cod, double montanteBolsas, double montanteCusteio, double montanteCapital){
+	public void atualizaDespesasProjeto(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws AtualizacaoException{
 		projetos.atualizaDespesas(cod, montanteBolsas, montanteCusteio, montanteCapital);
 	}
 	
-	public double calculaColaboracaoUASC(int cod){
+	public double calculaColaboracaoUASC(String cod) throws ConsultaException{
 		return centralController.calculaColaboracaoUASC(cod);
 	}
 	
@@ -149,7 +150,7 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 		return centralController.calculaColaboracaoTotalUASC();
 	}
 	
-	public void diminuiReceita(double valor){
+	public void diminuiReceita(double valor) throws AtualizacaoException{
 		centralController.diminuiReceita(valor);
 	}
 	
@@ -158,7 +159,7 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 	}
 	
 	public static void main(String[] args) {
-	    args = new String[] {"view.ProjetosFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt","easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt","easyaccept/us3_test.txt", "easyaccept/us3_test_exception.txt","easyaccept/us4_test.txt", "easyaccept/us5_test.txt","easyaccept/us6_test.txt"}; //separe cada script de teste por virgula.
+	    args = new String[] {"view.ProjetosFacade", "easyaccept/us1_test.txt", "easyaccept/us1_test_exception.txt","easyaccept/us2_test.txt", "easyaccept/us2_test_exception.txt","easyaccept/us3_test.txt", "easyaccept/us3_test_exception.txt","easyaccept/us4_test.txt", "easyaccept/us5_test.txt","easyaccept/us6_test.txt", "easyaccept/us6_test_exception.txt"}; //separe cada script de teste por virgula.
 	    EasyAccept.main(args);
 	}
 }

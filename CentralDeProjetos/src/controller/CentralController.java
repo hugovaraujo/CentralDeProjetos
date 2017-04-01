@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import exceptions.ParticipacaoControllerValidator;
+import exceptions.AtualizacaoException;
+import exceptions.CentralControllerValidator;
+import exceptions.ConsultaException;
 import model.participacao.Participacao;
 import model.participacao.tipos.GraduandoParticipacao;
 import model.participacao.tipos.PosGraduandoParticipacao;
@@ -30,7 +32,7 @@ public class CentralController {
 	private Participacao controleQuantidade;
 	PessoasController pessoasController;
 	ProjetosController projetosController;
-	private ParticipacaoControllerValidator validator;
+	private CentralControllerValidator validator;
 	private double valorTotalUASC;
 	private double valorEmCaixa;
 	
@@ -42,7 +44,7 @@ public class CentralController {
 		participacoes = new ArrayList<>();
 		pessoasController = new PessoasController();
 		projetosController = new ProjetosController();
-		validator = new ParticipacaoControllerValidator();
+		validator = new CentralControllerValidator();
 		this.valorTotalUASC = 0;
 		this.valorEmCaixa = 0;
 				
@@ -300,8 +302,9 @@ public class CentralController {
 		return 350;
 	}
 	
-	public double calculaColaboracaoUASC(int cod){
-		Projeto proj = projetosController.getProjeto(cod);
+	public double calculaColaboracaoUASC(String cod) throws ConsultaException{
+		validator.validaCalculaColaboracaoUASC(cod);
+		Projeto proj = projetosController.getProjeto(Integer.valueOf(cod));
 		valorTotalUASC += proj.montanteUASC();
 		return proj.montanteUASC();
 	}
@@ -310,7 +313,8 @@ public class CentralController {
 		return valorTotalUASC;
 	}
 	
-	public void diminuiReceita(double valor){
+	public void diminuiReceita(double valor) throws AtualizacaoException{
+		validator.validaDiminuiReceita(valor, valorTotalUASC);
 		valorEmCaixa = calculaColaboracaoTotalUASC() - valor;
 	}
 	

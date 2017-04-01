@@ -7,7 +7,7 @@ import model.participacao.Participacao;
 import model.projeto.Projeto;
 import exceptions.AtualizacaoException;
 import exceptions.ConsultaException;
-import exceptions.FormatoInvalidoException;
+import exceptions.ParametroInvalidoException;
 import exceptions.Validator;
 
 public class PED extends Projeto {
@@ -54,21 +54,21 @@ public class PED extends Projeto {
 			case "producao tecnica":
 				verificador.verificaString(valor, "Producao tecnica");
 				novoValor = Integer.parseInt(valor);
-				verificador.verificaNegativo(novoValor, "Numero de producoes tecnicas");
+				verificador.verificaMenorQueZero(novoValor, "Numero de producoes tecnicas");
 				setProdTecnica(novoValor);
 				break;
 				
 			case "producao academica":
 				verificador.verificaString(valor, "Producoes academica");
 				novoValor = Integer.parseInt(valor);
-				verificador.verificaNegativo(novoValor, "Numero de producoes academicas");
+				verificador.verificaMenorQueZero(novoValor, "Numero de producoes academicas");
 				setProdAcademica(novoValor);
 				break;
 				
 			case "patentes":
 				verificador.verificaString(valor, "Patentes");
 				novoValor = Integer.parseInt(valor);
-				verificador.verificaNegativo(novoValor, "Numero de patentes");
+				verificador.verificaMenorQueZero(novoValor, "Numero de patentes");
 				setPatentes(novoValor);
 				break;
 				
@@ -86,7 +86,7 @@ public class PED extends Projeto {
 				break;
 				
 			default:
-				throw new FormatoInvalidoException("Atributo nulo ou invalido");
+				throw new ParametroInvalidoException("Atributo nulo ou invalido");
 			}
 		} catch (Exception e) {
 			throw new AtualizacaoException("de projeto: " + e.getMessage());
@@ -116,9 +116,9 @@ public class PED extends Projeto {
 		default:
 			try {
 				if (verificador.verificaAtributoContem(atributo)){
-					throw new FormatoInvalidoException("PED nao possui " + atributo);
+					throw new ParametroInvalidoException("PED nao possui " + atributo);
 				} else {
-					throw new FormatoInvalidoException("Atributo nulo ou invalido");
+					throw new ParametroInvalidoException("Atributo nulo ou invalido");
 				}
 			} catch (Exception e) {
 				throw new ConsultaException("de projeto: " + e.getMessage());

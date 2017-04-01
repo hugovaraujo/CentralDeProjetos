@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import exceptions.CadastroException;
-import exceptions.FormatoInvalidoException;
+import exceptions.ParametroInvalidoException;
 import exceptions.StringInvalidaException;
 import model.projeto.tipos.Extensao;
 import model.projeto.tipos.Monitoria;
@@ -15,7 +15,7 @@ import model.projeto.tipos.PET;
 public class ProjetosControllerTest {
 
 	@Test
-	public void testAdicionarMonitoria() throws CadastroException, FormatoInvalidoException, StringInvalidaException {
+	public void testAdicionarMonitoria() throws CadastroException, ParametroInvalidoException, StringInvalidaException {
 		
 		Monitoria m = new Monitoria("Nome", "disciplina", 1 , "objetivo", "periodo", null, 1);
 		
@@ -29,7 +29,7 @@ public class ProjetosControllerTest {
 	}
 	
 	@Test
-	public void testAdicionarExtensao() throws CadastroException, FormatoInvalidoException, StringInvalidaException {
+	public void testAdicionarExtensao() throws CadastroException, ParametroInvalidoException, StringInvalidaException {
 		
 		Extensao e = new Extensao("Nome", "objetivo", 1, null, 1);
 		
@@ -41,7 +41,7 @@ public class ProjetosControllerTest {
 	}
 	
 	@Test
-	public void testAdicionarPED() throws CadastroException, FormatoInvalidoException, StringInvalidaException {
+	public void testAdicionarPED() throws CadastroException, ParametroInvalidoException, StringInvalidaException {
 		
 		PED p = new PED("Nome", "categoria", 1, 1, 1, "objetivo", null, 1);
 		
@@ -55,7 +55,7 @@ public class ProjetosControllerTest {
 	}
 	
 	@Test
-	public void testAdicionarPET() throws CadastroException, FormatoInvalidoException, StringInvalidaException {
+	public void testAdicionarPET() throws CadastroException, ParametroInvalidoException, StringInvalidaException {
 		
 		PET p = new PET("Nome", "objetivo", 1, 1, 1, 1, 1, null, 1);
 		

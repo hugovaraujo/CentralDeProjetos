@@ -9,7 +9,7 @@ import model.pessoa.Pessoa;
 import model.projeto.Projeto;
 import model.projeto.tipos.PED;;
 
-public class ParticipacaoControllerValidator {
+public class CentralControllerValidator {
 	
 	public void validaAssociaProfessor(Pessoa pessoa, Projeto projeto, int qntHoras, double valorHora, List<Participacao> participacoes, boolean coordenador) throws Exception{
 		
@@ -161,6 +161,22 @@ public class ParticipacaoControllerValidator {
 
 		
 	}
+	
+	public void validaDiminuiReceita(double valor, double d) throws AtualizacaoException{
+		if (valor < 0.0){
+			throw new AtualizacaoException("da receita da unidade: valor negativo");
+		}
+		if (d < valor){
+			throw new AtualizacaoException("da receita da unidade: a unidade nao possui fundos suficientes");
+		}
+	}
+	
+	public void validaCalculaColaboracaoUASC(String cod) throws ConsultaException{
+		if (cod == null || cod.trim().isEmpty()){
+			throw new ConsultaException("de projeto: codigo nulo ou vazio");
+		}
+	}
+	
 
 //Testing
 }

@@ -1,6 +1,6 @@
 package exceptions;
 
-public class FormatoInvalidoException extends Exception {
+public class ParametroInvalidoException extends Exception {
 	
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class FormatoInvalidoException extends Exception {
 	 * @param msg Nome do parametro que é invalido.
 	 * 
 	 */
-	public FormatoInvalidoException(String msg){
+	public ParametroInvalidoException(String msg){
 		super(msg);
 	}
 

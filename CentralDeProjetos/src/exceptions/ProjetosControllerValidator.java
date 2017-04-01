@@ -1,6 +1,7 @@
 package exceptions;
 
 import model.projeto.Projeto;
+import model.projeto.tipos.PED;
 
 public class ProjetosControllerValidator {
 	
@@ -48,9 +49,9 @@ public class ProjetosControllerValidator {
 			verificador.verificaString(objetivo, "Objetivo");
 			verificador.verificaString(dataInicio, "Data de inicio");
 			verificador.verificaCategoria(categoria.toUpperCase());
-			verificador.verificaNegativo(prodTecnica, "Numero de producoes tecnicas");
-			verificador.verificaNegativo(prodAcademica, "Numero de producoes academicas");
-			verificador.verificaNegativo(patentes, "Numero de patentes");
+			verificador.verificaMenorQueZero(prodTecnica, "Numero de producoes tecnicas");
+			verificador.verificaMenorQueZero(prodAcademica, "Numero de producoes academicas");
+			verificador.verificaMenorQueZero(patentes, "Numero de patentes");
 			verificador.verificaData(dataInicio);
 			verificador.verificaDuracao(duracao);
 		} catch (Exception e) {
@@ -66,9 +67,9 @@ public class ProjetosControllerValidator {
 			verificador.verificaString(dataInicio, "Data de inicio");
 			verificador.verificaImpacto(impacto);
 			verificador.verificaRendimento(rendimento);
-			verificador.verificaNegativo(prodTecnica, "Numero de producoes tecnicas");
-			verificador.verificaNegativo(prodAcademica, "Numero de producoes academicas");
-			verificador.verificaNegativo(patentes, "Numero de patentes");
+			verificador.verificaMenorQueZero(prodTecnica, "Numero de producoes tecnicas");
+			verificador.verificaMenorQueZero(prodAcademica, "Numero de producoes academicas");
+			verificador.verificaMenorQueZero(patentes, "Numero de patentes");
 			verificador.verificaData(dataInicio);
 			verificador.verificaDuracao(duracao);
 		} catch (Exception e) {
@@ -97,6 +98,52 @@ public class ProjetosControllerValidator {
 			throw new CadastroException("de projeto: " + e.getMessage());
 		}
 
+	}
+	
+	public void validaAtualizaDespesas(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws AtualizacaoException{
+		try {
+			verificador.verificaString(cod, "codigo");
+			verificador.verificaNegativo(montanteBolsas);
+			verificador.verificaNegativo(montanteCapital);
+			verificador.verificaNegativo(montanteCusteio);
+					
+		} catch (Exception e) {
+			throw new AtualizacaoException("de projeto: " + e.getMessage());
+		}
+	}
+	
+	public void validaAtualizaDespesas(Projeto proj, double montanteBolsas, double montanteCusteio, double montanteCapital) throws AtualizacaoException{
+		try {
+			if (proj.getTipo().equals("Monitoria") && (montanteCusteio > 0.0 || montanteCapital > 0.0) ){
+				throw new ProjetoPermissao("projeto do tipo monitoria nao permite despesas de custeio ou capital");
+			}
+			if (proj.getTipo().equals("PET") && montanteCapital > 0.0){
+				throw new ProjetoPermissao("projeto do tipo PET nao permite despesas de capital");
+			}
+			if (proj.getTipo().equals("Extensao") && montanteCapital > 0.0){
+				throw new ProjetoPermissao("projeto do tipo Extensao nao permite despesas de capital");
+			}
+			if (proj.getTipo().equals("PED")){
+				if (((PED)proj).getCategoria().equals("PIBIC") || ((PED)proj).getCategoria().equals("PIBITI")){
+					
+					if (montanteBolsas <= 0.0){
+						throw new ProjetoPermissao("projeto do tipo P&D - PIBIC ou PIBITI deve permitir despesas de bolsas");
+					}
+					if (montanteCusteio > 0.0 || montanteCapital > 0.0){
+						throw new ProjetoPermissao("projeto do tipo P&D - PIBIC ou PIBITI nao permite despesas de custeio ou capital");
+					}
+				}
+					
+				if (((PED)proj).getCategoria().equals("COOP") && (montanteBolsas <= 0.0 || montanteCusteio <= 0.0 || montanteCapital <= 0.0)){
+					throw new ProjetoPermissao("projeto do tipo Coop devem possuir todas as despesas");
+				}
+						
+					
+				}
+					
+		} catch (Exception e) {
+			throw new AtualizacaoException("de projeto: " + e.getMessage());
+		}
 	}
 	
 }

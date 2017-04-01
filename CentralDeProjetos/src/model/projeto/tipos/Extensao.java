@@ -7,7 +7,7 @@ import model.participacao.Participacao;
 import model.projeto.Projeto;
 import exceptions.AtualizacaoException;
 import exceptions.ConsultaException;
-import exceptions.FormatoInvalidoException;
+import exceptions.ParametroInvalidoException;
 import exceptions.Validator;
 
 public class Extensao extends Projeto {
@@ -62,7 +62,7 @@ public class Extensao extends Projeto {
 				break;
 				
 			default:
-				throw new FormatoInvalidoException("Atributo nulo ou invalido");
+				throw new ParametroInvalidoException("Atributo nulo ou invalido");
 			}
 		} catch (Exception e) {
 			throw new AtualizacaoException("de projeto: " + e.getMessage());
@@ -86,9 +86,9 @@ public class Extensao extends Projeto {
 		default:
 			try {
 				if (verificador.verificaAtributoContem(atributo)){
-					throw new FormatoInvalidoException("Extensao nao possui " + atributo);
+					throw new ParametroInvalidoException("Extensao nao possui " + atributo);
 				} else {
-					throw new FormatoInvalidoException("Atributo nulo ou invalido");
+					throw new ParametroInvalidoException("Atributo nulo ou invalido");
 				}
 			} catch (Exception e) {
 				throw new ConsultaException("de projeto: " + e.getMessage());

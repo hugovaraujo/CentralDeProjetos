@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import exceptions.FormatoInvalidoException;
+import exceptions.ParametroInvalidoException;
 import exceptions.StringInvalidaException;
 import exceptions.Validator;
 
@@ -103,35 +103,35 @@ public class ValidatorTest {
 			String emailInvalido = "juleobar@gmail..com";
 			verificador.verificaEmail(emailInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("Email invalido", e.getMessage());
 		}
 		try {
 			String emailInvalido = "juleobar@@gmail.com";
 			verificador.verificaEmail(emailInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("Email invalido", e.getMessage());
 		}
 		try {
 			String emailInvalido = "juleobar.gmail.com";
 			verificador.verificaEmail(emailInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("Email invalido", e.getMessage());
 		}
 		try {
 			String emailInvalido = "juleobar@@gmailcom";
 			verificador.verificaEmail(emailInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("Email invalido", e.getMessage());
 		}
 		try {
 			String emailInvalido = "@gmail.com";
 			verificador.verificaEmail(emailInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("Email invalido", e.getMessage());
 		}
 	
@@ -148,42 +148,42 @@ public class ValidatorTest {
 			String cpfInvalido = "058014.574-54";
 			verificador.verificaCpf(cpfInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF invalido", e.getMessage());
 		}
 		try {
 			String cpfInvalido = "058..014.574-54";
 			verificador.verificaCpf(cpfInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF invalido", e.getMessage());
 		}
 		try {
 			String cpfInvalido = "058.014.574.54";
 			verificador.verificaCpf(cpfInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF invalido", e.getMessage());
 		}
 		try {
 			String cpfInvalido = "058.0014.574-54";
 			verificador.verificaCpf(cpfInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF invalido", e.getMessage());
 		}
 		try {
 			String cpfInvalido = "058.014.574-564";
 			verificador.verificaCpf(cpfInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF invalido", e.getMessage());
 		}
 		try {
 			String cpfInvalido = "058.014.574564";
 			verificador.verificaCpf(cpfInvalido);
 			Assert.fail();
-		} catch (FormatoInvalidoException e) {
+		} catch (ParametroInvalidoException e) {
 			Assert.assertEquals("CPF invalido", e.getMessage());
 		}
 		

@@ -7,7 +7,7 @@ import model.participacao.Participacao;
 import model.projeto.Projeto;
 import exceptions.AtualizacaoException;
 import exceptions.ConsultaException;
-import exceptions.FormatoInvalidoException;
+import exceptions.ParametroInvalidoException;
 import exceptions.Validator;
 
 public class Monitoria extends Projeto {
@@ -76,7 +76,7 @@ public class Monitoria extends Projeto {
 				break;
 				
 			default:
-				throw new FormatoInvalidoException("Atributo nulo ou invalido");
+				throw new ParametroInvalidoException("Atributo nulo ou invalido");
 			}
 		} catch (Exception e) {
 			throw new AtualizacaoException("de projeto: " + e.getMessage());
@@ -104,9 +104,9 @@ public class Monitoria extends Projeto {
 		default:
 			try {
 				if (verificador.verificaAtributoContem(atributo)){
-					throw new FormatoInvalidoException("Monitoria nao possui " + atributo);
+					throw new ParametroInvalidoException("Monitoria nao possui " + atributo);
 				} else {
-					throw new FormatoInvalidoException("Atributo nulo ou invalido");
+					throw new ParametroInvalidoException("Atributo nulo ou invalido");
 				}
 			} catch (Exception e) {
 				throw new ConsultaException("de projeto: " + e.getMessage());

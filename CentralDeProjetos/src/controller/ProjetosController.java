@@ -59,7 +59,6 @@ public class ProjetosController {
 
 		projeto.setCodigo(projeto.geraCodigo());
 		projetos.put(projeto.getCodigo(), projeto);
-		System.out.println("adicionou projetooooo");
 		projetosNome.put(projeto.getNome(), projeto);
 		
 		return projeto.getCodigo();
@@ -87,7 +86,6 @@ public class ProjetosController {
 		
 		projeto.setCodigo(projeto.geraCodigo());
 		projetos.put(projeto.getCodigo(), projeto);
-		System.out.println("adicionou projetooooo");
 		projetosNome.put(projeto.getNome(), projeto);
 		
 		return projeto.getCodigo();
@@ -235,9 +233,12 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 	 * @param montanteBolsas
 	 * @param montanteCusteio
 	 * @param montanteCapital
+	 * @throws AtualizacaoException 
 	 */
-	public void atualizaDespesas(int cod, double montanteBolsas, double montanteCusteio, double montanteCapital){
-		Projeto proj = getProjeto(cod);
+	public void atualizaDespesas(String cod, double montanteBolsas, double montanteCusteio, double montanteCapital) throws AtualizacaoException{
+		validator.validaAtualizaDespesas(cod, montanteBolsas, montanteCusteio, montanteCapital);
+		Projeto proj = getProjeto(Integer.valueOf(cod));
+		validator.validaAtualizaDespesas(proj, montanteBolsas, montanteCusteio, montanteCapital);
 		proj.getDespesas().setMontanteBolsas(montanteBolsas);
 		proj.getDespesas().setMontanteCapital(montanteCapital);
 		proj.getDespesas().setMontanteCusteio(montanteCusteio);
