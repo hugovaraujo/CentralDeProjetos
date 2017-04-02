@@ -1,7 +1,11 @@
 package model.projeto;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -110,6 +114,18 @@ public abstract class Projeto {
 		
 	}
 	
+	public boolean emAndamento() throws ParseException{
+		
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		Date data = formato.parse(dataInicio);
+		calendar.setTime(data);
+		calendar.add(Calendar.MONTH, duracao);
+		
+		return (Calendar.getInstance().before(calendar));
+		
+	}
+	
 	public List<Pessoa> getParticipantes() {
 		
 		List<Pessoa> participantes = new ArrayList<Pessoa>();
@@ -123,13 +139,70 @@ public abstract class Projeto {
 		return participantes;
 	}
 	
+	public int getGraduandos(){
+		
+		int graduandos = 0;
+		
+		for (Participacao participacao : participacoes) {
+			
+			if(participacao.getTipo().equals("GraduandoParticipacao"))
+				graduandos++;
+			
+		}
+		
+		return graduandos;
+		
+	}
+	
+	public int getPosGraduandos(){
+		
+		int posgraduandos = 0;
+		
+		for (Participacao participacao : participacoes) {
+			
+			if(participacao.getTipo().equals("PosGraduandoParticipacao"))
+				posgraduandos++;
+			
+		}
+		
+		return posgraduandos;
+		
+	}
+
+	public int getProfissionais(){
+	
+	int profissionais = 0;
+	
+	for (Participacao participacao : participacoes) {
+		
+		if(participacao.getTipo().equals("ProfissionalParticipacao"))
+			profissionais++;
+		
+	}
+	
+	return profissionais;
+	
+	}
+	
 	public double custoTotal(){
 		return despesas.getMontanteBolsas() + despesas.getMontanteCapital() + despesas.getMontanteCusteio();
 	}
 
 	@Override
 	public String toString() {
-		return "Nome: "+ nome+"\n"+"Data de inicio: "+ dataInicio+"\n"+"Coordenador"+"\n"+"Situacao:";
+		
+		String situacao = null;
+		try {
+			if(emAndamento())
+				situacao = "Em andamento.";
+			else{
+				situacao = "Finalizado.";
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return "Nome: "+ nome+"\n"+"Data de inicio: "+ dataInicio+"\n"+"Coordenador:"+"\n"+"Situacao: "+situacao+"\n";
 	}
 	
 	

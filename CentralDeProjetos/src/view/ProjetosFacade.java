@@ -4,11 +4,9 @@ import controller.CentralController;
 import controller.PessoasController;
 import controller.ProjetosController;
 import easyaccept.EasyAccept;
-import exceptions.AssociacaoException;
 import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
-import exceptions.ObtencaoException;
 import exceptions.RemocaoException;
 
 
@@ -31,43 +29,43 @@ PessoasController pessoas;
 	}
 	
 	public void fechaSistema(){
-		
+	
 	}
 	// PARTICIPACAO
-	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras) throws AssociacaoException{
+	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras) throws Exception {
 		
 		centralController.associaProfessor(cpfPessoa, codigoProjeto, coordenador, valorHora, qntHoras, 0);
 	}
 
-	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras) throws AssociacaoException{
+	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras) throws Exception {
 		
 		centralController.associaProfissional(cpfPessoa, codigoProjeto, cargo, valorHora, qntHoras,0);
 	}
 
 
-	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras) throws AssociacaoException{
+	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras) throws Exception {
 
 		centralController.associaGraduando(cpfPessoa, codigoProjeto, valorHora, qntHoras,0);
 		
 	}
 	
-public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nivel, double valorHora, int qntHoras) throws AssociacaoException{
+	public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nivel, double valorHora, int qntHoras) throws Exception {
 		
 		centralController.associaPosGraduando(cpfPessoa, codigoProjeto, nivel, valorHora, qntHoras,0);
 	}
 
-	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws RemocaoException{
+	public void removeParticipacao(String cpfPessoa, int codigoProjeto) throws Exception {
 		
 		centralController.removeParticipacao(cpfPessoa, codigoProjeto);
 		
 	}
 	
-	public String getInfoPessoa(String cpf, String atributo) throws ConsultaException{
+	public String getInfoPessoa(String cpf, String atributo) throws Exception{
 		
 		return centralController.getInfoPessoa(cpf, atributo);
 	}
 	
-	public String getInfoProjeto(int codigo, String atributo) throws ConsultaException{
+	public String getInfoProjeto(int codigo, String atributo) throws Exception{
 		
 		return centralController.getInfoProjeto(codigo, atributo);
 		
@@ -75,19 +73,19 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 	
 	
 	// PESSOA
-	public String cadastraPessoa(String cpf, String nome, String email) throws CadastroException{
+	public String cadastraPessoa(String cpf, String nome, String email) throws Exception {
 		
 		return pessoas.cadastraPessoa(cpf, nome, email);
 
 	}
 
-	public void removePessoa(String cpf) throws RemocaoException{
+	public void removePessoa(String cpf) throws Exception {
 		
 		pessoas.removePessoa(cpf);	
 		
 	}
 
-	public void editaPessoa(String cpf, String atributo, String valor) throws AtualizacaoException{
+	public void editaPessoa(String cpf, String atributo, String valor) throws Exception{
 		pessoas.editaPessoa(cpf, atributo, valor);
 		
 	}
@@ -123,13 +121,13 @@ public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nive
 		
 	}
 
-	public void editaProjeto(int codigo, String atributo, String valor) throws AtualizacaoException{
+	public void editaProjeto(int codigo, String atributo, String valor) throws Exception{
 		
 		projetos.editarProjeto(codigo, atributo, valor);
 		
 	}
 	
-	public int getCodigoProjeto(String nome) throws ObtencaoException{
+	public int getCodigoProjeto(String nome)throws Exception{
 		return projetos.getCodigoProjeto(nome);
 	}
 	

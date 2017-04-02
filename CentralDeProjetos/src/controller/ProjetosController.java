@@ -250,6 +250,12 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 		persistencia.gerarRelatorio(projetos);
 	}
 	
+	public void gerarHistoricoColaboracoes(double valorEmCaixa, double valorGasto) throws Exception{
+		
+		persistencia.gerarHistoricoColaboracoes(projetos, valorEmCaixa, valorGasto);
+		
+	}
+	
 	
 		
 }

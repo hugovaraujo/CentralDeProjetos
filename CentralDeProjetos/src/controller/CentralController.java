@@ -33,6 +33,7 @@ public class CentralController {
 	private CentralControllerValidator validator;
 	private double valorTotalUASC;
 	private double valorEmCaixa;
+	private double valorGasto;
 	
 	/**
 	 * Construtor de MainController 
@@ -45,6 +46,7 @@ public class CentralController {
 		validator = new CentralControllerValidator();
 		this.valorTotalUASC = 0;
 		this.valorEmCaixa = 0;
+		this.valorGasto = 0;
 				
 	}
 	
@@ -258,6 +260,12 @@ public class CentralController {
 		
 		return participantes;
 	}
+	
+	public void gerarHistoricoColaboracoes() throws Exception{
+		
+		projetosController.gerarHistoricoColaboracoes(valorEmCaixa,valorGasto);
+		
+	}
 
 	public Participacao getControleQuantidade() {
 		return controleQuantidade;
@@ -312,6 +320,7 @@ public class CentralController {
 	public void diminuiReceita(double valor) throws AtualizacaoException{
 		validator.validaDiminuiReceita(valor, getValorEmCaixa());
 		setValorEmCaixa(getValorEmCaixa() - valor);
+		setValorGasto(getValorEmCaixa()+ valor);
 		
 	}
 	
@@ -330,4 +339,14 @@ public class CentralController {
 	public void setValorEmCaixa(double valorEmCaixa) {
 		this.valorEmCaixa = valorEmCaixa;
 	}
+
+	public double getValorGasto() {
+		return valorGasto;
+	}
+
+	public void setValorGasto(double valorGasto) {
+		this.valorGasto = valorGasto;
+	}
+	
+	
 }
