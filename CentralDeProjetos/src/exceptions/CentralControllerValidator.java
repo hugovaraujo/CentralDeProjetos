@@ -11,7 +11,7 @@ import model.projeto.tipos.PED;;
 
 public class CentralControllerValidator {
 	
-	public void validaAssociaProfessor(Pessoa pessoa, Projeto projeto, int qntHoras, double valorHora, List<Participacao> participacoes, boolean coordenador) throws Exception{
+	public void validaAssociaProfessor(Pessoa pessoa, Projeto projeto, int qntHoras, double valorHora, List<Participacao> participacoes, boolean coordenador) throws AssociacaoException{
 		
 		try {
 			if (pessoa == null) {
@@ -107,28 +107,32 @@ public class CentralControllerValidator {
 		
 	}
 	
-	public void validaAssociaProfissional(Pessoa pessoa, Projeto projeto) throws Exception{
-		
-		if (pessoa == null) {
+	public void validaAssociaProfissional(Pessoa pessoa, Projeto projeto) throws AssociacaoException{
+		try {
+			if (pessoa == null) {
 			throw new Exception("Pessoa nao existe");
+			}
+			if (projeto == null) {
+				throw new Exception("Projeto nao existe");
+			}
+		} catch (Exception e) {
+			throw new AssociacaoException(e.getMessage());
 		}
-		if (projeto == null) {
-			throw new Exception("Projeto nao existe");
-		}
+		
 	}
 
 	public void validaAssociaPosGraduando(Pessoa pessoa, Projeto projeto) throws AssociacaoException {
 		try {
 			if (pessoa == null) {
 			throw new Exception("Pessoa nao existe");
-		}
-		if (projeto == null) {
-			throw new Exception("Projeto nao existe");
-		}
-		
-		if (projeto.getTipo().equals("PET")|| (projeto.getTipo().equals("Monitoria"))){
-			throw new Exception("Tipo de projeto invalido para pos graduando");
-		}
+			}
+			if (projeto == null) {
+				throw new Exception("Projeto nao existe");
+			}
+			
+			if (projeto.getTipo().equals("PET")|| (projeto.getTipo().equals("Monitoria"))){
+				throw new Exception("Tipo de projeto invalido para pos graduando");
+			}
 		} catch (Exception e) {
 			throw new AssociacaoException(e.getMessage());
 		}

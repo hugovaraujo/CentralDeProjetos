@@ -34,7 +34,7 @@ public class PessoasController {
 	 * 
 	 * @param Pessoa
 	 * @return true se for adicionado, false se nao for possivel adicionar.
-	 * @throws Exception
+	 * @throws CadastroException
 	 */
 	
 	public String cadastraPessoa(String cpf, String nome, String email) throws CadastroException {
@@ -51,11 +51,10 @@ public class PessoasController {
 	 * Remove uma pessoa do conjunto de pessoas ja existentes.
 	 * 
 	 * @param pessoa
-	 * @return true se for removido com sucesso, falso se nao for possivel
-	 *         remover.
-	 * @throws Exception
+
+	 * @throws RemocaoException
 	 */
-	public void removePessoa(String cpf) throws Exception {
+	public void removePessoa(String cpf) throws RemocaoException {
 		if (!pessoas.containsKey(cpf)) {
 			throw new RemocaoException("de pessoa: Pessoa nao encontrada");
 		}
@@ -65,9 +64,10 @@ public class PessoasController {
 	/**
 	 * Edita uma pessoa enviada como parametro.
 	 * 
-	 * @param pessoa
-	 * @return retorna true se editar com sucesso, falso se nao for possivel
-	 *         editar.
+	 * @param cpf
+	 * @param atributo
+	 * @param valor
+	 * @throws AtualizacaoException
 	 */
 	public void editaPessoa(String cpf, String atributo, String valor) throws AtualizacaoException{
 		validator.validaEditaPessoa(cpf, atributo, valor, !pessoas.containsKey(cpf));
@@ -82,18 +82,20 @@ public class PessoasController {
 	}
 	
 	public Pessoa getPessoa(String cpf){
-		
 		return pessoas.get(cpf);
 		
 	}
 
+
 	/**
 	 * Procura uma pessoa no conjunto, usando o CPF como chave.
 	 * 
+
 	 * @param cpf
+	 * @param atributo
 	 * @return retorna a pessoa a qual o CPF pertence ou null caso nao ache uma
 	 *         pessoa.
-	 * @throws Exception
+	 * @throws ConsultaException
 	 */
 	public String getInfoPessoa(String cpf, String atributo) throws ConsultaException{
 		validator.validaGetInfoPesso(!pessoas.containsKey(cpf));

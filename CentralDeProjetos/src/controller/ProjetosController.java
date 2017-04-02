@@ -203,7 +203,7 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 	 * M�todo que procura um projeto pelo nome
 	 * 
 	 * @param nome
-	 * @return retorna o c�digo do projeto encontrado
+	 * @return retorna o codigo do projeto encontrado
 	 * @throws Exception
 	 */
 	public int getCodigoProjeto(String nome)throws Exception{

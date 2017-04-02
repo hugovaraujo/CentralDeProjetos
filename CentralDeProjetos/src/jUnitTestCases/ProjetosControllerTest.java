@@ -8,17 +8,10 @@ import controller.ProjetosController;
 import exceptions.CadastroException;
 import exceptions.ParametroInvalidoException;
 import exceptions.StringInvalidaException;
-import model.projeto.tipos.Extensao;
-import model.projeto.tipos.Monitoria;
-import model.projeto.tipos.PED;
-import model.projeto.tipos.PET;
+
 
 public class ProjetosControllerTest {
 	
-	Monitoria m;
-	Extensao e;
-	PED ped;
-	PET pet;
 	ProjetosController projetos = new ProjetosController();
 	
 	@Before

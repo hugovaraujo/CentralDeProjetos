@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import exceptions.AssociacaoException;
 import exceptions.AtualizacaoException;
 import exceptions.CentralControllerValidator;
 import exceptions.ConsultaException;
+import exceptions.RemocaoException;
 import model.participacao.Participacao;
 import model.participacao.tipos.GraduandoParticipacao;
 import model.participacao.tipos.PosGraduandoParticipacao;
@@ -22,10 +24,6 @@ import model.projeto.Projeto;
  *
  */
 
-/**
- * @author
- *
- */
 public class CentralController {
 	
 	public List<Participacao> participacoes;
@@ -59,9 +57,9 @@ public class CentralController {
 	 * @param valorHora
 	 * @param qntHoras
 	 * @param duracao
-	 * @throws Exception 
+	 * @throws AssociacaoException 
 	 */
-	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras, int duracao) throws Exception{
+	public void associaProfessor(String cpfPessoa, int codigoProjeto, boolean coordenador, double valorHora, int qntHoras, int duracao) throws AssociacaoException{
 		
 		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este metodo.
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
@@ -90,11 +88,11 @@ public class CentralController {
 	 * @param valorHora
 	 * @param qntHoras
 	 * @param duracao
-	 * @throws Exception 
+	 * @throws AssociacaoException 
 	 */
 	
-	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras, int duracao) throws Exception{
-		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
+	public void associaProfissional(String cpfPessoa, int codigoProjeto, String cargo, double valorHora, int qntHoras, int duracao) throws AssociacaoException{
+		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); 
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		validator.validaAssociaProfissional(pessoa, projeto);
@@ -116,11 +114,11 @@ public class CentralController {
 	 * @param valorHora
 	 * @param qntHoras
 	 * @param duracao
-	 * @throws Exception 
+	 * @throws AssociacaoException 
 	 */
-	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras, int duracao) throws Exception{
+	public void associaGraduando(String cpfPessoa, int codigoProjeto, double valorHora, int qntHoras, int duracao) throws AssociacaoException{
 		
-		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
+		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); 
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		validator.validaAssociaGraduando(pessoa, projeto, participacoes);
@@ -143,11 +141,11 @@ public class CentralController {
 	 * @param valorHora
 	 * @param qntHoras
 	 * @param duracao
-	 * @throws Exception 
+	 * @throws AssociacaoException 
 	 */
-	public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nivel, double valorHora, int qntHoras, int duracao) throws Exception{
+	public void associaPosGraduando(String cpfPessoa, int codigoProjeto, String nivel, double valorHora, int qntHoras, int duracao) throws AssociacaoException{
 		
-		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
+		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); 
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		validator.validaAssociaPosGraduando(pessoa, projeto);
@@ -163,9 +161,9 @@ public class CentralController {
 	
 	
 	
-	public boolean removeParticipacao(String cpfPessoa, int codigoProjeto) throws Exception{
+	public boolean removeParticipacao(String cpfPessoa, int codigoProjeto) throws RemocaoException{
 		
-		Pessoa pessoa = pessoasController.pessoas.get(cpfPessoa); //TODO: CRIAR METODO getPessoa no CRUD de pessoas para substituir este m�todo.
+		Pessoa pessoa = pessoasController.getPessoa(cpfPessoa); 
 		Projeto projeto = projetosController.getProjeto(codigoProjeto);
 		
 		validator.validaRemoveParticipacao(pessoa, projeto, participacoes);
@@ -182,14 +180,14 @@ public class CentralController {
 		return false;
 	}
 	
-	public String getInfoPessoa(String cpf, String atributo) throws Exception{
+	public String getInfoPessoa(String cpf, String atributo) throws ConsultaException{
 		
 		if(atributo.equals("Participacoes")){
 			
 			Pessoa pessoa = pessoasController.pessoas.get(cpf);
 			
 			if (pessoa == null) {
-				throw new Exception("Pessoa nao existe");
+				throw new ConsultaException("de projeto: Pessoa nao existe");
 			}
 			
 			return this.getPessoaParticipacao(pessoa);
@@ -199,14 +197,14 @@ public class CentralController {
 		}
 	}
 	
-	public String getInfoProjeto(int codigo, String atributo) throws Exception {
+	public String getInfoProjeto(int codigo, String atributo) throws ConsultaException{
 		
 		if(atributo.equals("Participacoes")){
 			
 			Projeto projeto = projetosController.projetos.get(codigo);
 			
 			if (projeto == null) {
-				throw new Exception("Erro na consulta de projeto: Projeto nao encontrado");
+				throw new ConsultaException("de projeto: Projeto nao encontrado");
 			}
 			
 			return this.getProjetoParticipantes(projeto);
