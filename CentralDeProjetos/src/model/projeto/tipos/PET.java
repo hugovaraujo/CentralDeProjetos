@@ -77,7 +77,7 @@ public class PET extends Projeto {
 				break;
 				
 			case "data de inicio":
-				verificador.verificaString(valor, "Data de inicio");
+				verificador.verificaStringF(valor, "Data de inicio");
 				verificador.verificaData(valor);
 				setDataInicio(valor);
 				break;
