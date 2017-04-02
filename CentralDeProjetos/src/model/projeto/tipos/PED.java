@@ -47,6 +47,7 @@ public class PED extends Projeto {
 				break;
 				
 			case "categoria":
+				verificador.verificaString(valor, "Categoria");
 				verificador.verificaCategoria(valor.toUpperCase());
 				setCategoria(valor);
 				break;
@@ -59,7 +60,7 @@ public class PED extends Projeto {
 				break;
 				
 			case "producao academica":
-				verificador.verificaString(valor, "Producoes academica");
+				verificador.verificaString(valor, "Producao academica");
 				novoValor = Integer.parseInt(valor);
 				verificador.verificaMenorQueZero(novoValor, "Numero de producoes academicas");
 				setProdAcademica(novoValor);
@@ -73,7 +74,7 @@ public class PED extends Projeto {
 				break;
 				
 			case "data de inicio":
-				verificador.verificaString(valor, "Data de inicio");
+				verificador.verificaStringF(valor, "Data de inicio");
 				verificador.verificaData(valor);
 				setDataInicio(valor);
 				break;

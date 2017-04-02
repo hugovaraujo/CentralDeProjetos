@@ -2,3 +2,5 @@
 /controller/
 /persistencia/
 /view/
+/exceptions/
+/jUnitTestCases/
