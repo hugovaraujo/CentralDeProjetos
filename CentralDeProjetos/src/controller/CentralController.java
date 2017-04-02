@@ -304,6 +304,7 @@ public class CentralController {
 		validator.validaCalculaColaboracaoUASC(cod);
 		Projeto proj = projetosController.getProjeto(Integer.valueOf(cod));
 		valorTotalUASC += proj.montanteUASC();
+		valorEmCaixa = valorTotalUASC;
 		return proj.montanteUASC();
 	}
 	
@@ -313,13 +314,23 @@ public class CentralController {
 	
 	public void diminuiReceita(double valor) throws AtualizacaoException{
 		validator.validaDiminuiReceita(valor, valorTotalUASC);
-		valorEmCaixa = calculaColaboracaoTotalUASC() - valor;
+		setValorEmCaixa(getValorEmCaixa() - valor);
+		
 	}
 	
 	public double calculaTotalEmCaixa(){
 		return valorEmCaixa;
 	}
 	
+	public List<Participacao> getParticipacoes() {
+		return participacoes;
+	}
 	
+	public double getValorEmCaixa() {
+		return valorEmCaixa;
+	}
 	
+	public void setValorEmCaixa(double valorEmCaixa) {
+		this.valorEmCaixa = valorEmCaixa;
+	}
 }

@@ -1,6 +1,7 @@
-/model/
 /controller/
+/exceptions/
+/factory/
+/jUnitTestCases/
+/model/
 /persistencia/
 /view/
-/exceptions/
-/jUnitTestCases/
