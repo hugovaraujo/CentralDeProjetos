@@ -5,7 +5,9 @@ import java.util.HashMap;
 import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
+import exceptions.ObtencaoException;
 import exceptions.ProjetosControllerValidator;
+import exceptions.RemocaoException;
 import factory.FactoryDoProjeto;
 import model.projeto.Projeto;
 import persistencia.ProjetoPersistencia;
@@ -158,13 +160,12 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 	/**
 	 * Remove um projeto do conjunto de projetos ja existentes.
 	 * 
-	 * @param projeto
-	 * @return true se for removido com sucesso, falso se nao for possivel
-	 *         remover.
+	 * @param codigo
+	 * @throws RemocaoException 
 	 */
-	public boolean removeProjeto(int codigo) {
+	public void removeProjeto(int codigo) throws RemocaoException {
+		validator.validaRemoveProjeto(projetos.containsKey(codigo));
 		projetos.remove(codigo);
-		return false;
 	}
 
 	/**
@@ -204,14 +205,11 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 	 * 
 	 * @param nome
 	 * @return retorna o codigo do projeto encontrado
-	 * @throws Exception
+	 * @throws ObtencaoException 
 	 */
-	public int getCodigoProjeto(String nome)throws Exception{
-		for (int i = 0; i < projetosNome.size(); i++) {
-			if (!projetosNome.containsKey(nome)) {
-				throw new Exception("Erro na obtencao de codigo de projeto: Projeto nao encontrado");
-			}
-		}
+	public int getCodigoProjeto(String nome) throws ObtencaoException{
+		validator.validaGetCodigoProjeto(projetosNome.containsKey(nome));
+
 		return projetosNome.get(nome).getCodigo();
 	}
 	

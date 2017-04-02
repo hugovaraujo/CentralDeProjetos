@@ -8,7 +8,7 @@ public class CadastroException extends ErroException  {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Construtor <b>CadastroInvalidoException</b>.
+	 * Construtor <b>CadastroException</b>.
 	 * 
 	 * @param msg Mensagem relacionada ao objeto.
 	 * 

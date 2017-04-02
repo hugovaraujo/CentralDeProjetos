@@ -146,4 +146,16 @@ public class ProjetosControllerValidator {
 		}
 	}
 	
+	public void validaRemoveProjeto(boolean tem) throws RemocaoException{
+		if (!tem){
+			throw new RemocaoException("de projeto: Projeto nao encontrado");
+		}
+	}
+	
+	public void validaGetCodigoProjeto(boolean tem) throws ObtencaoException{
+		if (!tem){
+			throw new ObtencaoException("Projeto nao encontrado");
+		}
+	}
+	
 }

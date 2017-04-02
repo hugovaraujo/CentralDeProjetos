@@ -10,7 +10,7 @@ public class ConsultaException extends ErroException {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Construtor <b>CadastroInvalidoException</b>.
+	 * Construtor <b>ConsultaException</b>.
 	 * 
 	 * @param msg Mensagem relacionada ao objeto.
 	 * 
