@@ -1,14 +1,21 @@
 package factory;
 
 
+import java.io.Serializable;
+
 import model.projeto.tipos.Extensao;
 import model.projeto.tipos.Monitoria;
 import model.projeto.tipos.PED;
 import model.projeto.tipos.PET;
 
-public class FactoryDoProjeto {
+public class FactoryDoProjeto implements Serializable {
 	
-	 public Monitoria criaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio, int duracao) {
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Monitoria criaMonitoria(String nome, String disciplina, int rendimento, String objetivo, String periodo, String dataInicio, int duracao) {
 		 
 		 return new Monitoria(nome,disciplina,rendimento,objetivo,periodo,dataInicio,duracao);
 		 

@@ -1,10 +1,16 @@
 package model.participacao;
 
+import java.io.Serializable;
+
 import model.pessoa.Pessoa;
 import model.projeto.Projeto;
 
-public abstract class Participacao implements Pontuacao, ValorBolsa{
+public abstract class Participacao implements Pontuacao, ValorBolsa, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected Pessoa pessoa;
 	protected Projeto projeto;
 	protected double valorHora;

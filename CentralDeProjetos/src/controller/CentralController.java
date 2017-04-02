@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +9,7 @@ import exceptions.AssociacaoException;
 import exceptions.AtualizacaoException;
 import exceptions.CentralControllerValidator;
 import exceptions.ConsultaException;
+import exceptions.PersistenciaException;
 import exceptions.RemocaoException;
 import model.participacao.Participacao;
 import model.participacao.tipos.GraduandoParticipacao;
@@ -24,8 +26,12 @@ import model.projeto.Projeto;
  *
  */
 
-public class CentralController {
+public class CentralController implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public List<Participacao> participacoes;
 	private Participacao controleQuantidade;
 	PessoasController pessoasController;
@@ -261,7 +267,7 @@ public class CentralController {
 		return participantes;
 	}
 	
-	public void gerarHistoricoColaboracoes() throws Exception{
+	public void gerarHistoricoColaboracoes() throws PersistenciaException{
 		
 		projetosController.gerarHistoricoColaboracoes(valorEmCaixa,valorGasto);
 		

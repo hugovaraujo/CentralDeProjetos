@@ -1,5 +1,12 @@
 	package view;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import controller.CentralController;
 import controller.PessoasController;
 import controller.ProjetosController;
@@ -7,6 +14,7 @@ import easyaccept.EasyAccept;
 import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
+import exceptions.PersistenciaException;
 import exceptions.RemocaoException;
 
 
@@ -24,11 +32,38 @@ PessoasController pessoas;
 		
 	}
 	
-	public void iniciaSistema(){
+	public void iniciaSistema() throws PersistenciaException{
 		
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream("arquivos_sistema/cpc_ufcg.dat");
+			@SuppressWarnings("resource")
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			centralController = (CentralController) ois.readObject();
+			projetos = (ProjetosController) ois.readObject();
+			pessoas =  (PessoasController) ois.readObject();
+			
+		} catch (IOException | ClassNotFoundException e) {
+			throw new PersistenciaException(e);
+		}
 	}
 	
-	public void fechaSistema(){
+	public void fechaSistema() throws PersistenciaException{
+		
+		File file = new File("arquivos_sistema/cpc_ufcg.dat");
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		try {
+			fos = new FileOutputStream(file);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(centralController);
+			oos.writeObject(projetos);
+			oos.writeObject(pessoas);
+			
+		} catch (IOException e) { throw new PersistenciaException(e); }
+		finally { try { oos.close(); } catch (IOException e) { throw new PersistenciaException(e); }}
+
 	
 	}
 	// PARTICIPACAO

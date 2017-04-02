@@ -12,6 +12,10 @@ import exceptions.Validator;
 
 public class PED extends Projeto {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String categoria;
 	private int prodTecnica;
 	private int prodAcademica;

@@ -12,6 +12,10 @@ import exceptions.Validator;
 
 public class Extensao extends Projeto {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int impacto;
 	private Validator verificador = new Validator();
 

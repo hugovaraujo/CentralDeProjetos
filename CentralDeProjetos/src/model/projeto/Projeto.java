@@ -1,6 +1,7 @@
 package model.projeto;
 
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,8 +15,12 @@ import model.pessoa.Pessoa;
 import exceptions.AtualizacaoException;
 import exceptions.ConsultaException;
 
-public abstract class Projeto {
+public abstract class Projeto implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected int codigo;
 	protected String nome;
 	protected String objetivo;

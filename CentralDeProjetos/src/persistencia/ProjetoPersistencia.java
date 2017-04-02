@@ -6,14 +6,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.Serializable;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Set;
 
+import exceptions.PersistenciaException;
 import model.projeto.Projeto;
 
-public class ProjetoPersistencia {
+public class ProjetoPersistencia implements Serializable{
 
-	public void gerarRelatorio(HashMap<Integer, Projeto> projetos) throws Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void gerarRelatorio(HashMap<Integer, Projeto> projetos) throws PersistenciaException {
 
 		File file = new File("arquivos_sistema/relatorios/cad_projetos.txt");
 		BufferedWriter bw = null;
@@ -62,12 +70,14 @@ public class ProjetoPersistencia {
     		    
             bw.close();
         
-		} catch (IOException e) { throw new Exception(e); }
-		finally { try { bw.close(); } catch (IOException e) { throw new Exception(e); }}
+		} catch (IOException e) { throw new PersistenciaException(e); } catch (ParseException e) {
+			e.printStackTrace();
+		}
+		finally { try { bw.close(); } catch (IOException e) { throw new PersistenciaException(e); }}
 		
 	}
 	
-	public void gerarHistoricoColaboracoes(HashMap<Integer, Projeto> projetos, double valorEmCaixa, double valorGasto) throws Exception{
+	public void gerarHistoricoColaboracoes(HashMap<Integer, Projeto> projetos, double valorEmCaixa, double valorGasto) throws PersistenciaException{
 		
 		File file = new File("arquivos_sistema/relatorios/cad_colaboracoes.txt");
 		BufferedWriter bw = null;
@@ -101,19 +111,8 @@ public class ProjetoPersistencia {
     		bw.write("Total em caixa: R$ "+valorEmCaixa);
     		
         
-		} catch (IOException e) { throw new Exception(e); }
-		finally { try { bw.close(); } catch (IOException e) { throw new Exception(e); }}
-		
-		
-		/*Historico das colaboracoes:
-			==> Nome: <nome_do_projeto> Data de inicio: aaaa-mm-dd Valor colaborado: R$<valor>
-			==> Nome: <nome_do_projeto> Data de inicio: aaaa-mm-dd Valor colaborado: R$<valor>
-			...
-			Total acumulado com colaboracoes: R$<valor_total>
-			Total gasto: R$<valor_gasto>
-			Total em caixa: R$<valor_em_caixa>
-		*/
-		
+		} catch (IOException e) { throw new PersistenciaException(e); }
+		finally { try { bw.close(); } catch (IOException e) { throw new PersistenciaException(e); }}		
 		
 	}
 

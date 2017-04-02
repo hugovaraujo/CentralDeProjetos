@@ -1,13 +1,18 @@
 package model.pessoa;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import model.participacao.Participacao;
 import model.projeto.Projeto;
 
-public class Pessoa {
+public class Pessoa implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cpf;
 	private String email;

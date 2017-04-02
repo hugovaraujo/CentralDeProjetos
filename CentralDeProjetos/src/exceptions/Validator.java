@@ -1,12 +1,17 @@
 package exceptions;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import model.projeto.Categorias;
 
-public class Validator {
+public class Validator implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static final String FORMATO_CPF = "^[0-9]{3}(\\.[0-9]{3}){2}-[0-9]{2}$";
 	static final String FORMATO_EMAIL = "^[A-Za-z0-9-_]+[A-Za-z0-9-_\\.]*[A-Za-z0-9-_]+@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*\\.[A-Za-z]{2,4}$";
 	static final String FORMATO_DATA = "^(?:(?:31/(?:0[13578]|1[02]))/|(?:(?:29|30)/(?:0[1,3-9]|1[0-2])/))(?:(?:1[6-9]|[2-9]\\d)\\d{2})$|^(?:29/(?:02)/(?:(?:(?:1[6-9]|[2-9]\\d)(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0[1-9]|1\\d|2[0-8])/(?:(?:0[1-9])|(?:1[0-2]))/(?:(?:1[6-9]|[2-9]\\d)\\d{2})$";

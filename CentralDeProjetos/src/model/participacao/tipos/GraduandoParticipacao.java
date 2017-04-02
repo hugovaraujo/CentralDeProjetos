@@ -8,6 +8,11 @@ public class GraduandoParticipacao extends Participacao {
 	
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public GraduandoParticipacao(Pessoa pessoa, Projeto projeto, double valorHora, int qtdHoras, int duracao) {
 		
 		this.pessoa = pessoa;

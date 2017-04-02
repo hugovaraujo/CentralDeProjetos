@@ -6,6 +6,10 @@ import model.projeto.Projeto;
 
 public class ProfessorParticipacao extends Participacao{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean coordenador;
 	private final double DEFAULT_POINT = 4;
 	

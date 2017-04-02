@@ -12,6 +12,10 @@ import exceptions.Validator;
 
 public class Monitoria extends Projeto {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int rendimento;
 	private String disciplina;
 	private String periodo;

@@ -1,8 +1,14 @@
 package exceptions;
 
-public class PessoasControllerValidator {
+import java.io.Serializable;
+
+public class PessoasControllerValidator implements Serializable{
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Validator verificador;
 	
 	public PessoasControllerValidator(){

@@ -12,6 +12,10 @@ import exceptions.Validator;
 
 public class PET extends Projeto {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int impacto;
 	private int rendimento;
 	private int prodTecnica;

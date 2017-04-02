@@ -1,10 +1,16 @@
 package exceptions;
 
+import java.io.Serializable;
+
 import model.projeto.Projeto;
 import model.projeto.tipos.PED;
 
-public class ProjetosControllerValidator {
+public class ProjetosControllerValidator implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Validator verificador;
 	
 	public ProjetosControllerValidator() {

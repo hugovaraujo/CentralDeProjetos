@@ -1,11 +1,13 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import exceptions.AtualizacaoException;
 import exceptions.CadastroException;
 import exceptions.ConsultaException;
 import exceptions.ObtencaoException;
+import exceptions.PersistenciaException;
 import exceptions.ProjetosControllerValidator;
 import exceptions.RemocaoException;
 import factory.FactoryDoProjeto;
@@ -18,8 +20,12 @@ import persistencia.ProjetoPersistencia;
  * @author 
  *
  */
-public class ProjetosController {
+public class ProjetosController implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public HashMap<Integer, Projeto> projetos;
 	private FactoryDoProjeto factoryProjeto;
 	private HashMap<String, Projeto> projetosNome;
@@ -250,7 +256,7 @@ validator.validaAdicionaPED(nome, categoria, prodTecnica, prodAcademica, patente
 		persistencia.gerarRelatorio(projetos);
 	}
 	
-	public void gerarHistoricoColaboracoes(double valorEmCaixa, double valorGasto) throws Exception{
+	public void gerarHistoricoColaboracoes(double valorEmCaixa, double valorGasto) throws PersistenciaException{
 		
 		persistencia.gerarHistoricoColaboracoes(projetos, valorEmCaixa, valorGasto);
 		

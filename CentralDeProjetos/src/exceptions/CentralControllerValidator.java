@@ -1,6 +1,7 @@
 
 package exceptions;
 
+import java.io.Serializable;
 import java.util.List;
 
 import model.participacao.Participacao;
@@ -9,8 +10,13 @@ import model.pessoa.Pessoa;
 import model.projeto.Projeto;
 import model.projeto.tipos.PED;;
 
-public class CentralControllerValidator {
+public class CentralControllerValidator implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void validaAssociaProfessor(Pessoa pessoa, Projeto projeto, int qntHoras, double valorHora, List<Participacao> participacoes, boolean coordenador) throws AssociacaoException{
 		
 		try {

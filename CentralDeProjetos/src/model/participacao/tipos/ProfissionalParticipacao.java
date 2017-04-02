@@ -6,6 +6,10 @@ import model.projeto.Projeto;
 
 public class ProfissionalParticipacao extends Participacao {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String cargo;
 	private int qtdDeParticipantes;
 	

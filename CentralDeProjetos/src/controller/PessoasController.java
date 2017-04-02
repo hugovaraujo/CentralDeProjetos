@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import exceptions.AtualizacaoException;
@@ -15,8 +16,12 @@ import model.pessoa.Pessoa;
  * @author
  *
  */
-public class PessoasController {
+public class PessoasController implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public HashMap<String, Pessoa> pessoas;
 	public PessoasControllerValidator validator;
 	
