@@ -313,7 +313,7 @@ public class CentralController {
 	}
 	
 	public void diminuiReceita(double valor) throws AtualizacaoException{
-		validator.validaDiminuiReceita(valor, valorTotalUASC);
+		validator.validaDiminuiReceita(valor, getValorEmCaixa());
 		setValorEmCaixa(getValorEmCaixa() - valor);
 		
 	}
