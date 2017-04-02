@@ -252,7 +252,7 @@ public class PEDTest {
 			Assert.assertEquals("Attack on titan", projetoPIBITI.getInfoProjeto("Impacto"));
 			Assert.fail();
 		} catch (Exception e) {
-			Assert.assertEquals("Erro na consulta de projeto: PED nao possui Impacto", e.getMessage());
+			Assert.assertEquals("Erro na consulta de projeto: P&D nao possui Impacto", e.getMessage());
 		}
 		try {
 			Assert.assertEquals("Attack on titan", projetoPIBITI.getInfoProjeto("Hello"));

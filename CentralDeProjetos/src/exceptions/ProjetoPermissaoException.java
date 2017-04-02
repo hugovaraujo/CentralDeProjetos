@@ -1,6 +1,6 @@
 package exceptions;
 
-public class ProjetoPermissao extends Exception{
+public class ProjetoPermissaoException extends Exception{
 	
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class ProjetoPermissao extends Exception{
 	 * @param msg Mensagem relacionada ao objeto.
 	 * 
 	 */
-	public ProjetoPermissao(String msg){
+	public ProjetoPermissaoException(String msg){
 		super(msg);
 	}
 

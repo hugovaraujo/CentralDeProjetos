@@ -117,7 +117,7 @@ public class PED extends Projeto {
 		default:
 			try {
 				if (verificador.verificaAtributoContem(atributo)){
-					throw new ParametroInvalidoException("PED nao possui " + atributo);
+					throw new ParametroInvalidoException("P&D nao possui " + atributo);
 				} else {
 					throw new ParametroInvalidoException("Atributo nulo ou invalido");
 				}

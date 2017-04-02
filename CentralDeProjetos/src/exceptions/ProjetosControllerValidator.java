@@ -16,10 +16,10 @@ public class ProjetosControllerValidator {
 		
 		try {
 			verificador.verificaString(nome, "Nome");
-			verificador.verificaString(disciplina, "Disciplina");
+			verificador.verificaStringF(disciplina, "Disciplina");
 			verificador.verificaString(objetivo, "Objetivo");
 			verificador.verificaString(periodo, "Periodo");
-			verificador.verificaString(dataInicio, "Data de inicio");
+			verificador.verificaStringF(dataInicio, "Data de inicio");
 			verificador.verificaRendimento(rendimento);
 			verificador.verificaPeriodo(periodo);
 			verificador.verificaData(dataInicio);
@@ -47,7 +47,7 @@ public class ProjetosControllerValidator {
 		try {
 			verificador.verificaString(nome, "Nome");
 			verificador.verificaString(objetivo, "Objetivo");
-			verificador.verificaString(dataInicio, "Data de inicio");
+			verificador.verificaStringF(dataInicio, "Data de inicio");
 			verificador.verificaCategoria(categoria.toUpperCase());
 			verificador.verificaMenorQueZero(prodTecnica, "Numero de producoes tecnicas");
 			verificador.verificaMenorQueZero(prodAcademica, "Numero de producoes academicas");
@@ -64,7 +64,7 @@ public class ProjetosControllerValidator {
 		try {
 			verificador.verificaString(nome, "Nome");
 			verificador.verificaString(objetivo, "Objetivo");
-			verificador.verificaString(dataInicio, "Data de inicio");
+			verificador.verificaStringF(dataInicio, "Data de inicio");
 			verificador.verificaImpacto(impacto);
 			verificador.verificaRendimento(rendimento);
 			verificador.verificaMenorQueZero(prodTecnica, "Numero de producoes tecnicas");
@@ -115,27 +115,27 @@ public class ProjetosControllerValidator {
 	public void validaAtualizaDespesas(Projeto proj, double montanteBolsas, double montanteCusteio, double montanteCapital) throws AtualizacaoException{
 		try {
 			if (proj.getTipo().equals("Monitoria") && (montanteCusteio > 0.0 || montanteCapital > 0.0) ){
-				throw new ProjetoPermissao("projeto do tipo monitoria nao permite despesas de custeio ou capital");
+				throw new ProjetoPermissaoException("projeto do tipo monitoria nao permite despesas de custeio ou capital");
 			}
 			if (proj.getTipo().equals("PET") && montanteCapital > 0.0){
-				throw new ProjetoPermissao("projeto do tipo PET nao permite despesas de capital");
+				throw new ProjetoPermissaoException("projeto do tipo PET nao permite despesas de capital");
 			}
 			if (proj.getTipo().equals("Extensao") && montanteCapital > 0.0){
-				throw new ProjetoPermissao("projeto do tipo Extensao nao permite despesas de capital");
+				throw new ProjetoPermissaoException("projeto do tipo Extensao nao permite despesas de capital");
 			}
 			if (proj.getTipo().equals("PED")){
 				if (((PED)proj).getCategoria().equals("PIBIC") || ((PED)proj).getCategoria().equals("PIBITI")){
 					
 					if (montanteBolsas <= 0.0){
-						throw new ProjetoPermissao("projeto do tipo P&D - PIBIC ou PIBITI deve permitir despesas de bolsas");
+						throw new ProjetoPermissaoException("projeto do tipo P&D - PIBIC ou PIBITI deve permitir despesas de bolsas");
 					}
 					if (montanteCusteio > 0.0 || montanteCapital > 0.0){
-						throw new ProjetoPermissao("projeto do tipo P&D - PIBIC ou PIBITI nao permite despesas de custeio ou capital");
+						throw new ProjetoPermissaoException("projeto do tipo P&D - PIBIC ou PIBITI nao permite despesas de custeio ou capital");
 					}
 				}
 					
 				if (((PED)proj).getCategoria().equals("COOP") && (montanteBolsas <= 0.0 || montanteCusteio <= 0.0 || montanteCapital <= 0.0)){
-					throw new ProjetoPermissao("projeto do tipo Coop devem possuir todas as despesas");
+					throw new ProjetoPermissaoException("projeto do tipo Coop devem possuir todas as despesas");
 				}
 						
 					
