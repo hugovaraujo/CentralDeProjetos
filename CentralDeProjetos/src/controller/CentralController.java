@@ -294,10 +294,7 @@ public class CentralController {
 				valorBolsa += participacao.calculaBolsa();
 			}
 		}
-		if (valorBolsa > 350) {
-			return valorBolsa;
-		}
-		return 350;
+		return valorBolsa;
 	}
 	
 	public double calculaColaboracaoUASC(String cod) throws ConsultaException{

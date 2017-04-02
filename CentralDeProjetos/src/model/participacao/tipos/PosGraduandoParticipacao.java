@@ -47,6 +47,9 @@ public class PosGraduandoParticipacao extends Participacao {
 		if (tipoVinculo.equalsIgnoreCase("Doutorado")) {
 			adicional = super.calculaBolsa()/3;
 		}
+		if (super.calculaBolsa() + adicional < 350) {
+			return 350;
+		}
 		return super.calculaBolsa() + adicional;
 	}
 

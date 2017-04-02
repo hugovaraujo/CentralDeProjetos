@@ -42,8 +42,10 @@ public class ProfissionalParticipacao extends Participacao {
 			adicional = 100;
 		}
 		double valorTotal = super.calculaBolsa() + adicional;
+		if (valorTotal < 350) {
+			return 350;
+		}
 		return valorTotal;
-		
 	}
 
 	public int getQtdDeParticipantes() {

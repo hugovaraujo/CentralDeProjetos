@@ -33,6 +33,12 @@ public class ProfessorParticipacao extends Participacao{
 		if (coordenador) {
 			valorHora += valorHora*0.4;
 		}
+		if (projeto.getTipo().equalsIgnoreCase("Monitoria")) {
+			return 0;
+		}
+		if (super.calculaBolsa() < 350) {
+			return 350;
+		}
 		return super.calculaBolsa();
 	}
 
