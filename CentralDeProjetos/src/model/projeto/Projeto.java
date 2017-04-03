@@ -29,7 +29,7 @@ public abstract class Projeto implements Serializable {
 	protected Despesa despesas = new Despesa();
 	protected int custoTotal;
 	protected List<Participacao> participacoes;
-	private int quantidadeParticipantes; //TODO: AJEITAR VISIBILIDADE
+	private int quantidadeParticipantes;
 	
 	public abstract void editaProjeto(String atributo, String valor) throws AtualizacaoException;
 

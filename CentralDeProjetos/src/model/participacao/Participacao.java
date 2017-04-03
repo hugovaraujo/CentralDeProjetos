@@ -30,12 +30,6 @@ public abstract class Participacao implements Pontuacao, ValorBolsa, Serializabl
 	
 	public abstract String getTipo();
 	
-	
-	// falta implementar :  us4
-	public double calculaPontos() {
-		return 0;
-	}
-	
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
