@@ -136,9 +136,14 @@ public class CentralControllerValidator implements Serializable{
 				throw new Exception("Projeto nao existe");
 			}
 			
-			if (projeto.getTipo().equals("PET")|| (projeto.getTipo().equals("Monitoria"))){
+			if (projeto.getTipo().equals("PET") || (projeto.getTipo().equals("Monitoria"))){
 				throw new Exception("Tipo de projeto invalido para pos graduando");
+			} else if (projeto.getTipo().equals("PED")) {
+				if (!((PED)projeto).getCategoria().equals("COOP")){
+					throw new Exception("Tipo de projeto invalido para pos graduando");
+				}
 			}
+			
 		} catch (Exception e) {
 			throw new AssociacaoException(e.getMessage());
 		}
@@ -188,5 +193,4 @@ public class CentralControllerValidator implements Serializable{
 	}
 	
 
-//Testing
 }

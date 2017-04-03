@@ -294,22 +294,36 @@ public class CentralController implements Serializable{
 	
 	public double calculaPontuacaoPorParticipacao(String cpf) {
 		double pontuacaoPorParticipacao = 0;
-		
-		for (Participacao participacao : participacoes) {
-			if(participacao.getPessoa().getCpf().equals(cpf)){
+		double pontosMonitoria = 0;
+		double pontosOutros = 0;
+		Pessoa pessoa = pessoasController.getPessoa(cpf);
+		for (Participacao participacao : pessoa.getParticipacoes()) {
+			if (participacao.getTipo().equals("GraduandoParticipacao")){
+				if (participacao.getProjeto().getTipo().equals("Monitoria")){
+					pontosMonitoria += participacao.calculaPontuacaoPorParticipacao();
+				} else {
+					pontosOutros += participacao.calculaPontuacaoPorParticipacao();
+				}
+			} else {
 				pontuacaoPorParticipacao += participacao.calculaPontuacaoPorParticipacao();
 			}
+			
 		}
-		return pontuacaoPorParticipacao;
+		
+		if (pontosMonitoria > 6){
+			pontosMonitoria = 6;
+		}
+		if (pontosOutros > 8){
+			pontosOutros = 8;
+		}
+		return pontuacaoPorParticipacao + pontosMonitoria + pontosOutros;
 	}
 	
 	public double getValorBolsa(String cpf){
 		Pessoa pessoa = pessoasController.getPessoa(cpf);
 		double valorBolsa = 0;
-		for (Participacao participacao : participacoes) {
-			if (participacao.getPessoa().getCpf().equals(pessoa.getCpf())){
-				valorBolsa += participacao.calculaBolsa();
-			}
+		for (Participacao participacao : pessoa.getParticipacoes()) {
+			valorBolsa += participacao.calculaBolsa();
 		}
 		return valorBolsa;
 	}

@@ -133,10 +133,10 @@ public class ProjetosControllerValidator implements Serializable {
 				if (((PED)proj).getCategoria().equals("PIBIC") || ((PED)proj).getCategoria().equals("PIBITI")){
 					
 					if (montanteBolsas <= 0.0){
-						throw new ProjetoPermissaoException("projeto do tipo P&D - PIBIC ou PIBITI deve permitir despesas de bolsas");
+						throw new ProjetoPermissaoException("projeto do tipo P&D - PIBIC ou PIBIT deve permitir despesas de bolsas");
 					}
 					if (montanteCusteio > 0.0 || montanteCapital > 0.0){
-						throw new ProjetoPermissaoException("projeto do tipo P&D - PIBIC ou PIBITI nao permite despesas de custeio ou capital");
+						throw new ProjetoPermissaoException("projeto do tipo P&D - PIBIC ou PIBIT nao permite despesas de custeio ou capital");
 					}
 				}
 					

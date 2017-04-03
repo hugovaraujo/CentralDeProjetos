@@ -57,7 +57,7 @@ public class ProfessorParticipacao extends Participacao{
 		double pontuacao;
 		pontuacao = DEFAULT_POINT * (projeto.getDuracao() / 12);
 		if (!projeto.getTipo().equals("Monitoria")){
-			pontuacao +=  projeto.getGraduandos();
+			pontuacao +=  projeto.getGraduandos() + projeto.getPosGraduandos();
 		}
 		
 		return pontuacao;
