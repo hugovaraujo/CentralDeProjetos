@@ -104,6 +104,10 @@ public class Pessoa implements Serializable {
 		this.participacoes.add(participacao);
 		
 	}
+	
+	public void removeParticipacao(Participacao participacao){
+		this.participacoes.remove(participacao);
+	}
 
 	
 

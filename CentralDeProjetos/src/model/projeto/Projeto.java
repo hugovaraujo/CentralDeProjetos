@@ -119,6 +119,10 @@ public abstract class Projeto implements Serializable {
 		
 	}
 	
+	public void removeParticipacao(Participacao participacao){
+		this.participacoes.remove(participacao);
+	}
+	
 	public boolean emAndamento() throws ParseException{
 		
 		Calendar calendar = Calendar.getInstance();
@@ -192,6 +196,7 @@ public abstract class Projeto implements Serializable {
 	public double custoTotal(){
 		return despesas.getMontanteBolsas() + despesas.getMontanteCapital() + despesas.getMontanteCusteio();
 	}
+	
 
 	@Override
 	public String toString() {

@@ -182,8 +182,11 @@ public class CentralController implements Serializable{
 			
 			if(cpfPessoa1.equals(pessoa.getCpf())&&(codProjeto == projeto.getCodigo())) {
 				participacoes.remove(participacao);
+				projeto.removeParticipacao(participacao);
+				pessoa.removeParticipacao(participacao);
 				return true;
 			}
+		
 		}
 		return false;
 	}

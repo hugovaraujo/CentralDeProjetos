@@ -56,9 +56,10 @@ public class ProfessorParticipacao extends Participacao{
 	public double calculaPontuacaoPorParticipacao() {
 		double pontuacao;
 		pontuacao = DEFAULT_POINT * (projeto.getDuracao() / 12);
-		if (!projeto.getTipo().equals("PET")){
-			pontuacao += projeto.getQuantidadeParticipantes();
+		if (!projeto.getTipo().equals("Monitoria")){
+			pontuacao +=  projeto.getGraduandos();
 		}
+		
 		return pontuacao;
 	}
 
